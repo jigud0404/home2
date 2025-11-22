@@ -13,14 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome (Icons) -->
+    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
-    <!-- Babel (to convert JSX in browser) -->
+    <!-- Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <!-- EmailJS -->
@@ -55,15 +55,8 @@
       ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
       html { scroll-behavior: smooth; }
       
-      /* Animation Classes */
       .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
-      .delay-100 { animation-delay: 0.1s; }
-      .delay-200 { animation-delay: 0.2s; }
-      .delay-300 { animation-delay: 0.3s; }
-      
-      @keyframes fadeInUp {
-        to { opacity: 1; transform: translateY(0); }
-      }
+      @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -73,7 +66,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // --- Constants & Data ---
         const TEXT_CONTENT = {
             en: {
                 navServices: "Services",
@@ -165,8 +157,6 @@
             }
         };
 
-        // --- Components ---
-
         const Navbar = ({ lang, setLang, t }) => {
             const [isScrolled, setIsScrolled] = React.useState(false);
             const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -183,8 +173,11 @@
                 { name: t.navContact, href: "#contact" },
             ];
 
+            const headerClass = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 " + 
+                (isScrolled ? 'bg-slate-950/90 backdrop-blur-md py-3 border-b border-white/10' : 'bg-transparent py-6');
+
             return (
-                <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/90 backdrop-blur-md py-3 border-b border-white/10' : 'bg-transparent py-6'}`}>
+                <header className={headerClass}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#" className="text-2xl font-black tracking-tighter text-white flex items-center gap-2">
                             <div className="w-8 h-8 bg-cyan-500 rounded-br-xl rounded-tl-xl"></div>
@@ -198,14 +191,14 @@
                             ))}
                             <div className="h-6 w-px bg-gray-700 mx-2"></div>
                             <div className="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
-                                <button onClick={() => setLang('ko')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'ko' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white'}`}>KO</button>
-                                <button onClick={() => setLang('en')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white'}`}>EN</button>
+                                <button onClick={() => setLang('ko')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'ko' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>KO</button>
+                                <button onClick={() => setLang('en')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'en' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>EN</button>
                             </div>
                         </nav>
 
                         {/* Mobile Menu Button */}
                         <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                            <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+                            <i className={"fas text-2xl " + (mobileMenuOpen ? 'fa-times' : 'fa-bars')}></i>
                         </button>
                     </div>
 
@@ -219,9 +212,9 @@
                                 <div className="flex items-center gap-4 pt-4 border-t border-gray-800">
                                     <span className="text-gray-400 text-sm"><i className="fas fa-globe mr-2"></i>Language</span>
                                     <div className="flex gap-2">
-                                        <button onClick={() => { setLang('ko'); setMobileMenuOpen(false); }} className={`text-sm font-bold ${lang === 'ko' ? 'text-cyan-400' : 'text-gray-500'}`}>KOR</button>
+                                        <button onClick={() => { setLang('ko'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'ko' ? 'text-cyan-400' : 'text-gray-500')}>KOR</button>
                                         <span className="text-gray-700">/</span>
-                                        <button onClick={() => { setLang('en'); setMobileMenuOpen(false); }} className={`text-sm font-bold ${lang === 'en' ? 'text-cyan-400' : 'text-gray-500'}`}>ENG</button>
+                                        <button onClick={() => { setLang('en'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'en' ? 'text-cyan-400' : 'text-gray-500')}>ENG</button>
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +232,7 @@
                             <source src="background.mp4" type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950"></div>
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
+                        <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
                     </div>
 
                     <div className="container mx-auto px-6 relative z-10 text-center fade-in-up">
@@ -282,9 +275,9 @@
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {services.map((s, i) => (
-                                <div key={i} className={`bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group fade-in-up`} style={{animationDelay: `${i * 0.1}s`}}>
+                                <div key={i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group fade-in-up" style={{animationDelay: (i * 0.1) + "s"}}>
                                     <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900">
-                                        <i className={`fas ${s.icon} text-2xl text-cyan-400 group-hover:text-cyan-300`}></i>
+                                        <i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i>
                                     </div>
                                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
                                     <ul className="space-y-3">
@@ -316,10 +309,7 @@
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {t.processSteps.map((step, index) => (
-                                <div key={index} className="relative p-8 bg-slate-950 rounded-2xl border border-white/5 hover:border-cyan-500/50 transition-colors group fade-in-up" style={{animationDelay: `${index * 0.1}s`}}>
-                                    <div className="w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
-                                        {index + 1}
-                                    </div>
+                                <div key={index} className="relative p-8 bg-slate-950 rounded-2xl border border-white/5 hover:border-cyan-500/50 transition-colors group fade-in-up" style={{animationDelay: (index * 0.1) + "s"}}>
                                     <h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{step.title}</h4>
                                     <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                                 </div>
@@ -334,7 +324,7 @@
             const scrollContainerRef = React.useRef(null);
             const words = t.photoHeader.split(' ');
             
-            // Using generic placeholders. Replace with your studio photos
+            // Using generic placeholders
             const images = [
                 "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=1600&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=1600&auto=format&fit=crop",
@@ -374,7 +364,7 @@
                             <div ref={scrollContainerRef} className="flex gap-6 overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory">
                                 {images.map((img, index) => (
                                     <div key={index} className="relative min-w-[85vw] md:min-w-[600px] h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shrink-0 snap-center">
-                                        <img src={img} alt={`Studio ${index + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                        <img src={img} alt={"Studio " + (index + 1)} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent pointer-events-none"></div>
                                     </div>
                                 ))}
@@ -390,7 +380,6 @@
             const [status, setStatus] = React.useState('idle');
 
             React.useEffect(() => {
-                // Initialize EmailJS
                 emailjs.init("0xTvL-eoLmpeUTCui");
             }, []);
 
@@ -409,6 +398,12 @@
                         setTimeout(() => setStatus('idle'), 5000);
                     });
             };
+            
+            // Helper for status button class
+            let btnClass = "w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 ";
+            if (status === 'success') btnClass += 'bg-green-500 hover:bg-green-600 text-white';
+            else if (status === 'error') btnClass += 'bg-red-500 hover:bg-red-600 text-white';
+            else btnClass += 'bg-cyan-500 hover:bg-cyan-400 text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]';
 
             return (
                 <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden">
@@ -435,7 +430,7 @@
                                 </div>
                             </div>
 
-                            <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up delay-200">
+                            <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formName}</label>
@@ -453,7 +448,7 @@
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formMessage}</label>
                                         <textarea name="Message" rows="4" placeholder={t.formMessagePlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 resize-none"></textarea>
                                     </div>
-                                    <button type="submit" disabled={status === 'sending' || status === 'success'} className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 ${status === 'success' ? 'bg-green-500 hover:bg-green-600 text-white' : status === 'error' ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-cyan-500 hover:bg-cyan-400 text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]'}`}>
+                                    <button type="submit" disabled={status === 'sending' || status === 'success'} className={btnClass}>
                                         {status === 'sending' ? <i className="fas fa-spinner fa-spin mr-2"></i> : status === 'success' ? <i className="fas fa-check mr-2"></i> : status === 'error' ? <i className="fas fa-exclamation-circle mr-2"></i> : null}
                                         {status === 'sending' ? t.formSending : status === 'success' ? t.formSuccess : status === 'error' ? t.formError : t.formSubmitBtn}
                                     </button>
