@@ -157,6 +157,14 @@
             }
         };
 
+        // New Logo Component based on user image (White Triangle with Red Dot)
+        const LogoIcon = ({ className }) => (
+            <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 L90 80 L10 80 Z" stroke="white" strokeWidth="10" strokeLinejoin="round" />
+                <circle cx="50" cy="55" r="14" fill="#ef4444" />
+            </svg>
+        );
+
         const Navbar = ({ lang, setLang, t }) => {
             const [isScrolled, setIsScrolled] = React.useState(false);
             const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -179,9 +187,10 @@
             return (
                 <header className={headerClass}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
-                        <a href="#" className="text-2xl font-black tracking-tighter text-white flex items-center gap-2">
-                            <div className="w-8 h-8 bg-cyan-500 rounded-br-xl rounded-tl-xl"></div>
-                            ASREC <span className="text-cyan-400">STUDIO</span>
+                        <a href="#" className="text-2xl font-black tracking-tighter text-white flex items-center gap-3">
+                            {/* New Logo */}
+                            <LogoIcon className="w-10 h-10" />
+                            <span>ASREC <span className="text-cyan-400">STUDIO</span></span>
                         </a>
 
                         {/* Desktop Nav */}
@@ -259,10 +268,10 @@
 
         const Services = ({ t }) => {
             const services = [
-                { title: t.s1Title, items: t.s1List, icon: "fa-clipboard-list" }, // Changed icon
+                { title: t.s1Title, items: t.s1List, icon: "fa-clipboard-list" },
                 { title: t.s2Title, items: t.s2List, icon: "fa-microphone-lines" },
                 { title: t.s3Title, items: t.s3List, icon: "fa-sliders" },
-                { title: t.s4Title, items: t.s4List, icon: "fa-users" } // Changed icon
+                { title: t.s4Title, items: t.s4List, icon: "fa-users" }
             ];
             const words = t.serviceHeader.split(' ');
 
@@ -436,8 +445,9 @@
                             </div>
 
                             <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
-                                <div className="flex items-center gap-2 mb-8">
-                                    <div className="w-6 h-6 bg-cyan-500 rounded-br-lg rounded-tl-lg"></div>
+                                <div className="flex items-center gap-3 mb-8">
+                                    {/* New Logo */}
+                                    <LogoIcon className="w-8 h-8" />
                                     <span className="text-xl font-black tracking-tighter text-white">
                                         ASREC <span className="text-cyan-400">STUDIO</span>
                                     </span>
@@ -474,8 +484,9 @@
         const Footer = ({ t }) => (
             <footer className="bg-slate-950 border-t border-white/5 py-8">
                 <div className="container mx-auto px-6 text-center">
-                    <div className="flex items-center justify-center gap-2 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        <div className="w-6 h-6 bg-cyan-600 rounded-br-lg rounded-tl-lg"></div>
+                    <div className="flex items-center justify-center gap-3 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+                        {/* New Logo */}
+                        <LogoIcon className="w-6 h-6" />
                         <span className="font-bold text-xl tracking-tight">ASREC STUDIO</span>
                     </div>
                     <p className="text-gray-600 text-sm">{t.footerRights}</p>
