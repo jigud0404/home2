@@ -117,6 +117,8 @@
                 navContact: "녹음 문의",
                 heroTitle: "Breathe Life into Games",
                 heroSubtitle: "게임에 생명력을 불어넣는 더빙 전문 스튜디오",
+                heroDesc1: "로케이브는 게임 현지화에 대한 깊은 이해와 풍부한 경험을 바탕으로, 플레이어의 몰입감을 극대화하는 최고의 더빙 퀄리티를 제공합니다.",
+                heroDesc2: "캐스팅부터 각색, 녹음, 믹싱, 마스터링까지 원스톱 솔루션으로 성공적인 프로젝트를 약속드립니다.",
                 heroContactBtn: "녹음 문의하기",
                 serviceHeader: "MAIN SERVICE",
                 s1Title: "성우 캐스팅",
@@ -186,12 +188,10 @@
                 <header className={headerClass}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#" className="text-2xl font-black tracking-tighter text-white flex items-center gap-3">
-                            {/* New Logo */}
                             <LogoIcon className="w-10 h-10" />
                             <span>ASREC <span className="text-cyan-400">STUDIO</span></span>
                         </a>
 
-                        {/* Desktop Nav */}
                         <nav className="hidden md:flex items-center gap-8">
                             {navLinks.map(link => (
                                 <a key={link.name} href={link.href} className="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">{link.name}</a>
@@ -203,13 +203,11 @@
                             </div>
                         </nav>
 
-                        {/* Mobile Menu Button */}
                         <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                             <i className={"fas text-2xl " + (mobileMenuOpen ? 'fa-times' : 'fa-bars')}></i>
                         </button>
                     </div>
 
-                    {/* Mobile Menu */}
                     {mobileMenuOpen && (
                         <div className="md:hidden bg-slate-900 border-b border-white/10 absolute w-full left-0 top-full">
                             <div className="px-6 py-8 flex flex-col gap-6">
@@ -243,17 +241,16 @@
                     </div>
 
                     <div className="container mx-auto px-6 relative z-10 text-center fade-in-up">
-                        {/* Resized Pill Box */}
-                        <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm md:text-base font-bold tracking-widest uppercase backdrop-blur-sm shadow-lg shadow-cyan-500/10">
+                        {/* Smaller Pill Box */}
+                        <div className="inline-block mb-8 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs md:text-sm font-bold tracking-widest uppercase backdrop-blur-sm shadow-lg shadow-cyan-500/10">
                             GAME DUBBING & LOCALIZATION
                         </div>
                         
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-tight">
+                        {/* Title with ! added */}
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter mb-12 leading-tight">
                             BREATHE LIFE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">INTO GAMES!</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-4 font-light leading-relaxed">{t.heroSubtitle}</p>
-                        <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">{t.heroDesc1}</p>
 
                         <a href="#contact" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-cyan-500 text-white font-bold rounded-full text-lg overflow-hidden transition-all hover:bg-cyan-400 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transform hover:scale-105">
                             <span>{t.heroContactBtn}</span>
@@ -319,9 +316,7 @@
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {t.processSteps.map((step, index) => (
                                 <div key={index} className="relative p-8 bg-slate-950 rounded-2xl border border-white/5 hover:border-cyan-500/50 transition-colors group fade-in-up" style={{animationDelay: (index * 0.1) + "s"}}>
-                                    {/* Numbering */}
                                     <div className="text-3xl font-black text-cyan-500/80 mb-4">0{index + 1}</div>
-                                    
                                     <h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{step.title}</h4>
                                     <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                                 </div>
@@ -336,7 +331,6 @@
             const scrollContainerRef = React.useRef(null);
             const words = t.photoHeader.split(' ');
             
-            // Using generic placeholders
             const images = [
                 "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=1600&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=1600&auto=format&fit=crop",
@@ -411,7 +405,6 @@
                     });
             };
             
-            // Helper for status button class
             let btnClass = "w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 ";
             if (status === 'success') btnClass += 'bg-green-500 hover:bg-green-600 text-white';
             else if (status === 'error') btnClass += 'bg-red-500 hover:bg-red-600 text-white';
@@ -444,7 +437,6 @@
 
                             <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
                                 <div className="flex items-center gap-3 mb-8">
-                                    {/* New Logo */}
                                     <LogoIcon className="w-8 h-8" />
                                     <span className="text-xl font-black tracking-tighter text-white">
                                         ASREC <span className="text-cyan-400">STUDIO</span>
@@ -452,6 +444,9 @@
                                 </div>
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div>
+                                        <div className="mb-2">
+                                           <LogoIcon className="w-6 h-6" />
+                                        </div>
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formName}</label>
                                         <input type="text" name="Name" placeholder={t.formNamePlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600" />
                                     </div>
@@ -483,7 +478,6 @@
             <footer className="bg-slate-950 border-t border-white/5 py-8">
                 <div className="container mx-auto px-6 text-center">
                     <div className="flex items-center justify-center gap-3 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        {/* New Logo */}
                         <LogoIcon className="w-6 h-6" />
                         <span className="font-bold text-xl tracking-tight">ASREC STUDIO</span>
                     </div>
@@ -492,11 +486,10 @@
             </footer>
         );
 
-        // --- Main App ---
         const App = () => {
             const getInitialLang = () => {
-                const browserLang = navigator.language.slice(0, 2);
-                return browserLang === 'ko' ? 'ko' : 'en';
+                const browserLang = navigator.language || navigator.userLanguage || 'en';
+                return browserLang.toLowerCase().startsWith('ko') ? 'ko' : 'en';
             };
             const [lang, setLang] = React.useState(getInitialLang);
             const t = TEXT_CONTENT[lang];
