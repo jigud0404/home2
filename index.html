@@ -71,7 +71,6 @@
                 navServices: "Services",
                 navPhotos: "Studio",
                 navContact: "Contact",
-                // Hero Slogan
                 heroTitle: "As Recorded, As Real",
                 heroSubtitle: "Game Dubbing Studio Breathing Life into Recordings",
                 heroDesc1: "Locave leverages deep understanding and extensive experience in game localization to provide the best dubbing quality, maximizing player immersion.",
@@ -110,13 +109,12 @@
                 formSuccess: "Inquiry submitted successfully. Thank you!",
                 formError: "An error occurred. Please try again later.",
                 formSending: "Sending...",
-                footerRights: "© 2026 ASREC STUDIO. All Rights Reserved."
+                footerRights: "" 
             },
             ko: {
                 navServices: "서비스",
                 navPhotos: "스튜디오",
                 navContact: "녹음 문의",
-                // Hero Slogan
                 heroTitle: "As Recorded, As Real",
                 heroSubtitle: "녹음된 그대로, 생동감을 불어넣는 게임 더빙 스튜디오",
                 heroDesc1: "로케이브는 게임 현지화에 대한 깊은 이해와 풍부한 경험을 바탕으로, 플레이어의 몰입감을 극대화하는 최고의 더빙 퀄리티를 제공합니다.",
@@ -155,7 +153,7 @@
                 formSuccess: "문의가 성공적으로 접수되었습니다. 감사합니다!",
                 formError: "오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
                 formSending: "전송 중...",
-                footerRights: "© 2025 ASREC STUDIO. All Rights Reserved."
+                footerRights: ""
             }
         };
 
@@ -242,9 +240,6 @@
                             <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
                         </div>
                         
-                        {/* Modified Slogan Section:
-                            Line 1: Special Color (Gradient: Cyan-500 to Blue-600) 
-                            Line 2: Pure White */}
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter mb-10 leading-tight opacity-90">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
                                 {t.heroTitle}
@@ -511,13 +506,11 @@
         };
 
         const Footer = ({ t }) => (
-            <footer className="bg-slate-950 border-t border-white/5 py-8">
-                <div className="container mx-auto px-6 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        <img src="ASREC LOGOS.png" alt="Logo" className="h-6 w-auto object-contain" />
-                        <span className="font-bold text-xl tracking-tight">ASREC STUDIO</span>
+            <footer className="bg-slate-950 border-t border-white/5 py-10">
+                <div className="container mx-auto px-6 flex justify-center">
+                    <div className="opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                        <img src="ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
                     </div>
-                    <p className="text-gray-600 text-sm">{t.footerRights}</p>
                 </div>
             </footer>
         );
