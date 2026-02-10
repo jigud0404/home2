@@ -242,10 +242,15 @@
                             <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
                         </div>
                         
-                        {/* Modified Slogan Section: Reduced size and changed color to solid Gray-300 for better tone */}
+                        {/* Modified Slogan Section:
+                            Line 1: Special Color (Gradient: Cyan-500 to Blue-600) 
+                            Line 2: Pure White */}
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter mb-10 leading-tight opacity-90">
-                            {t.heroTitle} <br />
-                            <span className="text-gray-300 font-bold text-lg md:text-2xl leading-snug block mt-4 tracking-normal opacity-90">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
+                                {t.heroTitle}
+                            </span>
+                            <br />
+                            <span className="text-white text-lg md:text-2xl leading-snug block mt-4 font-bold tracking-normal opacity-90">
                                 {t.heroSubtitle}
                             </span>
                         </h1>
