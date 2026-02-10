@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AsRec Studio - Game Dubbing & Localization</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- React & ReactDOM (UMD for single file) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script>
@@ -32,524 +24,99 @@
           extend: {
             fontFamily: {
               sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'],
-            },
-            colors: {
-              cyan: {
-                400: '#22d3ee',
-                500: '#06b6d4',
-                900: '#164e63',
-              },
-              slate: {
-                850: '#172033',
-                950: '#020617',
-              }
             }
           }
         }
       }
     </script>
-    <style>
-      ::-webkit-scrollbar { width: 10px; }
-      ::-webkit-scrollbar-track { background: #020617; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; }
-      ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
-      html { scroll-behavior: smooth; }
-      
-      .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
-      @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-      
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
 </head>
-<body class="bg-slate-950 text-white antialiased selection:bg-cyan-500 selection:text-white">
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const TEXT_CONTENT = {
-            en: {
-                navServices: "Services",
-                navPhotos: "Studio",
-                navContact: "Contact",
-                heroTitle: "Breathe Life into Games",
-                heroSubtitle: "Game Dubbing & Localization Studio",
-                heroDesc1: "Locave leverages deep understanding and extensive experience in game localization to provide the best dubbing quality, maximizing player immersion.",
-                heroDesc2: "We promise a successful project with our one-stop solution covering everything from casting and adaptation to recording, mixing, and mastering.",
-                heroContactBtn: "Start a Project",
-                serviceHeader: "MAIN SERVICES",
-                s1Title: "Voice Casting",
-                s1List: ["Top-tier game voice actor pool", "Casting based on world & character analysis", "Sample recordings provided", "Budget-optimized casting"],
-                s2Title: "Recording & Adaptation",
-                s2List: ["Genre-optimized recording process", "Script adaptation for better dubbing quality", "Large-scale project management", "Remote recording support (Zoom)"],
-                s3Title: "Mixing & Mastering",
-                s3List: ["Balanced sound with precise mixing", "Distortion-free, clear audio mastering", "Audio polishing tailored to needs", "Systematic large-scale file management"],
-                s4Title: "Localization Experts",
-                s4List: ["Experienced dubbing directors", "Professional casting directors", "Specialized game sound engineers", "Expert writers for translation/adaptation"],
-                processHeader: "OUR PROCESS",
-                processSteps: [
-                    { title: "Inquiry & Quote", desc: "We review requirements and scripts to provide an initial estimate." },
-                    { title: "Casting & Adaptation", desc: "Optimal voice actor selection and script adaptation if needed." },
-                    { title: "Session & Recording", desc: "Planning the session and proceeding with professional recording." },
-                    { title: "Editing & Mixing", desc: "Precise editing and mastering for crystal clear audio." },
-                    { title: "QA & Revisions", desc: "Thorough internal quality assurance and feedback implementation." },
-                    { title: "Delivery & Support", desc: "Final delivery with flexible follow-up support." }
-                ],
-                photoHeader: "STUDIO TOUR",
-                contactTitle: "Get in Touch",
-                contactDescription: "We propose the best sound solutions for your successful project. Tell us about your vision.",
-                formName: "Name",
-                formNamePlaceholder: "Your Name",
-                formEmail: "Email",
-                formEmailPlaceholder: "your@email.com",
-                formSubject: "Subject",
-                formSubjectPlaceholder: "Subject",
-                formMessage: "Message",
-                formMessagePlaceholder: "Please include project details, budget, and schedule.",
-                formSubmitBtn: "Send Inquiry",
-                formSuccess: "Inquiry submitted successfully. Thank you!",
-                formError: "An error occurred. Please try again later.",
-                formSending: "Sending...",
-                footerRights: "© 2026 ASREC STUDIO. All Rights Reserved."
-            },
-            ko: {
-                navServices: "서비스",
-                navPhotos: "스튜디오",
-                navContact: "녹음 문의",
-                heroTitle: "Breathe Life into Games",
-                heroSubtitle: "게임에 생명력을 불어넣는 더빙 전문 스튜디오",
-                heroDesc1: "로케이브는 게임 현지화에 대한 깊은 이해와 풍부한 경험을 바탕으로, 플레이어의 몰입감을 극대화하는 최고의 더빙 퀄리티를 제공합니다.",
-                heroDesc2: "캐스팅부터 각색, 녹음, 믹싱, 마스터링까지 원스톱 솔루션으로 성공적인 프로젝트를 약속드립니다.",
-                heroContactBtn: "녹음 문의하기",
-                serviceHeader: "MAIN SERVICE",
-                s1Title: "성우 캐스팅",
-                s1List: ["최고의 게임 전문 성우 풀 보유", "세계관과 캐릭터 분석 기반 캐스팅", "연기 확인용 샘플 제공", "예산을 고려한 최적의 캐스팅"],
-                s2Title: "녹음 & 각색",
-                s2List: ["장르에 최적화된 녹음 프로세스", "대본 각색으로 더빙 품질 향상", "대규모 프로젝트 제작 매니지먼트", "ZOOM을 이용한 원격 녹음 참관 지원"],
-                s3Title: "믹싱 & 마스터링",
-                s3List: ["정교한 믹싱으로 균형잡힌 사운드", "왜곡 없는 선명한 마스터링", "요구사항에 부합하는 오디오 폴리싱", "대규모 오디오 파일의 체계적 관리"],
-                s4Title: "현지화 전문 인력",
-                s4List: ["경력 풍부한 더빙 디렉터", "현지화 전문 PM", "게임 전문 사운드 엔지니어", "게임 번역 및 각색 전문 작가"],
-                processHeader: "OUR PROCESS",
-                processSteps: [
-                    { title: "프로젝트 접수 및 가견적", desc: "요구사항과 대본을 검토해 초기 견적을 산출하고 승인을 받습니다." },
-                    { title: "성우 캐스팅 및 각색", desc: "게임과 캐릭터에 맞는 최적의 성우를 선정하고, 필요 시 대본을 각색합니다." },
-                    { title: "세션 제작 및 녹음", desc: "프로젝트에 맞는 녹음용 세션을 계획하고 전문 디렉터와 함께 녹음을 진행합니다." },
-                    { title: "편집, 믹싱 및 마스터링", desc: "정밀한 편집과 믹싱을 통해 왜곡 없는 선명한 오디오 파일을 완성합니다." },
-                    { title: "내부 품질검사(QA)", desc: "내부 QA팀이 완성된 파일을 철저히 검사하고 피드백을 반영해 수정합니다." },
-                    { title: "최종 납품 및 후속 관리", desc: "완성된 파일을 납품하고, 후속 지원과 추가 요청에 유연하게 대응합니다." }
-                ],
-                photoHeader: "STUDIO TOUR",
-                contactTitle: "녹음 문의",
-                contactDescription: "성공적인 프로젝트를 위한 최고의 더빙 솔루션을 제안합니다. 프로젝트에 대해 알려주시면 신속하게 연락드리겠습니다.",
-                formName: "성함",
-                formNamePlaceholder: "성함을 입력해주세요",
-                formEmail: "이메일",
-                formEmailPlaceholder: "회신받을 이메일을 입력해주세요",
-                formSubject: "제목",
-                formSubjectPlaceholder: "제목을 입력해주세요",
-                formMessage: "문의 내용",
-                formMessagePlaceholder: "프로젝트 내용, 예산, 일정 등 구체적으로 작성해주시면 좋습니다.",
-                formSubmitBtn: "문의 접수하기",
-                formSuccess: "문의가 성공적으로 접수되었습니다. 감사합니다!",
-                formError: "오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
-                formSending: "전송 중...",
-                footerRights: "© 2025 ASREC STUDIO. All Rights Reserved."
-            }
-        };
+<body class="bg-slate-950 text-white">
+<div id="root"></div>
 
-        const Navbar = ({ lang, setLang, t }) => {
-            const [isScrolled, setIsScrolled] = React.useState(false);
-            const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+<script type="text/babel">
+const TEXT_CONTENT = {
+  en: {
+    navServices: "Services",
+    navPhotos: "Studio",
+    navContact: "Contact",
 
-            React.useEffect(() => {
-                const handleScroll = () => setIsScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+    sloganLine1: "As Recorded, As Real",
+    sloganLine2: "A game dubbing studio that brings life exactly as recorded",
 
-            const navLinks = [
-                { name: t.navServices, href: "#services" },
-                { name: t.navPhotos, href: "#studio" },
-                { name: t.navContact, href: "#contact" },
-            ];
+    heroContactBtn: "Start a Project",
+    footerRights: "© 2026 ASREC STUDIO. All Rights Reserved."
+  },
+  ko: {
+    navServices: "서비스",
+    navPhotos: "스튜디오",
+    navContact: "녹음 문의",
 
-            const headerClass = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 " + 
-                (isScrolled ? 'bg-slate-950/90 backdrop-blur-md py-3 border-b border-white/10' : 'bg-transparent py-6');
+    sloganLine1: "As Recorded, As Real",
+    sloganLine2: "녹음된 그대로, 생동감을 불어넣는 게임 더빙 스튜디오",
 
-            return (
-                <header className={headerClass}>
-                    <div className="container mx-auto px-6 flex justify-between items-center">
-                        <a href="#" className="flex items-center">
-                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-12 w-auto object-contain" />
-                        </a>
+    heroContactBtn: "녹음 문의하기",
+    footerRights: "© 2026 ASREC STUDIO. All Rights Reserved."
+  }
+};
 
-                        <nav className="hidden md:flex items-center gap-8">
-                            {navLinks.map(link => (
-                                <a key={link.name} href={link.href} className="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">{link.name}</a>
-                            ))}
-                            <div className="h-6 w-px bg-gray-700 mx-2"></div>
-                            <div className="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
-                                <button onClick={() => setLang('ko')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'ko' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>KO</button>
-                                <button onClick={() => setLang('en')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'en' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>EN</button>
-                            </div>
-                        </nav>
+const Navbar = ({ lang, setLang, t }) => (
+  <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-6">
+    <div className="container mx-auto px-6 flex justify-between items-center">
+      <img src="ASREC LOGOS.png" className="h-12" />
+      <div className="flex gap-4">
+        <button onClick={() => setLang("ko")}>KO</button>
+        <button onClick={() => setLang("en")}>EN</button>
+      </div>
+    </div>
+  </header>
+);
 
-                        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                            <i className={"fas text-2xl " + (mobileMenuOpen ? 'fa-times' : 'fa-bars')}></i>
-                        </button>
-                    </div>
+const Hero = ({ t }) => (
+  <section className="h-screen flex items-center justify-center text-center">
+    <div>
+      <img src="ASREC LOGOS.png" className="mx-auto mb-12 max-w-[420px]" />
 
-                    {mobileMenuOpen && (
-                        <div className="md:hidden bg-slate-900 border-b border-white/10 absolute w-full left-0 top-full">
-                            <div className="px-6 py-8 flex flex-col gap-6">
-                                {navLinks.map(link => (
-                                    <a key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-white hover:text-cyan-400">{link.name}</a>
-                                ))}
-                                <div className="flex items-center gap-4 pt-4 border-t border-gray-800">
-                                    <span className="text-gray-400 text-sm"><i className="fas fa-globe mr-2"></i>Language</span>
-                                    <div className="flex gap-2">
-                                        <button onClick={() => { setLang('ko'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'ko' ? 'text-cyan-400' : 'text-gray-500')}>KOR</button>
-                                        <span className="text-gray-700">/</span>
-                                        <button onClick={() => { setLang('en'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'en' ? 'text-cyan-400' : 'text-gray-500')}>ENG</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </header>
-            );
-        };
+      {/* 🔥 슬로건 교체 완료 */}
+      <h1 className="text-3xl md:text-5xl lg:text-5xl font-black tracking-tight mb-4">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+          {t.sloganLine1}
+        </span>
+      </h1>
 
-        const Hero = ({ t }) => {
-            return (
-                <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 z-0 bg-slate-950">
-                        <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 brightness-40 blur-sm">
-                            <source src="background.mp4" type="video/mp4" />
-                        </video>
-                        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
-                        <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
-                    </div>
+      <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        {t.sloganLine2}
+      </p>
 
-                    <div className="container mx-auto px-6 relative z-10 text-center fade-in-up">
-                        <div className="inline-block mb-8 px-5 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs md:text-base font-bold tracking-widest uppercase backdrop-blur-sm shadow-lg shadow-cyan-500/10">
-                            GAME DUBBING & LOCALIZATION
-                        </div>
-                        
-                        <div className="flex justify-center mb-10 m">
-                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
-                        </div>
-                        
-                      
-                        <h1 className="text-3xl md:text-5xl lg:text-5xl font-black text-white tracking-tighter mb-12 leading-tight opacity-90">
-    VOICEOVER <br />
-                            
-    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">PLAY BEYOND!</span>
-</h1>
+      <a href="#contact" className="inline-block px-8 py-4 bg-cyan-500 rounded-full font-bold">
+        {t.heroContactBtn}
+      </a>
+    </div>
+  </section>
+);
 
+const Footer = ({ t }) => (
+  <footer className="py-8 text-center text-gray-500">
+    {t.footerRights}
+  </footer>
+);
 
-                        <a href="#contact" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-cyan-500 text-white font-bold rounded-full text-lg overflow-hidden transition-all hover:bg-cyan-400 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transform hover:scale-105">
-                            <span>{t.heroContactBtn}</span>
-                            <i className="fas fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </section>
-            );
-        };
+const App = () => {
+  const [lang, setLang] = React.useState(
+    navigator.language.startsWith("ko") ? "ko" : "en"
+  );
+  const t = TEXT_CONTENT[lang];
 
-        const Services = ({ t }) => {
-            const services = [
-                { title: t.s1Title, items: t.s1List, icon: "fa-clipboard-list" },
-                { title: t.s2Title, items: t.s2List, icon: "fa-microphone-lines" },
-                { title: t.s3Title, items: t.s3List, icon: "fa-sliders" },
-                { title: t.s4Title, items: t.s4List, icon: "fa-users" }
-            ];
-            const words = t.serviceHeader.split(' ');
+  return (
+    <>
+      <Navbar lang={lang} setLang={setLang} t={t} />
+      <Hero t={t} />
+      <Footer t={t} />
+    </>
+  );
+};
 
-            return (
-                <section id="services" className="py-24 bg-slate-950 relative">
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
-                    <div className="container mx-auto px-6">
-                        <div className="text-center mb-20">
-                            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
-                                <span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}
-                            </h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {services.map((s, i) => (
-                                <div key={i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group fade-in-up" style={{animationDelay: (i * 0.1) + "s"}}>
-                                    <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900">
-                                        <i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i>
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
-                                    <ul className="space-y-3">
-                                        {s.items.map((item, idx) => (
-                                            <li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed">
-                                                <span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Process = ({ t }) => {
-            const words = t.processHeader.split(' ');
-            return (
-                <section className="py-24 bg-slate-900 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-cyan-900/5 to-transparent pointer-events-none"></div>
-                    <div className="container mx-auto px-6 relative z-10">
-                        <div className="text-center mb-20">
-                            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
-                                <span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}
-                            </h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {t.processSteps.map((step, index) => (
-                                <div key={index} className="relative p-8 bg-slate-950 rounded-2xl border border-white/5 hover:border-cyan-500/50 transition-colors group fade-in-up" style={{animationDelay: (index * 0.1) + "s"}}>
-                                    <div className="text-3xl font-black text-cyan-500/80 mb-4">0{index + 1}</div>
-                                    <h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{step.title}</h4>
-                                    <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Gallery = ({ t }) => {
-            const scrollContainerRef = React.useRef(null);
-            const words = t.photoHeader.split(' ');
-            
-            const images = [
-                "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=1600&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=1600&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1478737270239-2f02b77ac6d5?q=80&w=1600&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1621616896527-178849777131?q=80&w=1600&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1525857597365-5f6dbff2e36e?q=80&w=1600&auto=format&fit=crop"
-            ];
-
-            const scroll = (direction) => {
-                if (scrollContainerRef.current) {
-                    const { current } = scrollContainerRef;
-                    const scrollAmount = 400;
-                    current.scrollTo({
-                        left: direction === 'left' ? current.scrollLeft - scrollAmount : current.scrollLeft + scrollAmount,
-                        behavior: 'smooth'
-                    });
-                }
-            };
-
-            return (
-                <section id="studio" className="py-24 bg-slate-950 overflow-hidden">
-                    <div className="container mx-auto px-6">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
-                                <span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}
-                            </h2>
-                        </div>
-                        
-                        <div className="relative group">
-                            <button onClick={() => scroll('left')} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-sm border border-white/10 hover:bg-cyan-500 transition-all opacity-0 group-hover:opacity-100">
-                                <i className="fas fa-chevron-left"></i>
-                            </button>
-                            <button onClick={() => scroll('right')} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white backdrop-blur-sm border border-white/10 hover:bg-cyan-500 transition-all opacity-0 group-hover:opacity-100">
-                                <i className="fas fa-chevron-right"></i>
-                            </button>
-
-                            <div ref={scrollContainerRef} className="flex gap-6 overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory">
-                                {images.map((img, index) => (
-                                    <div key={index} className="relative min-w-[85vw] md:min-w-[600px] h-[400px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shrink-0 snap-center">
-                                        <img src={img} alt={"Studio " + (index + 1)} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent pointer-events-none"></div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        // ✅ 이메일링 시스템만 “확실히 동작”하도록 수정한 Contact (UI/텍스트/구성은 그대로)
-        const Contact = ({ t }) => {
-            const form = React.useRef();
-            const [status, setStatus] = React.useState('idle');
-
-            // EmailJS 설정값 (당신 값 유지)
-            const EMAILJS_PUBLIC_KEY = "0xTvL-eoLmpeUTCui";
-            const EMAILJS_SERVICE_ID = "service_zwg3y37";
-            const EMAILJS_TEMPLATE_ID = "template_w5vtqfd";
-
-            React.useEffect(() => {
-                if (window.emailjs) {
-                    window.emailjs.init(EMAILJS_PUBLIC_KEY);
-                } else {
-                    console.error("EmailJS not loaded. Check script tag for EmailJS.");
-                }
-            }, []);
-
-            const getFieldValue = (fieldName) => {
-                const el = form.current?.elements?.[fieldName];
-                return (el && typeof el.value === "string") ? el.value.trim() : "";
-            };
-
-            const sendEmail = async (e) => {
-                e.preventDefault();
-                if (status === 'sending' || status === 'success') return;
-
-                setStatus('sending');
-
-                try {
-                    if (!window.emailjs) throw new Error("EmailJS not available");
-
-                    // ✅ 템플릿(EmailJS) 변수명이 뭐든지 “깨지지 않게”
-                    //    - 기존 그대로(Name/Email/Subject/Message)도 보내고
-                    //    - 흔한 소문자(name/email/subject/message)도 같이 보내줌
-                    //    - reply_to 도 같이 넣어두면 템플릿에서 쓰기 좋음
-                    const Name = getFieldValue("Name");
-                    const Email = getFieldValue("Email");
-                    const Subject = getFieldValue("Subject");
-                    const Message = getFieldValue("Message");
-
-                    const templateParams = {
-                        // 기존 필드명 그대로
-                        Name, Email, Subject, Message,
-
-                        // 소문자(많이 쓰는 변수명)도 같이
-                        name: Name,
-                        email: Email,
-                        subject: Subject,
-                        message: Message,
-
-                        // 회신용(템플릿에서 reply_to 쓸 때)
-                        reply_to: Email
-                    };
-
-                    await window.emailjs.send(
-                        EMAILJS_SERVICE_ID,
-                        EMAILJS_TEMPLATE_ID,
-                        templateParams
-                    );
-
-                    setStatus('success');
-                    form.current.reset();
-                    setTimeout(() => setStatus('idle'), 5000);
-
-                } catch (error) {
-                    console.error("FAILED...", error);
-                    setStatus('error');
-                    setTimeout(() => setStatus('idle'), 5000);
-                }
-            };
-            
-            let btnClass = "w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 ";
-            if (status === 'success') btnClass += 'bg-green-500 hover:bg-green-600 text-white';
-            else if (status === 'error') btnClass += 'bg-red-500 hover:bg-red-600 text-white';
-            else btnClass += 'bg-cyan-500 hover:bg-cyan-400 text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]';
-
-            return (
-                <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden">
-                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div className="container mx-auto px-6 relative z-10">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="fade-in-up">
-                                <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
-                                    {t.contactTitle}
-                                </h2>
-                                <h3 className="text-3xl font-black text-white mb-4">
-                                    READY TO <br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">START RECORDING?</span>
-                                </h3>
-                                <p className="text-gray-300 text-lg leading-relaxed mb-12 max-w-lg">{t.contactDescription}</p>
-                                <div className="flex items-center space-x-4 text-gray-400">
-                                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
-                                        <i className="fas fa-paper-plane"></i>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-bold text-white">Email Us</p>
-                                        <p>contact@asrecstudio.com</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
-                                <div className="flex items-center mb-8">
-                                    <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-12 w-auto object-contain" />
-                                </div>
-
-                                {/* ✅ 폼 UI/구성 그대로 유지, name 속성도 그대로(Name/Email/Subject/Message) */}
-                                <form ref={form} onSubmit={sendEmail} className="space-y-6">
-                                    <div>
-                                        <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formName}</label>
-                                        <input type="text" name="Name" placeholder={t.formNamePlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formEmail}</label>
-                                        <input type="email" name="Email" placeholder={t.formEmailPlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formSubject}</label>
-                                        <input type="text" name="Subject" placeholder={t.formSubjectPlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formMessage}</label>
-                                        <textarea name="Message" rows="4" placeholder={t.formMessagePlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 resize-none"></textarea>
-                                    </div>
-
-                                    <button type="submit" disabled={status === 'sending' || status === 'success'} className={btnClass}>
-                                        {status === 'sending' ? <i className="fas fa-spinner fa-spin mr-2"></i> : status === 'success' ? <i className="fas fa-check mr-2"></i> : status === 'error' ? <i className="fas fa-exclamation-circle mr-2"></i> : null}
-                                        {status === 'sending' ? t.formSending : status === 'success' ? t.formSuccess : status === 'error' ? t.formError : t.formSubmitBtn}
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Footer = ({ t }) => (
-            <footer className="bg-slate-950 border-t border-white/5 py-8">
-                <div className="container mx-auto px-6 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        <img src="ASREC LOGOS.png" alt="Logo" className="h-6 w-auto object-contain" />
-                        <span className="font-bold text-xl tracking-tight">ASREC STUDIO</span>
-                    </div>
-                    <p className="text-gray-600 text-sm">{t.footerRights}</p>
-                </div>
-            </footer>
-        );
-
-        const App = () => {
-            const getInitialLang = () => {
-                const browserLang = navigator.language || navigator.userLanguage || 'en';
-                return browserLang.toLowerCase().startsWith('ko') ? 'ko' : 'en';
-            };
-            const [lang, setLang] = React.useState(getInitialLang);
-            const t = TEXT_CONTENT[lang];
-
-            return (
-                <div className="min-h-screen bg-slate-950 text-white">
-                    <Navbar lang={lang} setLang={setLang} t={t} />
-                    <Hero t={t} />
-                    <Services t={t} />
-                    <Process t={t} />
-                    <Gallery t={t} />
-                    <Contact t={t} />
-                    <Footer t={t} />
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
 </body>
 </html>
