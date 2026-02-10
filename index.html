@@ -71,8 +71,9 @@
                 navServices: "Services",
                 navPhotos: "Studio",
                 navContact: "Contact",
-                heroTitle: "Breathe Life into Games",
-                heroSubtitle: "Game Dubbing & Localization Studio",
+                // Hero Slogan Modified
+                heroTitle: "As Recorded, As Real",
+                heroSubtitle: "Game Dubbing Studio Breathing Life into Recordings",
                 heroDesc1: "Locave leverages deep understanding and extensive experience in game localization to provide the best dubbing quality, maximizing player immersion.",
                 heroDesc2: "We promise a successful project with our one-stop solution covering everything from casting and adaptation to recording, mixing, and mastering.",
                 heroContactBtn: "Start a Project",
@@ -115,8 +116,9 @@
                 navServices: "서비스",
                 navPhotos: "스튜디오",
                 navContact: "녹음 문의",
-                heroTitle: "Breathe Life into Games",
-                heroSubtitle: "게임에 생명력을 불어넣는 더빙 전문 스튜디오",
+                // Hero Slogan Modified
+                heroTitle: "As Recorded, As Real",
+                heroSubtitle: "녹음된 그대로, 생동감을 불어넣는 게임 더빙 스튜디오",
                 heroDesc1: "로케이브는 게임 현지화에 대한 깊은 이해와 풍부한 경험을 바탕으로, 플레이어의 몰입감을 극대화하는 최고의 더빙 퀄리티를 제공합니다.",
                 heroDesc2: "캐스팅부터 각색, 녹음, 믹싱, 마스터링까지 원스톱 솔루션으로 성공적인 프로젝트를 약속드립니다.",
                 heroContactBtn: "녹음 문의하기",
@@ -240,13 +242,13 @@
                             <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
                         </div>
                         
-                      
-                        <h1 className="text-3xl md:text-5xl lg:text-5xl font-black text-white tracking-tighter mb-12 leading-tight opacity-90">
-    VOICEOVER <br />
-                            
-    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">PLAY BEYOND!</span>
-</h1>
-
+                        {/* Modified Slogan Section */}
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-12 leading-tight opacity-90">
+                            {t.heroTitle} <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 text-2xl md:text-4xl leading-snug block mt-4">
+                                {t.heroSubtitle}
+                            </span>
+                        </h1>
 
                         <a href="#contact" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-cyan-500 text-white font-bold rounded-full text-lg overflow-hidden transition-all hover:bg-cyan-400 hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transform hover:scale-105">
                             <span>{t.heroContactBtn}</span>
@@ -377,12 +379,10 @@
             );
         };
 
-        // ✅ 이메일링 시스템만 “확실히 동작”하도록 수정한 Contact (UI/텍스트/구성은 그대로)
         const Contact = ({ t }) => {
             const form = React.useRef();
             const [status, setStatus] = React.useState('idle');
 
-            // EmailJS 설정값 (당신 값 유지)
             const EMAILJS_PUBLIC_KEY = "0xTvL-eoLmpeUTCui";
             const EMAILJS_SERVICE_ID = "service_zwg3y37";
             const EMAILJS_TEMPLATE_ID = "template_w5vtqfd";
@@ -409,26 +409,17 @@
                 try {
                     if (!window.emailjs) throw new Error("EmailJS not available");
 
-                    // ✅ 템플릿(EmailJS) 변수명이 뭐든지 “깨지지 않게”
-                    //    - 기존 그대로(Name/Email/Subject/Message)도 보내고
-                    //    - 흔한 소문자(name/email/subject/message)도 같이 보내줌
-                    //    - reply_to 도 같이 넣어두면 템플릿에서 쓰기 좋음
                     const Name = getFieldValue("Name");
                     const Email = getFieldValue("Email");
                     const Subject = getFieldValue("Subject");
                     const Message = getFieldValue("Message");
 
                     const templateParams = {
-                        // 기존 필드명 그대로
                         Name, Email, Subject, Message,
-
-                        // 소문자(많이 쓰는 변수명)도 같이
                         name: Name,
                         email: Email,
                         subject: Subject,
                         message: Message,
-
-                        // 회신용(템플릿에서 reply_to 쓸 때)
                         reply_to: Email
                     };
 
@@ -484,7 +475,6 @@
                                     <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-12 w-auto object-contain" />
                                 </div>
 
-                                {/* ✅ 폼 UI/구성 그대로 유지, name 속성도 그대로(Name/Email/Subject/Message) */}
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formName}</label>
