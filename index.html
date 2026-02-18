@@ -4,8 +4,17 @@
     <meta name="naver-site-verification" content="f3939a038767cb3fabe5abe032295537c7458c41" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AsRec Studio - Game Dubbing & Localization</title>
     
+    <!-- 기본 메타 정보 (JavaScript가 차단된 환경이나 크롤러를 위한 기본값) -->
+    <title>애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오</title>
+    <meta name="description" content="Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다.">
+    
+    <!-- Open Graph (SNS 공유 시 보여질 내용) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="애즈렉 스튜디오(Asrec Studio) | Game Dubbing & Localization">
+    <meta property="og:description" content="Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다.">
+    <meta property="og:image" content="ASREC LOGOS.png">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -17,7 +26,7 @@
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- React & ReactDOM (UMD for single file) -->
+    <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
@@ -26,6 +35,50 @@
     
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Language Detection & Meta Tag Update Script -->
+    <script>
+      // SEO 정보 정의
+      const SEO_DATA = {
+        ko: {
+          title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
+          desc: "Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다."
+        },
+        en: {
+          title: "Asrec Studio | Game Dubbing & Localization",
+          desc: "ASREC Studio is a specialized game dubbing and localization studio delivering high-quality, end-to-end dubbing solutions — from voice casting and recording to mixing, mastering, and QA."
+        }
+      };
+
+      // 브라우저 언어 감지 및 메타 태그 즉시 적용
+      (function() {
+        const userLang = navigator.language || navigator.userLanguage;
+        const isKo = userLang.toLowerCase().startsWith('ko');
+        const langKey = isKo ? 'ko' : 'en';
+        
+        // Title 변경
+        document.title = SEO_DATA[langKey].title;
+        
+        // Description 변경 (DOM이 로드되기 전이므로 기존 태그를 찾지 못할 수 있어, 찾거나 생성함)
+        // 이 스크립트는 head 내에 있으므로 즉시 실행되어야 함
+        const updateMeta = () => {
+          let metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc) {
+            metaDesc.setAttribute('content', SEO_DATA[langKey].desc);
+          }
+          
+          // OG 태그도 업데이트 (선택 사항)
+          let ogTitle = document.querySelector('meta[property="og:title"]');
+          if (ogTitle) ogTitle.setAttribute('content', SEO_DATA[langKey].title);
+          
+          let ogDesc = document.querySelector('meta[property="og:description"]');
+          if (ogDesc) ogDesc.setAttribute('content', SEO_DATA[langKey].desc);
+        };
+
+        // DOMContentLoaded 이벤트 리스너를 사용하여 안전하게 실행
+        document.addEventListener('DOMContentLoaded', updateMeta);
+      })();
+    </script>
 
     <script>
       tailwind.config = {
@@ -67,6 +120,18 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        // React App 내에서도 사용할 수 있도록 SEO 데이터를 전역 상수 또는 컴포넌트 내에 정의
+        const SEO_METADATA = {
+            ko: {
+              title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
+              desc: "Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다."
+            },
+            en: {
+              title: "Asrec Studio | Game Dubbing & Localization",
+              desc: "ASREC Studio is a specialized game dubbing and localization studio delivering high-quality, end-to-end dubbing solutions — from voice casting and recording to mixing, mastering, and QA."
+            }
+        };
+
         const TEXT_CONTENT = {
             en: {
                 navServices: "Services",
@@ -79,7 +144,6 @@
                 heroContactBtn: "Start a Project",
                 serviceHeader: "MAIN SERVICES",
                 
-                // English content updated to match structure
                 s1Title: "Voice Casting",
                 s1Subtitle: "\"Completing characters through strategic casting\"",
                 s1List: ["Top-tier game voice actor pool", "Casting based on world & character analysis", "Sample recordings provided", "Budget-optimized casting"],
@@ -135,7 +199,6 @@
                 heroContactBtn: "녹음 문의하기",
                 serviceHeader: "MAIN SERVICE",
                 
-                // Korean content updated with Subtitles and new Titles
                 s1Title: "캐스팅",
                 s1Subtitle: "\"캐릭터의 완성, 전략적인 캐스팅으로부터\"",
                 s1List: [
@@ -599,6 +662,15 @@
             };
             const [lang, setLang] = React.useState(getInitialLang);
             const t = TEXT_CONTENT[lang];
+
+            // React 상태 변경 시 Title 및 Meta Description 업데이트
+            React.useEffect(() => {
+                document.title = SEO_METADATA[lang].title;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    metaDesc.setAttribute('content', SEO_METADATA[lang].desc);
+                }
+            }, [lang]);
 
             return (
                 <div className="min-h-screen bg-slate-950 text-white">
