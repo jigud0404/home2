@@ -19,9 +19,7 @@
     }
     </script>
 
-    
-    
-    <!-- 기본 메타 정보 (JavaScript가 차단된 환경이나 크롤러를 위한 기본값) -->
+    <!-- 기본 메타 정보 -->
     <title>애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오</title>
     <link rel="icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
@@ -56,7 +54,6 @@
 
     <!-- Language Detection & Meta Tag Update Script -->
     <script>
-      // SEO 정보 정의
       const SEO_DATA = {
         ko: {
           title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
@@ -68,32 +65,23 @@
         }
       };
 
-      // 브라우저 언어 감지 및 메타 태그 즉시 적용
       (function() {
         const userLang = navigator.language || navigator.userLanguage;
         const isKo = userLang.toLowerCase().startsWith('ko');
         const langKey = isKo ? 'ko' : 'en';
         
-        // Title 변경
         document.title = SEO_DATA[langKey].title;
         
-        // Description 변경 (DOM이 로드되기 전이므로 기존 태그를 찾지 못할 수 있어, 찾거나 생성함)
-        // 이 스크립트는 head 내에 있으므로 즉시 실행되어야 함
         const updateMeta = () => {
           let metaDesc = document.querySelector('meta[name="description"]');
           if (metaDesc) {
             metaDesc.setAttribute('content', SEO_DATA[langKey].desc);
           }
-          
-          // OG 태그도 업데이트 (선택 사항)
           let ogTitle = document.querySelector('meta[property="og:title"]');
           if (ogTitle) ogTitle.setAttribute('content', SEO_DATA[langKey].title);
-          
           let ogDesc = document.querySelector('meta[property="og:description"]');
           if (ogDesc) ogDesc.setAttribute('content', SEO_DATA[langKey].desc);
         };
-
-        // DOMContentLoaded 이벤트 리스너를 사용하여 안전하게 실행
         document.addEventListener('DOMContentLoaded', updateMeta);
       })();
     </script>
@@ -106,15 +94,8 @@
               sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'],
             },
             colors: {
-              cyan: {
-                400: '#22d3ee',
-                500: '#06b6d4',
-                900: '#164e63',
-              },
-              slate: {
-                850: '#172033',
-                950: '#020617',
-              }
+              cyan: { 400: '#22d3ee', 500: '#06b6d4', 900: '#164e63' },
+              slate: { 850: '#172033', 950: '#020617' }
             }
           }
         }
@@ -126,10 +107,8 @@
       ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; }
       ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
       html { scroll-behavior: smooth; }
-      
       .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-      
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -138,7 +117,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // React App 내에서도 사용할 수 있도록 SEO 데이터를 전역 상수 또는 컴포넌트 내에 정의
         const SEO_METADATA = {
             ko: {
               title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
@@ -161,23 +139,10 @@
                 heroDesc2: "We promise a successful project with our one-stop solution covering everything from casting and adaptation to recording, mixing, and mastering.",
                 heroContactBtn: "Start a Project",
                 serviceHeader: "MAIN SERVICES",
-                
-                s1Title: "Casting",
-                s1Subtitle: "\"Perfecting Characters Through Strategic Casting\"",
-                s1List: ["Proven infrastructure of Game-Specialized talent", "Narrative-Driven Character Matching", "Multifaceted Casting Review via DB samples and Live auditions", "Strategic casting solutions tailored to your budget"],
-                
-                s2Title: "Adaptation & Direction",
-                s2Subtitle: "\"Dubbing Solutions That Go Beyond Text To Add Life\"",
-                s2List: ["Colloquial adaptation to enhance VO quality", "Genre-specific direction to increase overall perfection", "Efficient and systematic recording schedule management", "Support for both on-site and online attendance"],
-                
-                s3Title: "Recording & Mixing",
-                s3Subtitle: "\"Sound That Completes Immersion\"",
-                s3List: ["A recording environment for minimizing noise and maximizing quality", "Professional post-production and mastering for seamless sound", "Audio polishing tailored to specific project requirements", "Systematic audio asset management considering project scale"],
-                
-                s4Title: "Localization Experts",
-                s4Subtitle: "\"Professionals who understand the language of games\"",
-                s4List: ["Experienced VO Directors", "Game Localization Specialized Sound PMs", "Game Specialized Sound Engineers", "Game-Specific Translation and Adaptation Writers"],
-                
+                s1Title: "Casting", s1Subtitle: "\"Perfecting Characters Through Strategic Casting\"", s1List: ["Proven infrastructure of Game-Specialized talent", "Narrative-Driven Character Matching", "Multifaceted Casting Review via DB samples and Live auditions", "Strategic casting solutions tailored to your budget"],
+                s2Title: "Adaptation & Direction", s2Subtitle: "\"Dubbing Solutions That Go Beyond Text To Add Life\"", s2List: ["Colloquial adaptation to enhance VO quality", "Genre-specific direction to increase overall perfection", "Efficient and systematic recording schedule management", "Support for both on-site and online attendance"],
+                s3Title: "Recording & Mixing", s3Subtitle: "\"Sound That Completes Immersion\"", s3List: ["A recording environment for minimizing noise and maximizing quality", "Professional post-production and mastering for seamless sound", "Audio polishing tailored to specific project requirements", "Systematic audio asset management considering project scale"],
+                s4Title: "Localization Experts", s4Subtitle: "\"Professionals who understand the language of games\"", s4List: ["Experienced VO Directors", "Game Localization Specialized Sound PMs", "Game Specialized Sound Engineers", "Game-Specific Translation and Adaptation Writers"],
                 processHeader: "OUR PROCESS",
                 processSteps: [
                     { title: "Project Analysis & Estimation", desc: "We analyze script volume and project requirements to provide a reasonable estimate optimized for your specific needs." },
@@ -192,19 +157,11 @@
                 contactDescription: "Experience the premier VO solutions tailored for your project's success. Tell us about your project, and we will get back to you with a customized proposal shortly.",
                 contactLocation: "Location",
                 contactAddress: "TheRubensValley #1006, 1, Gasan digital 1-ro, Geumcheon-gu, Seoul, Republic of Korea",
-                formName: "Name",
-                formNamePlaceholder: "Please enter your name or company representative.",
-                formEmail: "Email",
-                formEmailPlaceholder: "Enter the email address where you'd like to receive our reply.",
-                formSubject: "Subject",
-                formSubjectPlaceholder: "Enter a brief subject for your inquiry.",
-                formMessage: "Message",
-                formMessagePlaceholder: "Providing details such as genre, volume, and schedule will help us give you a more accurate estimate.",
-                formSubmitBtn: "Submit Inquiry",
-                formSuccess: "Inquiry submitted successfully. Thank you!",
-                formError: "An error occurred. Please try again later.",
-                formSending: "Sending...",
-                footerRights: "" 
+                formName: "Name", formNamePlaceholder: "Please enter your name or company representative.",
+                formEmail: "Email", formEmailPlaceholder: "Enter the email address where you'd like to receive our reply.",
+                formSubject: "Subject", formSubjectPlaceholder: "Enter a brief subject for your inquiry.",
+                formMessage: "Message", formMessagePlaceholder: "Providing details such as genre, volume, and schedule will help us give you a more accurate estimate.",
+                formSubmitBtn: "Submit Inquiry", formSuccess: "Inquiry submitted successfully. Thank you!", formError: "An error occurred. Please try again later.", formSending: "Sending..."
             },
             ko: {
                 navServices: "서비스",
@@ -216,43 +173,10 @@
                 heroDesc2: "캐스팅부터 각색, 녹음, 믹싱, 마스터링까지 원스톱 솔루션으로 성공적인 프로젝트를 약속드립니다.",
                 heroContactBtn: "녹음 문의하기",
                 serviceHeader: "MAIN SERVICE",
-                
-                s1Title: "캐스팅",
-                s1Subtitle: "\"캐릭터의 완성, 전략적인 캐스팅으로부터\"",
-                s1List: [
-                    "연기력이 검증된 게임 전문 배우 인프라 보유",
-                    "세계관과 캐릭터 분석 기반 최적의 배우 매칭",
-                    "라이브 오디션, DB 샘플을 통한 다각도 캐스팅 검토",
-                    "예산 맞춤형 전략적 캐스팅 솔루션 제공"
-                ],
-                
-                s2Title: "각색 & 연출",
-                s2Subtitle: "\"텍스트를 넘어 생동감을 더하는 더빙 솔루션\"",
-                s2List: [
-                    "더빙 품질 향상을 위한 구어체 각색",
-                    "완성도를 높이는 장르 맞춤형 연출",
-                    "효율적이고 체계적인 녹음 일정 관리",
-                    "온·오프라인 녹음 참관 지원"
-                ],
-                
-                s3Title: "녹음 & 믹싱",
-                s3Subtitle: "\"몰입을 완성하는 사운드\"",
-                s3List: [
-                    "노이즈 최소화, 퀄리티 최대화를 위한 녹음 환경",
-                    "깨끗한 사운드를 완성하는 후편집 및 마스터링",
-                    "프로젝트 요구사항에 맞춘 오디오 폴리싱",
-                    "프로젝트 규모를 고려한 체계적인 오디오 파일 관리"
-                ],
-                
-                s4Title: "현지화 전문 인력",
-                s4Subtitle: "\"게임의 언어를 이해하는 전문가\"",
-                s4List: [
-                    "경험이 풍부한 더빙 디렉터",
-                    "게임 현지화 전문 사운드 PM",
-                    "게임 전문 사운드 엔지니어",
-                    "게임 특화 번역 및 각색 작가"
-                ],
-                
+                s1Title: "캐스팅", s1Subtitle: "\"캐릭터의 완성, 전략적인 캐스팅으로부터\"", s1List: ["연기력이 검증된 게임 전문 배우 인프라 보유", "세계관과 캐릭터 분석 기반 최적의 배우 매칭", "라이브 오디션, DB 샘플을 통한 다각도 캐스팅 검토", "예산 맞춤형 전략적 캐스팅 솔루션 제공"],
+                s2Title: "각색 & 연출", s2Subtitle: "\"텍스트를 넘어 생동감을 더하는 더빙 솔루션\"", s2List: ["더빙 품질 향상을 위한 구어체 각색", "완성도를 높이는 장르 맞춤형 연출", "효율적이고 체계적인 녹음 일정 관리", "온·오프라인 녹음 참관 지원"],
+                s3Title: "녹음 & 믹싱", s3Subtitle: "\"몰입을 완성하는 사운드\"", s3List: ["노이즈 최소화, 퀄리티 최대화를 위한 녹음 환경", "깨끗한 사운드를 완성하는 후편집 및 마스터링", "프로젝트 요구사항에 맞춘 오디오 폴리싱", "프로젝트 규모를 고려한 체계적인 오디오 파일 관리"],
+                s4Title: "현지화 전문 인력", s4Subtitle: "\"게임의 언어를 이해하는 전문가\"", s4List: ["경험이 풍부한 더빙 디렉터", "게임 현지화 전문 사운드 PM", "게임 전문 사운드 엔지니어", "게임 특화 번역 및 각색 작가"],
                 processHeader: "OUR PROCESS",
                 processSteps: [
                     { title: "프로젝트 접수 및 견적", desc: "녹음 대본과 분량을 분석하고, 요구사항을 접수해 프로젝트에 최적화된 합리적이고 투명한 초기 견적을 제안합니다." },
@@ -267,19 +191,11 @@
                 contactDescription: "성공적인 프로젝트를 위한 AsRec만의 더빙 솔루션을 만나 보세요. 프로젝트에 대해 알려주시면, 전문 PM이 신속하게 검토하여 답변드리겠습니다.",
                 contactLocation: "오시는 길",
                 contactAddress: "서울시 금천구 가산디지털1로 1 더루벤스밸리 1006호",
-                formName: "성함",
-                formNamePlaceholder: "성함 또는 담당자명을 입력해 주세요.",
-                formEmail: "이메일",
-                formEmailPlaceholder: "회신을 받으실 이메일 주소를 입력해 주세요.",
-                formSubject: "제목",
-                formSubjectPlaceholder: "문의 내용의 제목을 작해주세요",
-                formMessage: "문의 내용",
-                formMessagePlaceholder: "프로젝트의 장르, 예상 분량, 일정 및 예산 등 구체적인 내용을 적어주시면 더욱 정확한 안내가 가능합니다.",
-                formSubmitBtn: "문의 접수하기",
-                formSuccess: "문의가 성공적으로 접수되었습니다. 감사합니다!",
-                formError: "오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
-                formSending: "전송 중...",
-                footerRights: ""
+                formName: "성함", formNamePlaceholder: "성함 또는 담당자명을 입력해 주세요.",
+                formEmail: "이메일", formEmailPlaceholder: "회신을 받으실 이메일 주소를 입력해 주세요.",
+                formSubject: "제목", formSubjectPlaceholder: "문의 내용의 제목을 작해주세요",
+                formMessage: "문의 내용", formMessagePlaceholder: "프로젝트의 장르, 예상 분량, 일정 및 예산 등 구체적인 내용을 적어주시면 더욱 정확한 안내가 가능합니다.",
+                formSubmitBtn: "문의 접수하기", formSuccess: "문의가 성공적으로 접수되었습니다. 감사합니다!", formError: "오류가 발생했습니다. 잠시 후 다시 시도해주세요.", formSending: "전송 중..."
             }
         };
 
@@ -412,7 +328,6 @@
                                     
                                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
                                     
-                                    {/* Subtitle Added */}
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
 
                                     <ul className="space-y-3">
@@ -591,18 +506,31 @@
                                 </h3>
                                 <p className="text-gray-300 text-lg leading-relaxed mb-12 max-w-lg">{t.contactDescription}</p>
                                 
-                                {/* 이메일 정보 */}
-                                <div className="flex items-center space-x-4 text-gray-400 mb-12">
-                                    <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
-                                        <i className="fas fa-paper-plane"></i>
+                                {/* 이메일 & 전화번호 정보 */}
+                                <div className="flex flex-col space-y-6 mb-12">
+                                    {/* 이메일 */}
+                                    <div className="flex items-center space-x-4 text-gray-400">
+                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
+                                            <i className="fas fa-paper-plane"></i>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-white">Email Us</p>
+                                            <p>contact@asrec.co.kr</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-sm font-bold text-white">Email Us</p>
-                                        <p>contact@asrec.co.kr</p>
+                                    {/* 전화번호 (새로 추가됨) */}
+                                    <div className="flex items-center space-x-4 text-gray-400">
+                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
+                                            <i className="fas fa-phone"></i>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-bold text-white">Tel</p>
+                                            <p>02-852-0302</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* 오시는 길 & 지도 추가됨 */}
+                                {/* 오시는 길 & 지도 */}
                                 <div>
                                     <div className="flex items-center space-x-4 text-gray-400 mb-6">
                                         <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
@@ -681,7 +609,6 @@
             const [lang, setLang] = React.useState(getInitialLang);
             const t = TEXT_CONTENT[lang];
 
-            // React 상태 변경 시 Title 및 Meta Description 업데이트
             React.useEffect(() => {
                 document.title = SEO_METADATA[lang].title;
                 const metaDesc = document.querySelector('meta[name="description"]');
