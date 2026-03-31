@@ -5,31 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 구글 검색 사이트 이름 지정 태그 (영문/국문 혼용) -->
-    <meta property="og:site_name" content="Asrec Studio | 애즈렉 스튜디오">
+    <!-- hreflang: 구글에 한국어/영어 페이지 알려주는 핵심 태그 -->
+    <link rel="alternate" hreflang="ko" href="https://www.asrec.co.kr/" />
+    <link rel="alternate" hreflang="en" href="https://www.asrec.co.kr/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.asrec.co.kr/" />
+
+    <!-- 구글 검색 사이트 이름 지정 태그 -->
+    <meta property="og:site_name" content="애즈렉 스튜디오 | Asrec Studio">
 
     <!-- 구글 구조화된 데이터 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Asrec Studio",
-      "alternateName": ["애즈렉 스튜디오", "애즈렉스튜디오", "Asrec"],
-      "url": "https://www.asrec.co.kr/"
+      "name": "애즈렉 스튜디오",
+      "alternateName": ["Asrec Studio", "애즈렉스튜디오", "Asrec"],
+      "url": "https://www.asrec.co.kr/",
+      "inLanguage": "ko-KR"
     }
     </script>
 
-    <!-- 기본 메타 정보 -->
+    <!-- 기본 메타 정보 (한국어 고정) -->
     <title>애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오</title>
     <link rel="icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
-    <meta name="description" content="Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다.">
+    <meta name="description" content="애즈렉 스튜디오는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다.">
     
-    <!-- Open Graph (SNS 공유 시 보여질 내용) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="애즈렉 스튜디오(Asrec Studio) | Game Dubbing & Localization">
-    <meta property="og:description" content="Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다.">
-    <meta property="og:image" content="ASREC LOGOS.png">
+    <meta property="og:url" content="https://www.asrec.co.kr/">
+    <meta property="og:title" content="애즈렉 스튜디오(Asrec Studio) | 게임 더빙 & 현지화 전문 스튜디오">
+    <meta property="og:description" content="애즈렉 스튜디오는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 원스톱 솔루션을 제공합니다.">
+    <meta property="og:image" content="https://www.asrec.co.kr/ASREC LOGOS.png">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,40 +60,6 @@
     
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!-- Language Detection & Meta Tag Update Script -->
-    <script>
-      const SEO_DATA = {
-        ko: {
-          title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
-          desc: "Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다."
-        },
-        en: {
-          title: "Asrec Studio | Game Voiceover & Korean Localization Studio",
-          desc: "Asrec Studio is a specialized game voiceover and korean localization studio delivering high-quality, end-to-end dubbing solutions — from voice casting and recording to mixing, mastering, and QA."
-        }
-      };
-
-      (function() {
-        const userLang = navigator.language || navigator.userLanguage;
-        const isKo = userLang.toLowerCase().startsWith('ko');
-        const langKey = isKo ? 'ko' : 'en';
-        
-        document.title = SEO_DATA[langKey].title;
-        
-        const updateMeta = () => {
-          let metaDesc = document.querySelector('meta[name="description"]');
-          if (metaDesc) {
-            metaDesc.setAttribute('content', SEO_DATA[langKey].desc);
-          }
-          let ogTitle = document.querySelector('meta[property="og:title"]');
-          if (ogTitle) ogTitle.setAttribute('content', SEO_DATA[langKey].title);
-          let ogDesc = document.querySelector('meta[property="og:description"]');
-          if (ogDesc) ogDesc.setAttribute('content', SEO_DATA[langKey].desc);
-        };
-        document.addEventListener('DOMContentLoaded', updateMeta);
-      })();
-    </script>
 
     <script>
       tailwind.config = {
@@ -117,53 +92,8 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const SEO_METADATA = {
-            ko: {
-              title: "애즈렉 스튜디오(Asrec Studio) | 게임 더빙의 모든 과정을 책임지는 전문 현지화 스튜디오",
-              desc: "Asrec Studio는 게임 더빙 및 현지화 전문 스튜디오입니다. 성우 캐스팅부터 녹음, 믹싱, 마스터링, QA까지 완성도 높은 더빙 솔루션을 제공합니다."
-            },
-            en: {
-              title: "Asrec Studio | Game Voiceover & Localization",
-              desc: "ASREC Studio is a specialized game dubbing and localization studio delivering high-quality, end-to-end dubbing solutions — from voice casting and recording to mixing, mastering, and QA."
-            }
-        };
 
         const TEXT_CONTENT = {
-            en: {
-                navServices: "Services",
-                navPhotos: "Studio",
-                navContact: "Contact",
-                heroTitle: "As Recorded, As Real",
-                heroSubtitle: "Authentic Sound, A Game VO Studio Breathing Life Into Games",
-                heroDesc1: "Locave leverages deep understanding and extensive experience in game localization to provide the best dubbing quality, maximizing player immersion.",
-                heroDesc2: "We promise a successful project with our one-stop solution covering everything from casting and adaptation to recording, mixing, and mastering.",
-                heroContactBtn: "Start a Project",
-                serviceHeader: "MAIN SERVICES",
-                s1Title: "Casting", s1Subtitle: "\"Perfecting Characters Through Strategic Casting\"", s1List: ["Proven infrastructure of Game-Specialized talent", "Narrative-Driven Character Matching", "Multifaceted Casting Review via DB samples and Live auditions", "Strategic casting solutions tailored to your budget"],
-                s2Title: "Adaptation & Direction", s2Subtitle: "\"Dubbing Solutions That Go Beyond Text To Add Life\"", s2List: ["Colloquial adaptation to enhance VO quality", "Genre-specific direction to increase overall perfection", "Efficient and systematic recording schedule management", "Support for both on-site and online attendance"],
-                s3Title: "Recording & Mixing", s3Subtitle: "\"Sound That Completes Immersion\"", s3List: ["A recording environment for minimizing noise and maximizing quality", "Professional post-production and mastering for seamless sound", "Audio polishing tailored to specific project requirements", "Systematic audio asset management considering project scale"],
-                s4Title: "Localization Experts", s4Subtitle: "\"Professionals who understand the language of games\"", s4List: ["Experienced VO Directors", "Game Localization Specialized Sound PMs", "Game Specialized Sound Engineers", "Game-Specific Translation and Adaptation Writers"],
-                processHeader: "OUR PROCESS",
-                processSteps: [
-                    { title: "Project Analysis & Estimation", desc: "We analyze script volume and project requirements to provide a reasonable estimate optimized for your specific needs." },
-                    { title: "Strategic Casting & Script Adaptation", desc: "Matching the perfect talent to your characters and crafting scripts into natural, vivid dialogue." },
-                    { title: "Session Production & Directed Recording", desc: "We efficiently manage pre-production and scheduling while bringing your characters to life through expert direction." },
-                    { title: "Post-Production & Mastering", desc: "Adhering to your required audio specifications, we deliver distortion-free, high-quality audio assets through precise editing and professional mixing processes." },
-                    { title: "Internal Quality Assurance (QA)", desc: "We perform rigorous internal QA to verify all audio assets, ensuring final perfection by promptly incorporating your feedback." },
-                    { title: "Final Delivery & Follow-up", desc: "After delivering the final assets, we provide swift and flexible support for any additional recordings or requests to ensure your complete satisfaction." }
-                ],
-                photoHeader: "STUDIO TOUR",
-                contactTitle: "Contact",
-                contactDescription: "Experience the premier VO solutions tailored for your project's success. Tell us about your project, and we will get back to you with a customized proposal shortly.",
-                contactLocation: "Location",
-                contactAddress: "TheRubensValley #1006, 1, Gasan digital 1-ro, Geumcheon-gu, Seoul, Republic of Korea",
-                formName: "Name", formNamePlaceholder: "Please enter your name or company representative.",
-                formEmail: "Email", formEmailPlaceholder: "Enter the email address where you'd like to receive our reply.",
-                formSubject: "Subject", formSubjectPlaceholder: "Enter a brief subject for your inquiry.",
-                formMessage: "Message", formMessagePlaceholder: "Providing details such as genre, volume, and schedule will help us give you a more accurate estimate.",
-                formSubmitBtn: "Submit Inquiry", formSuccess: "Inquiry submitted successfully. Thank you!", formError: "An error occurred. Please try again later.", formSending: "Sending..."
-            },
-            ko: {
                 navServices: "서비스",
                 navPhotos: "스튜디오",
                 navContact: "녹음 문의",
@@ -196,10 +126,9 @@
                 formSubject: "제목", formSubjectPlaceholder: "문의 내용의 제목을 작해주세요",
                 formMessage: "문의 내용", formMessagePlaceholder: "프로젝트의 장르, 예상 분량, 일정 및 예산 등 구체적인 내용을 적어주시면 더욱 정확한 안내가 가능합니다.",
                 formSubmitBtn: "문의 접수하기", formSuccess: "문의가 성공적으로 접수되었습니다. 감사합니다!", formError: "오류가 발생했습니다. 잠시 후 다시 시도해주세요.", formSending: "전송 중..."
-            }
         };
 
-        const Navbar = ({ lang, setLang, t }) => {
+        const Navbar = ({ t }) => {
             const [isScrolled, setIsScrolled] = React.useState(false);
             const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -222,7 +151,7 @@
                 <header className={headerClass}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#" className="flex items-center">
-                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
+                            <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
                         </a>
 
                         <nav className="hidden md:flex items-center gap-8">
@@ -230,9 +159,10 @@
                                 <a key={link.name} href={link.href} className="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">{link.name}</a>
                             ))}
                             <div className="h-6 w-px bg-gray-700 mx-2"></div>
+                            {/* 언어 전환: URL 기반으로 이동 */}
                             <div className="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
-                                <button onClick={() => setLang('ko')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'ko' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>KO</button>
-                                <button onClick={() => setLang('en')} className={"px-3 py-1 rounded-full text-xs font-bold transition-all " + (lang === 'en' ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white')}>EN</button>
+                                <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">KO</span>
+                                <a href="/en/" className="px-3 py-1 rounded-full text-xs font-bold text-gray-400 hover:text-white transition-all">EN</a>
                             </div>
                         </nav>
 
@@ -250,9 +180,9 @@
                                 <div className="flex items-center gap-4 pt-4 border-t border-gray-800">
                                     <span className="text-gray-400 text-sm"><i className="fas fa-globe mr-2"></i>Language</span>
                                     <div className="flex gap-2">
-                                        <button onClick={() => { setLang('ko'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'ko' ? 'text-cyan-400' : 'text-gray-500')}>KOR</button>
+                                        <span className="text-sm font-bold text-cyan-400">KOR</span>
                                         <span className="text-gray-700">/</span>
-                                        <button onClick={() => { setLang('en'); setMobileMenuOpen(false); }} className={"text-sm font-bold " + (lang === 'en' ? 'text-cyan-400' : 'text-gray-500')}>ENG</button>
+                                        <a href="/en/" className="text-sm font-bold text-gray-500 hover:text-white">ENG</a>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +197,7 @@
                 <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0 bg-slate-950">
                         <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 brightness-40 blur-sm">
-                            <source src="background.mp4" type="video/mp4" />
+                            <source src="../background.mp4" type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
                         <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
@@ -279,7 +209,7 @@
                         </div>
                         
                         <div className="flex justify-center mb-10 m">
-                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
+                            <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
                         </div>
                         
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter mb-10 leading-tight opacity-90">
@@ -325,11 +255,8 @@
                                     <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900">
                                         <i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i>
                                     </div>
-                                    
                                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
-                                    
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
-
                                     <ul className="space-y-3">
                                         {s.items.map((item, idx) => (
                                             <li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed">
@@ -371,13 +298,12 @@
             );
         };
 
-const Gallery = ({ t }) => {
+        const Gallery = ({ t }) => {
             const words = t.photoHeader.split(' ');
-            
             const images = [
-                { src: "ASREC_ControllRoom.PNG", label: "Control Room" },
-                { src: "ASREC_RecordingRoom.PNG", label: "Recording Room" },
-                { src: "ASREC_Lounge.PNG", label: "Lounge" }
+                { src: "../ASREC_ControllRoom.PNG", label: "Control Room" },
+                { src: "../ASREC_RecordingRoom.PNG", label: "Recording Room" },
+                { src: "../ASREC_Lounge.PNG", label: "Lounge" }
             ];
 
             return (
@@ -388,23 +314,13 @@ const Gallery = ({ t }) => {
                                 <span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}
                             </h2>
                         </div>
-                        
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
                             {images.map((img, index) => (
                                 <div key={index} className="relative group rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-video cursor-pointer fade-in-up" style={{animationDelay: (index * 0.2) + "s"}}>
-                                    {/* 이미지: 호버 시 흐릿하게(blur) 처리 */}
-                                    <img 
-                                        src={img.src} 
-                                        alt={img.label} 
-                                        className="w-full h-full object-cover transition-all duration-700 group-hover:blur-md group-hover:scale-110" 
-                                    />
-                                    
-                                    {/* 오버레이: 호버 시 텍스트 노출 */}
+                                    <img src={img.src} alt={img.label} className="w-full h-full object-cover transition-all duration-700 group-hover:blur-md group-hover:scale-110" />
                                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                                         <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                            <span className="text-white text-2xl md:text-3xl font-black tracking-widest uppercase italic">
-                                                {img.label}
-                                            </span>
+                                            <span className="text-white text-2xl md:text-3xl font-black tracking-widest uppercase italic">{img.label}</span>
                                             <div className="mt-4 w-16 h-1 bg-cyan-500 mx-auto transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                                         </div>
                                     </div>
@@ -425,11 +341,7 @@ const Gallery = ({ t }) => {
             const EMAILJS_TEMPLATE_ID = "template_w5vtqfd";
 
             React.useEffect(() => {
-                if (window.emailjs) {
-                    window.emailjs.init(EMAILJS_PUBLIC_KEY);
-                } else {
-                    console.error("EmailJS not loaded. Check script tag for EmailJS.");
-                }
+                if (window.emailjs) window.emailjs.init(EMAILJS_PUBLIC_KEY);
             }, []);
 
             const getFieldValue = (fieldName) => {
@@ -440,38 +352,18 @@ const Gallery = ({ t }) => {
             const sendEmail = async (e) => {
                 e.preventDefault();
                 if (status === 'sending' || status === 'success') return;
-
                 setStatus('sending');
-
                 try {
                     if (!window.emailjs) throw new Error("EmailJS not available");
-
                     const Name = getFieldValue("Name");
                     const Email = getFieldValue("Email");
                     const Subject = getFieldValue("Subject");
                     const Message = getFieldValue("Message");
-
-                    const templateParams = {
-                        Name, Email, Subject, Message,
-                        name: Name,
-                        email: Email,
-                        subject: Subject,
-                        message: Message,
-                        reply_to: Email
-                    };
-
-                    await window.emailjs.send(
-                        EMAILJS_SERVICE_ID,
-                        EMAILJS_TEMPLATE_ID,
-                        templateParams
-                    );
-
+                    await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { Name, Email, Subject, Message, name: Name, email: Email, subject: Subject, message: Message, reply_to: Email });
                     setStatus('success');
                     form.current.reset();
                     setTimeout(() => setStatus('idle'), 5000);
-
                 } catch (error) {
-                    console.error("FAILED...", error);
                     setStatus('error');
                     setTimeout(() => setStatus('idle'), 5000);
                 }
@@ -488,71 +380,36 @@ const Gallery = ({ t }) => {
                     <div className="container mx-auto px-6 relative z-10">
                         <div className="grid lg:grid-cols-2 gap-16 items-start">
                             <div className="fade-in-up">
-                                <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
-                                    {t.contactTitle}
-                                </h2>
+                                <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">{t.contactTitle}</h2>
                                 <h3 className="text-3xl font-black text-white mb-4">
                                     READY TO <br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">START RECORDING WITH ASREC?</span>
                                 </h3>
                                 <p className="text-gray-300 text-lg leading-relaxed mb-12 max-w-lg">{t.contactDescription}</p>
-                                
-                                {/* 이메일 & 전화번호 정보 */}
                                 <div className="flex flex-col space-y-6 mb-12">
-                                    {/* 이메일 */}
                                     <div className="flex items-center space-x-4 text-gray-400">
-                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
-                                            <i className="fas fa-paper-plane"></i>
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-bold text-white">Email Us</p>
-                                            <p>contact@asrec.co.kr</p>
-                                        </div>
+                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0"><i className="fas fa-paper-plane"></i></div>
+                                        <div><p className="text-sm font-bold text-white">Email Us</p><p>contact@asrec.co.kr</p></div>
                                     </div>
-                                    {/* 전화번호 (새로 추가됨) */}
                                     <div className="flex items-center space-x-4 text-gray-400">
-                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
-                                            <i className="fas fa-phone"></i>
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-bold text-white">Tel</p>
-                                            <p>02-852-0302</p>
-                                        </div>
+                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0"><i className="fas fa-phone"></i></div>
+                                        <div><p className="text-sm font-bold text-white">Tel</p><p>02-852-0302</p></div>
                                     </div>
                                 </div>
-
-                                {/* 오시는 길 & 지도 */}
                                 <div>
                                     <div className="flex items-center space-x-4 text-gray-400 mb-6">
-                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0">
-                                            <i className="fas fa-map-marker-alt"></i>
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-bold text-white">{t.contactLocation}</p>
-                                            <p className="text-sm">{t.contactAddress}</p>
-                                        </div>
+                                        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 shrink-0"><i className="fas fa-map-marker-alt"></i></div>
+                                        <div><p className="text-sm font-bold text-white">{t.contactLocation}</p><p className="text-sm">{t.contactAddress}</p></div>
                                     </div>
                                     <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-                                        {/* 전달해주신 새로운 지도 코드로 교체 (React 문법에 맞게 일부만 조정) */}
-                                        <iframe 
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.7676264752454!2d126.8871159!3d37.466208099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6199cb0ae00f%3A0x531c5ab0b6e2f059!2zQXNyZWMgU3R1ZGlvIOyVoOymiOugiSDsiqTtipzrlJTsmKQ!5e0!3m2!1sko!2skr!4v1773921931312!5m2!1sko!2skr" 
-                                            width="100%" 
-                                            height="350" 
-                                            style={{border:0}} 
-                                            allowFullScreen="" 
-                                            loading="lazy" 
-                                            referrerPolicy="no-referrer-when-downgrade"
-                                        ></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.7676264752454!2d126.8871159!3d37.466208099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6199cb0ae00f%3A0x531c5ab0b6e2f059!2zQXNyZWMgU3R1ZGlvIOyVoOymiOugiSDsiqTtipzrlJTsmKQ!5e0!3m2!1sko!2skr!4v1773921931312!5m2!1sko!2skr" width="100%" height="350" style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
                                 <div className="flex items-center mb-8">
-                                    <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
+                                    <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
                                 </div>
-
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formName}</label>
@@ -570,7 +427,6 @@ const Gallery = ({ t }) => {
                                         <label className="block text-sm font-bold text-gray-400 mb-2 ml-1">{t.formMessage}</label>
                                         <textarea name="Message" rows="4" placeholder={t.formMessagePlaceholder} required className="w-full px-5 py-4 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 resize-none"></textarea>
                                     </div>
-
                                     <button type="submit" disabled={status === 'sending' || status === 'success'} className={btnClass}>
                                         {status === 'sending' ? <i className="fas fa-spinner fa-spin mr-2"></i> : status === 'success' ? <i className="fas fa-check mr-2"></i> : status === 'error' ? <i className="fas fa-exclamation-circle mr-2"></i> : null}
                                         {status === 'sending' ? t.formSending : status === 'success' ? t.formSuccess : status === 'error' ? t.formError : t.formSubmitBtn}
@@ -583,41 +439,27 @@ const Gallery = ({ t }) => {
             );
         };
 
-        const Footer = ({ t }) => (
+        const Footer = () => (
             <footer className="bg-slate-950 border-t border-white/5 py-10">
                 <div className="container mx-auto px-6 flex justify-center">
                     <div className="opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        <img src="ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
+                        <img src="../ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
                     </div>
                 </div>
             </footer>
         );
 
         const App = () => {
-            const getInitialLang = () => {
-                const browserLang = navigator.language || navigator.userLanguage || 'en';
-                return browserLang.toLowerCase().startsWith('ko') ? 'ko' : 'en';
-            };
-            const [lang, setLang] = React.useState(getInitialLang);
-            const t = TEXT_CONTENT[lang];
-
-            React.useEffect(() => {
-                document.title = SEO_METADATA[lang].title;
-                const metaDesc = document.querySelector('meta[name="description"]');
-                if (metaDesc) {
-                    metaDesc.setAttribute('content', SEO_METADATA[lang].desc);
-                }
-            }, [lang]);
-
+            const t = TEXT_CONTENT;
             return (
                 <div className="min-h-screen bg-slate-950 text-white">
-                    <Navbar lang={lang} setLang={setLang} t={t} />
+                    <Navbar t={t} />
                     <Hero t={t} />
                     <Services t={t} />
                     <Process t={t} />
                     <Gallery t={t} />
                     <Contact t={t} />
-                    <Footer t={t} />
+                    <Footer />
                 </div>
             );
         };
