@@ -469,5 +469,26 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+
+    <!-- 블로그 등 외부 페이지에서 #services, #studio, #contact 링크로 올 때 해당 섹션으로 자동 스크롤 -->
+    <script>
+        function scrollToHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            // React 렌더링 완료 후 요소 탐색
+            const tryScroll = (attempts) => {
+                const el = document.querySelector(hash);
+                if (el) {
+                    setTimeout(() => {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                } else if (attempts > 0) {
+                    setTimeout(() => tryScroll(attempts - 1), 150);
+                }
+            };
+            tryScroll(20); // 최대 3초 동안 시도
+        }
+        window.addEventListener('load', scrollToHash);
+    </script>
 </body>
 </html>
