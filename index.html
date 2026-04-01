@@ -472,23 +472,28 @@
 
     <!-- 블로그 등 외부 페이지에서 #services, #studio, #contact 링크로 올 때 해당 섹션으로 자동 스크롤 -->
     <script>
-        function scrollToHash() {
+        (function() {
             const hash = window.location.hash;
             if (!hash) return;
-            // React 렌더링 완료 후 요소 탐색
-            const tryScroll = (attempts) => {
+
+            const observer = new MutationObserver(function() {
                 const el = document.querySelector(hash);
                 if (el) {
-                    setTimeout(() => {
+                    observer.disconnect();
+                    setTimeout(function() {
                         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 100);
-                } else if (attempts > 0) {
-                    setTimeout(() => tryScroll(attempts - 1), 150);
                 }
-            };
-            tryScroll(20); // 최대 3초 동안 시도
-        }
-        window.addEventListener('load', scrollToHash);
+            });
+
+            observer.observe(document.getElementById('root'), {
+                childList: true,
+                subtree: true
+            });
+
+            // 10초 후 자동 해제
+            setTimeout(function() { observer.disconnect(); }, 10000);
+        })();
     </script>
 </body>
 </html>
