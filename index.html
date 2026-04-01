@@ -153,7 +153,7 @@
                 <header className={headerClass}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#" className="flex items-center">
-                            <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
+                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
                         </a>
 
                         <nav className="hidden md:flex items-center gap-8">
@@ -199,7 +199,7 @@
                 <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0 bg-slate-950">
                         <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 brightness-40 blur-sm">
-                            <source src="../background.mp4" type="video/mp4" />
+                            <source src="background.mp4" type="video/mp4" />
                         </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
                         <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
@@ -211,7 +211,7 @@
                         </div>
                         
                         <div className="flex justify-center mb-10 m">
-                            <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
+                            <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="max-w-[240px] md:max-w-[580px] h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]" />
                         </div>
                         
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter mb-10 leading-tight opacity-90">
@@ -303,9 +303,9 @@
         const Gallery = ({ t }) => {
             const words = t.photoHeader.split(' ');
             const images = [
-                { src: "../ASREC_ControllRoom.PNG", label: "Control Room" },
-                { src: "../ASREC_RecordingRoom.PNG", label: "Recording Room" },
-                { src: "../ASREC_Lounge.PNG", label: "Lounge" }
+                { src: "ASREC_ControllRoom.PNG", label: "Control Room" },
+                { src: "ASREC_RecordingRoom.PNG", label: "Recording Room" },
+                { src: "ASREC_Lounge.PNG", label: "Lounge" }
             ];
 
             return (
@@ -410,7 +410,7 @@
                             </div>
                             <div className="bg-slate-950 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl fade-in-up" style={{animationDelay: "0.2s"}}>
                                 <div className="flex items-center mb-8">
-                                    <img src="../ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
+                                    <img src="ASREC LOGOS.png" alt="ASREC STUDIO" className="h-8 w-auto object-contain" />
                                 </div>
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div>
@@ -441,11 +441,85 @@
             );
         };
 
+        const Blog = () => {
+            const posts = [
+                {
+                    href: "/blog/game-dubbing-adaptation/",
+                    icon: "fa-pen-nib",
+                    gradient: "from-slate-800 to-slate-900",
+                    category: "각색 & 연출",
+                    date: "2025. 04. 01",
+                    title: "찰진 더빙을 만드는 각색, 왜 필요할까?",
+                    desc: "더빙을 시작하기 전, 문어체 대사를 구어체로 바꾸는 '각색' 과정이 왜 필요한지, 어떻게 진행되는지 살펴봅니다."
+                },
+                {
+                    href: "/blog/game-voice-casting/",
+                    icon: "fa-users",
+                    gradient: "from-blue-950 to-slate-900",
+                    category: "성우 캐스팅",
+                    date: "2025. 03. 30",
+                    title: "게임 성우 캐스팅, 어떻게 이루어질까?",
+                    desc: "단순히 좋은 목소리를 찾는 것을 넘어, 프로젝트의 완성도를 좌우하는 전략적인 성우 캐스팅 과정을 살펴봅니다."
+                },
+                {
+                    href: "/blog/game-dubbing-process/",
+                    icon: "fa-microphone-lines",
+                    gradient: "from-cyan-950 to-slate-900",
+                    category: "게임 더빙",
+                    date: "2025. 03. 01",
+                    title: "게임 더빙 제작 프로세스 5단계",
+                    desc: "게임 더빙이 실제로 어떤 제작 프로세스를 통해 진행되는지 프로젝트 접수부터 최종 납품까지 전체 흐름을 살펴봅니다."
+                }
+            ];
+
+            return (
+                <section id="blog" className="py-24 bg-slate-900 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+                    <div className="container mx-auto px-6">
+                        <div className="flex items-end justify-between mb-16">
+                            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
+                                <span className="text-cyan-500">BLOG</span>
+                            </h2>
+                            <a href="/blog/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all">
+                                전체 글 보기 <i className="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {posts.map((post, i) => (
+                                <a key={i} href={post.href} className="group bg-slate-950/80 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up block" style={{animationDelay: (i * 0.1) + "s"}}>
+                                    <div className={"aspect-video bg-gradient-to-br " + post.gradient + " flex items-center justify-center relative overflow-hidden"}>
+                                        <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
+                                        <i className={"fas " + post.icon + " text-4xl text-cyan-500/50 relative z-10"}></i>
+                                    </div>
+                                    <div className="p-6">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
+                                            <span className="text-xs text-gray-500">{post.date}</span>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
+                                        <p className="text-gray-400 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
+                                        <div className="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
+                                            <span>읽기</span><i className="fas fa-arrow-right text-xs"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                        <div className="mt-10 text-center md:hidden">
+                            <a href="/blog/" className="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold">
+                                전체 글 보기 <i className="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
         const Footer = () => (
             <footer className="bg-slate-950 border-t border-white/5 py-10">
                 <div className="container mx-auto px-6 flex justify-center">
                     <div className="opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        <img src="../ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
+                        <img src="ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
                     </div>
                 </div>
             </footer>
@@ -459,6 +533,7 @@
                     <Hero t={t} />
                     <Services t={t} />
                     <Process t={t} />
+                    <Blog />
                     <Gallery t={t} />
                     <Contact t={t} />
                     <Footer />
