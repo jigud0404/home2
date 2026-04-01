@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" hreflang="ko" href="https://www.asrec.co.kr/blog/game-dubbing-adaptation/" />
+    <title>찰진 더빙을 만드는 각색, 왜 필요할까? | 애즈렉 스튜디오 블로그</title>
+    <meta name="description" content="더빙을 시작하기 전, 문어체 대사를 구어체로 바꾸는 '각색' 과정이 왜 필요한지, 어떻게 진행되는지 살펴봅니다.">
+    <link rel="icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="찰진 더빙을 만드는 각색, 왜 필요할까? | 애즈렉 스튜디오">
+    <meta property="og:description" content="더빙을 시작하기 전, 문어체 대사를 구어체로 바꾸는 '각색' 과정이 왜 필요한지, 어떻게 진행되는지 살펴봅니다.">
+    <meta property="og:url" content="https://www.asrec.co.kr/blog/game-dubbing-adaptation/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'] }, colors: { cyan: { 400: '#22d3ee', 500: '#06b6d4', 900: '#164e63' }, slate: { 950: '#020617' } } } }
+      }
+    </script>
+    <style>
+      ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#020617}::-webkit-scrollbar-thumb{background:#334155;border-radius:5px}::-webkit-scrollbar-thumb:hover{background:#22d3ee}html{scroll-behavior:smooth}
+      .prose h2{font-size:1.4rem;font-weight:900;color:#fff;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+      .prose h3{font-size:1.05rem;font-weight:700;color:#22d3ee;margin-top:2rem;margin-bottom:0.75rem}
+      .prose p{color:#9ca3af;line-height:1.95;margin-bottom:1.25rem}
+      .prose ul{list-style:none;padding:0;margin-bottom:1.5rem}
+      .prose ul li{color:#9ca3af;padding-left:1.25rem;position:relative;margin-bottom:0.65rem;line-height:1.8}
+      .prose ul li::before{content:'';position:absolute;left:0;top:0.72rem;width:6px;height:6px;background:#06b6d4;border-radius:50%}
+      .prose strong{color:#e2e8f0;font-weight:700}
+      .prose hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:3rem 0}
+      /* Q&A 스타일 */
+      .qa-block{background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.15);border-radius:14px;padding:1.5rem;margin:1.75rem 0}
+      .qa-q{font-size:0.85rem;font-weight:800;color:#06b6d4;letter-spacing:0.05em;margin-bottom:0.5rem}
+      .qa-a{font-size:0.85rem;font-weight:800;color:#e2e8f0;letter-spacing:0.05em;margin-top:1rem;margin-bottom:0.5rem}
+      .qa-block p{margin-bottom:0.75rem;color:#9ca3af;font-size:0.95rem}
+      .qa-block p:last-child{margin-bottom:0}
+      /* 대사 비교 박스 */
+      .dialogue-box{border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0}
+      .dialogue-box.before{background:rgba(51,65,85,0.4);border:1px solid rgba(255,255,255,0.08)}
+      .dialogue-box.after{background:rgba(6,182,212,0.07);border:1px solid rgba(6,182,212,0.2)}
+      .dialogue-label{font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+      .dialogue-label.before{color:#64748b}
+      .dialogue-label.after{color:#06b6d4}
+      .dialogue-box p{color:#9ca3af;font-size:0.9rem;line-height:1.8;margin-bottom:0.5rem}
+      .dialogue-box p:last-child{margin-bottom:0}
+      .fade-in-up{animation:fadeInUp 0.6s ease-out forwards;opacity:0;transform:translateY(20px)}
+      @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+    </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/10">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="../../" class="flex items-center">
+                <img src="../../ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain" />
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="../../#services" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">서비스</a>
+                <a href="../../#studio" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">스튜디오</a>
+                <a href="../../blog/" class="text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">블로그</a>
+                <a href="../../#contact" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">녹음 문의</a>
+                <div class="h-6 w-px bg-gray-700"></div>
+                <div class="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">KO</span>
+                </div>
+            </nav>
+            <button class="md:hidden text-white" onclick="this.closest('header').querySelector('.mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="mobile-menu hidden md:hidden bg-slate-900 border-b border-white/10 w-full">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="../../#services" class="text-xl font-bold text-white hover:text-cyan-400">서비스</a>
+                <a href="../../#studio" class="text-xl font-bold text-white hover:text-cyan-400">스튜디오</a>
+                <a href="../../blog/" class="text-xl font-bold text-cyan-400">블로그</a>
+                <a href="../../#contact" class="text-xl font-bold text-white hover:text-cyan-400">녹음 문의</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-950/10 to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 max-w-3xl">
+            <div class="fade-in-up">
+                <a href="../" class="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold mb-8 hover:gap-3 transition-all">
+                    <i class="fas fa-arrow-left text-xs"></i> 블로그 목록
+                </a>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">각색 & 연출</span>
+                    <span class="text-xs text-gray-500">2025. 04. 01</span>
+                    <span class="text-xs text-gray-500">· 애즈렉 스튜디오</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+                    찰진 더빙을 만드는<br/>각색, 왜 필요할까?
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    더빙을 시작하기 전, 문어체 대사를 구어체로 바꾸는 '각색' 과정이 왜 필요한지, 어떻게 진행되는지 살펴봅니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-6 max-w-3xl">
+        <div class="h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+    </div>
+
+    <article class="py-12">
+        <div class="container mx-auto px-6 max-w-3xl prose fade-in-up">
+
+            <p>안녕하세요. 애즈렉 스튜디오입니다!</p>
+
+            <p>우리가 더빙이 들어간 영화나 드라마, 애니메이션, 게임을 접할 때 캐릭터와 대사가 잘 어우러지는 순간을 두고, 소위 '초월 더빙', '찰지다'라는 표현을 자주 쓰곤 합니다.</p>
+
+            <p>그리고 이러한 '찰진 더빙'은 유저에게 '이 캐릭터는 실제로 말을 이렇게 할 것 같아!'라는 인상을 주면서 몰입도를 끌어올리는 효과가 있는데요. 때로는 유저들 사이에서 특정 대사가 밈이 되어 오랫동안 두고두고 회자되기도 하죠.</p>
+
+            <p>그렇다면 찰진 더빙을 만들려면 무엇을 고려해야 할까요?</p>
+
+            <p>많은 요소가 있지만, 그중 가장 기본적인 것은 바로 <strong>대사</strong>입니다. 흔히 대사를 통해 어떤 말투와 단어를 쓰는지에 따라 캐릭터의 특징을 알 수 있기 때문이죠.</p>
+
+            <h2>각색이란 무엇이고, 왜 필요할까요?</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. 캐스팅도 확정됐고, 캐릭터 레퍼런스와 대본도 전달 완료! 이제 바로 더빙을 시작할 수 있겠죠?</p>
+                <p class="qa-a">A. 더빙을 시작하기 전에! 아직 한 가지 과정이 남았습니다.</p>
+                <p>더빙은 입으로 나오는 '말'이기 때문에 글로 써진 대사를 구어체로 바꾸는 <strong>각색</strong> 과정이 필요합니다.</p>
+            </div>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. 각색? 그건 또 뭐고, 꼭 필요한가요?</p>
+                <p class="qa-a">A. 각색을 통해 문어체를 구어체로 다듬은 뒤 녹음에 들어가면 아래와 같은 효과를 기대할 수 있습니다.</p>
+            </div>
+
+            <h3>구어체 대사를 통한 실감 나는 더빙</h3>
+
+            <p>소설에 나오는 대사를 실제로 말해보면, 평소에 쓰던 말투와 다르다고 느낀 적이 있으신가요? 이는 유저에게 서사를 전달하는 방식이 다르기 때문입니다.</p>
+
+            <p>소설 같은 문학 작품은 텍스트로써, 더빙은 말로써 이야기가 전개되는데, 더빙 대본도 글로 쓰이다 보니 우리가 실제로 자주 쓰지 않는 단어나 표현이 포함되어 있을 수 있습니다.</p>
+
+            <p>사소해 보일 순 있지만, 단어 하나의 차이가 좁게는 대사의 흐름, 넓게는 캐릭터성에도 영향을 줄 수 있어서 녹음을 시작하기 전에 대본을 자연스러운 말로 바꾸는 과정이 중요합니다.</p>
+
+            <h3>매끄러운 대화 흐름</h3>
+
+            <p>스토리 중심의 게임에서 가장 기본적인 요소 중 하나는 바로 캐릭터 간 대화입니다. NPC와의 대화를 비교적 경직된 문어체 대신, 입에 잘 붙는 자연스러운 대사로 다듬는다면 캐릭터 사이에서 케미가 살아나게 되는데요. 이러한 부분이 유저가 게임 내 세계관에 더 몰입할 수 있게 해줍니다.</p>
+
+            <h3>TC(시간 제한) 대사 조정을 통한 NG 방지</h3>
+
+            <p>게임 더빙의 특성상 시간 제한이라는 물리적 제약이 존재합니다. 아무리 좋은 대사라도 시간 제한보다 길면 입 모양이 맞지 않거나 대사가 잘리는 문제가 발생할 수 있는데요.</p>
+
+            <p>각색 과정을 통해 미리 대사 길이를 계산하고 조정한다면, 현장에서 대사를 줄이느라 시간을 허비하는 상황을 방지할 수 있습니다. 이는 곧 녹음 현장에서 성우님들의 연기 집중력을 높이면서 비용과 시간을 절감하는 효과까지 이어질 수 있죠.</p>
+
+            <h2>각색은 어떻게 진행되나요?</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. 그렇다면 각색은 어떻게 진행되나요?</p>
+                <p class="qa-a">A. 전체적인 각색 과정은 아래와 같이 진행됩니다.</p>
+            </div>
+
+            <h3>1. 캐릭터 레퍼런스 확인</h3>
+
+            <p>각색을 하기 위해선 당연히 캐릭터에 대한 정보를 확인해야겠죠? 캐릭터의 성별은 무엇인지, 나이대는 어느 정도인지, 캐릭터의 배경 설정과 성격은 어떠한지, 다른 캐릭터와의 관계가 어떻게 되는지 등 캐릭터와 관련된 레퍼런스를 참고한 뒤 각색의 방향성을 결정합니다.</p>
+
+            <h3>2. 상황 레퍼런스 확인</h3>
+
+            <p>자연스러운 대사가 나오기 위해선 그 맥락을 파악하는 게 중요합니다. 현재 어떤 상황인지, 캐릭터 간 거리감은 어느 정도인지, 캐릭터가 별다른 행동을 취하고 있는지 등 대사가 나오는 상황에 대한 정보가 있어야 캐릭터의 입에 찰떡같이 붙는 대사가 탄생할 수 있죠.</p>
+
+            <p>상황 레퍼런스가 부족하다면, 의도했던 것과는 다른 의미의 대사로 바뀔 위험이 있어 녹음 전에 최대한 많은 레퍼런스를 확보하는 것이 중요합니다.</p>
+
+            <h3>3. TC(시간 제한) 및 싱크 여부 확인</h3>
+
+            <p>게임 내 대사 중 일부는 시간 제한이 있을 수 있습니다. 대사가 3초 안에, 또는 최소 2초 이상 나와야 하는 등 다양한 경우가 있는데요. 특히 시네마틱 영상이라면, 캐릭터의 입/행동에 맞춰(싱크) 녹음이 필요할 때가 많습니다.</p>
+
+            <p>이러한 대사들은 녹음 현장에서 수정하기엔 상당한 시간이 소요되기 때문에, 녹음 전에 각색을 통해 사전에 길이 조정을 하는 것이 중요합니다.</p>
+
+            <h3>4. 각색 진행</h3>
+
+            <p>모든 레퍼런스가 확인되면, 게임의 장르와 톤에 따라 각색의 방향성을 잡게 됩니다. 서브컬쳐 장르에서는 캐릭터 성격이 잘 드러나도록 유도하고, 중세풍 판타지라면 현대적 표현을 지양하고, 극사실주의 현대 밀리터리라면 실제로 사용되는 군사 용어를 참고하여 각색을 진행합니다.</p>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. 각색 때문에 기존 대사가 많이 바뀔까 봐 마음에 걸립니다.</p>
+                <p class="qa-a">A. 각색의 기본적인 원칙은 '원문을 벗어나지 않는 선에서 더 자연스러운 구어체를 찾는다'라는 점에 있습니다.</p>
+                <p>물론, 이는 요청이나 피드백에 따라 각색의 자유도를 유연하게 조절할 수도 있죠. 무엇보다 각색 과정을 공유하면서 지속적인 소통을 통해 녹음용 대본을 만들게 되니 크게 걱정하지 않으셔도 됩니다.</p>
+            </div>
+
+            <h2>각색 예시</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. 각색 예시가 있을까요?</p>
+                <p class="qa-a">A. 예를 들어, 축구 게임에 들어갈 아나운서와 해설위원의 대화를 녹음한다고 가정해 봅시다.</p>
+                <p>A팀의 선수들이 10초 이상 볼을 서로 주고받으면서 시간을 끌고 있는 상황입니다.</p>
+            </div>
+
+            <div class="dialogue-box before">
+                <p class="dialogue-label before">원본 대사</p>
+                <p><strong style="color:#94a3b8">아나운서:</strong> A팀, 어느덧 10여 초 이상 볼 점유가 지속되고 있으며, 이에 따라 경기의 템포 또한 급격히 둔화되는 양상입니다.</p>
+                <p><strong style="color:#94a3b8">해설위원:</strong> 상대 수비 블록의 균열을 유도하려는 의도로 보이나, 유의미한 공간 침투 없이 횡패스만을 반복하는 것은 자칫 경기의 재미를 저해할 우려가 있습니다.</p>
+            </div>
+
+            <div class="dialogue-box after">
+                <p class="dialogue-label after">각색 대사</p>
+                <p><strong style="color:#22d3ee">아나운서:</strong> 자, A팀 선수들, 지금 볼을 10초 넘게 돌리고 있거든요? 경기의 템포도 확 죽은 느낌이 드는 것 같습니다.</p>
+                <p><strong style="color:#22d3ee">해설위원:</strong> 네, 아무래도 상대 수비에 틈을 만들려는 거 같은데, 글쎄요. 공간 침투가 적절히 나와야 하는데, 이렇게 횡패스만 주고받으면 경기가 지루해질 수밖에 없어요.</p>
+            </div>
+
+            <p>두 대사 중에 어느 쪽이 더 말하기 편하신가요? 원본 대사에서는 문어체에 가까운 표현(~있으며, 둔화, 양상, ~보이나 등)이 있는 반면, 각색 대사는 원본보다 더 자연스럽게 읽히면서 대사 곳곳에 추임새를 통해 대사 도중에 호흡을 가다듬을 수도 있습니다.</p>
+
+            <hr>
+
+            <p>유저가 게임을 플레이하다 대사가 어색해 몰입이 깨지는 순간, 그간의 공들인 노력은 빛이 바래기 마련입니다. 캐릭터의 성격이 살아 숨 쉬고, 유저의 귀에 꽂히는 '찰진 대사'를 만드는 것은 정교한 각색의 영역입니다.</p>
+
+            <p>애즈렉 스튜디오는 정교한 각색 과정을 통해, 녹음 현장에서 발생할 수 있는 걸림돌을 최소화하고, 더빙의 완성도를 끌어올립니다.</p>
+
+            <p>'더빙이 어색하면 어떡하지?'라는 고민이 있다면, 혹은 더빙에 대한 솔루션을 제공해 줄 전문가가 필요하다면, 애즈렉 스튜디오에 언제든 편하게 문의해 주시기 바랍니다!</p>
+
+            <p><strong>contact@asrec.co.kr</strong></p>
+
+        </div>
+    </article>
+
+    <section class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="bg-gradient-to-r from-cyan-950/50 to-slate-900 border border-cyan-900/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 justify-between">
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-2">프로젝트 문의하기</h3>
+                    <p class="text-gray-400 text-sm">게임 더빙 제작이 필요하신가요? 빠르게 검토해 드리겠습니다.</p>
+                </div>
+                <a href="../../#contact" class="shrink-0 inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-400 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] whitespace-nowrap">
+                    <span>문의하기</span><i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="pb-16 container mx-auto px-6 max-w-3xl">
+        <a href="../" class="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 text-sm font-bold transition-colors hover:gap-3">
+            <i class="fas fa-arrow-left text-xs"></i> 블로그 목록으로
+        </a>
+    </div>
+
+    <footer class="bg-slate-950 border-t border-white/5 py-10">
+        <div class="container mx-auto px-6 flex justify-center">
+            <div class="opacity-50 hover:opacity-100 transition-all">
+                <img src="../../ASREC LOGOS.png" alt="Logo" class="h-8 w-auto object-contain" />
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
