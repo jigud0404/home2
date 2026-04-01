@@ -140,6 +140,7 @@
             const navLinks = [
                 { name: t.navServices, href: "#services" },
                 { name: t.navPhotos, href: "#studio" },
+                { name: "Blog", href: "/blog/en/" },
                 { name: t.navContact, href: "#contact" },
             ];
 
@@ -438,6 +439,61 @@
             );
         };
 
+        const Blog = () => {
+            const posts = [
+                {
+                    href: "/blog/en/game-dubbing-process/",
+                    icon: "fa-microphone-lines",
+                    gradient: "from-cyan-950 to-slate-900",
+                    category: "Game Dubbing",
+                    date: "Mar 01, 2025",
+                    title: "How is Game Voiceover Made? A Complete Production Guide",
+                    desc: "A comprehensive guide to the entire game voiceover production pipeline — from project intake and casting to recording, post-production, and final delivery."
+                }
+            ];
+            return (
+                <section id="blog" className="py-24 bg-slate-950 relative">
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+                    <div className="container mx-auto px-6">
+                        <div className="flex items-end justify-between mb-16">
+                            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
+                                <span className="text-cyan-500">BLOG</span>
+                            </h2>
+                            <a href="/blog/en/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all">
+                                View all posts <i className="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {posts.map((post, i) => (
+                                <a key={i} href={post.href} className={"group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up block"} style={{animationDelay: (i * 0.1) + "s"}}>
+                                    <div className={"aspect-video bg-gradient-to-br " + post.gradient + " flex items-center justify-center relative overflow-hidden"}>
+                                        <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
+                                        <i className={"fas " + post.icon + " text-4xl text-cyan-500/50 relative z-10"}></i>
+                                    </div>
+                                    <div className="p-6">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
+                                            <span className="text-xs text-gray-500">{post.date}</span>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
+                                        <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{post.desc}</p>
+                                        <div className="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
+                                            <span>Read more</span><i className="fas fa-arrow-right text-xs"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                        <div className="mt-10 text-center md:hidden">
+                            <a href="/blog/en/" className="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold">
+                                View all posts <i className="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
         const Footer = () => (
             <footer className="bg-slate-950 border-t border-white/5 py-10">
                 <div className="container mx-auto px-6 flex justify-center">
@@ -456,6 +512,7 @@
                     <Hero t={t} />
                     <Services t={t} />
                     <Process t={t} />
+                    <Blog />
                     <Gallery t={t} />
                     <Contact t={t} />
                     <Footer />
@@ -465,6 +522,25 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+    </script>
+
+    <!-- Auto-scroll to hash section when coming from blog pages -->
+    <script>
+        (function() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            const observer = new MutationObserver(function() {
+                const el = document.querySelector(hash);
+                if (el) {
+                    observer.disconnect();
+                    setTimeout(function() {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            });
+            observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+            setTimeout(function() { observer.disconnect(); }, 10000);
+        })();
     </script>
 </body>
 </html>
