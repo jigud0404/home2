@@ -39,7 +39,25 @@
                     <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">EN</span>
                 </div>
             </nav>
-            <a href="../../en/" class="md:hidden text-gray-400 hover:text-white text-sm"><i class="fas fa-arrow-left mr-2"></i>Home</a>
+            <button class="md:hidden text-white" onclick="this.closest('header').querySelector('.mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="mobile-menu hidden md:hidden bg-slate-900 border-b border-white/10 w-full">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="../../en/#services" class="text-xl font-bold text-white hover:text-cyan-400">Services</a>
+                <a href="../../en/#studio" class="text-xl font-bold text-white hover:text-cyan-400">Studio</a>
+                <a href="../../blog/en/" class="text-xl font-bold text-cyan-400">Blog</a>
+                <a href="../../en/#contact" class="text-xl font-bold text-white hover:text-cyan-400">Contact</a>
+                <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                    <span class="text-gray-400 text-sm"><i class="fas fa-globe mr-2"></i>Language</span>
+                    <div class="flex gap-2">
+                        <a href="../" class="text-sm font-bold text-gray-500 hover:text-white">KOR</a>
+                        <span class="text-gray-700">/</span>
+                        <span class="text-sm font-bold text-cyan-400">ENG</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -59,10 +77,12 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 
                 <!-- ✅ Post card — copy this block to add new posts (newest first) -->
+
+                <!-- 1. Introducing Asrec Studio -->
                 <article class="fade-in-up group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1">
-                    <a href="introducing-asrec/" class="block">
-                        <div class="aspect-video bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                            <img src="../../../ASREC_ControllRoom.PNG" alt="Asrec Studio" class="w-full h-full object-cover opacity-60" />
+                    <a href="/blog/en/introducing-asrec/" class="block">
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="../../ASREC_ControllRoom.PNG" alt="Asrec Studio" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                         </div>
                         <div class="p-6">
@@ -79,8 +99,9 @@
                     </a>
                 </article>
 
+                <!-- 2. Beyond Translation -->
                 <article class="fade-in-up group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1" style="animation-delay:0.1s">
-                    <a href="game-dubbing-adaptation/" class="block">
+                    <a href="/blog/en/game-dubbing-adaptation/" class="block">
                         <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
                             <div class="absolute inset-0 opacity-30" style="background-image:url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
                             <i class="fas fa-pen-nib text-5xl text-cyan-500/50 relative z-10"></i>
@@ -99,8 +120,9 @@
                     </a>
                 </article>
 
+                <!-- 3. Voice Casting -->
                 <article class="fade-in-up group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1" style="animation-delay:0.2s">
-                    <a href="game-voice-casting/" class="block">
+                    <a href="/blog/en/game-voice-casting/" class="block">
                         <div class="aspect-video bg-gradient-to-br from-blue-950 to-slate-900 flex items-center justify-center relative overflow-hidden">
                             <div class="absolute inset-0 opacity-30" style="background-image:url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
                             <i class="fas fa-users text-5xl text-cyan-500/50 relative z-10"></i>
@@ -119,8 +141,9 @@
                     </a>
                 </article>
 
+                <!-- 4. Game Dubbing Process -->
                 <article class="fade-in-up group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1" style="animation-delay:0.3s">
-                    <a href="game-dubbing-process/" class="block">
+                    <a href="/blog/en/game-dubbing-process/" class="block">
                         <div class="aspect-video bg-gradient-to-br from-cyan-950 to-slate-900 flex items-center justify-center relative overflow-hidden">
                             <div class="absolute inset-0 opacity-30" style="background-image:url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
                             <i class="fas fa-microphone-lines text-5xl text-cyan-500/50 relative z-10"></i>
@@ -132,24 +155,6 @@
                             </div>
                             <h2 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors leading-snug">How is Game Voiceover Made? A Complete Production Guide</h2>
                             <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">A comprehensive guide to the entire game voiceover production pipeline — from project intake and casting to recording, post-production, and final delivery.</p>
-                            <div class="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
-                                <span>Read more</span><i class="fas fa-arrow-right text-xs"></i>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-                <!-- ✅ Copy until here -->
-                        <div class="aspect-video bg-gradient-to-br from-blue-950 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute inset-0 opacity-30" style="background-image:url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
-                            <i class="fas fa-users text-5xl text-cyan-500/50 relative z-10"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">Voice Casting</span>
-                                <span class="text-xs text-gray-500">Mar 30, 2025</span>
-                            </div>
-                            <h2 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors leading-snug">The Beginning of Game Voiceover: How Does Voice Casting Actually Work?</h2>
-                            <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">Going beyond a "nice-sounding voice" — a deep dive into the strategic casting process that truly elevates the final polish of a game.</p>
                             <div class="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
                                 <span>Read more</span><i class="fas fa-arrow-right text-xs"></i>
                             </div>
@@ -157,26 +162,7 @@
                     </a>
                 </article>
 
-                <article class="fade-in-up group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1" style="animation-delay:0.1s">
-                    <a href="game-dubbing-process/" class="block">
-                        <div class="aspect-video bg-gradient-to-br from-cyan-950 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute inset-0 opacity-30" style="background-image:url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
-                            <i class="fas fa-microphone-lines text-5xl text-cyan-500/50 relative z-10"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">Game Dubbing</span>
-                                <span class="text-xs text-gray-500">Mar 01, 2025</span>
-                            </div>
-                            <h2 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors leading-snug">How is Game Voiceover Made? A Complete Production Guide</h2>
-                            <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">A comprehensive guide to the entire game voiceover production pipeline — from project intake and casting to recording, post-production, and final delivery.</p>
-                            <div class="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
-                                <span>Read more</span><i class="fas fa-arrow-right text-xs"></i>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-                <!-- ✅ Copy until here -->
+                <!-- ✅ 새 글 추가 시 위 article 블록 복사해서 맨 앞에 붙여넣기 -->
 
             </div>
         </div>
