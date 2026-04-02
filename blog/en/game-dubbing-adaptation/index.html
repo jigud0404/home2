@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" hreflang="ko" href="https://www.asrec.co.kr/blog/game-dubbing-adaptation/" />
+    <link rel="alternate" hreflang="en" href="https://www.asrec.co.kr/blog/en/game-dubbing-adaptation/" />
+    <title>Beyond Translation: Adding 'Flavor' to Your Script for Iconic Voiceover | Asrec Studio Blog</title>
+    <meta name="description" content="Before hitting record, there's one crucial step — script adaptation. Discover why transforming written lines into natural spoken dialogue is essential for iconic voiceover.">
+    <link rel="icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Beyond Translation: Adding 'Flavor' to Your Script for Iconic Voiceover | Asrec Studio">
+    <meta property="og:description" content="Before hitting record, there's one crucial step — script adaptation. Discover why transforming written lines into natural spoken dialogue is essential for iconic voiceover.">
+    <meta property="og:url" content="https://www.asrec.co.kr/blog/en/game-dubbing-adaptation/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'] }, colors: { cyan: { 400: '#22d3ee', 500: '#06b6d4', 900: '#164e63' }, slate: { 950: '#020617' } } } }
+      }
+    </script>
+    <style>
+      ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#020617}::-webkit-scrollbar-thumb{background:#334155;border-radius:5px}::-webkit-scrollbar-thumb:hover{background:#22d3ee}html{scroll-behavior:smooth}
+      .prose h2{font-size:1.4rem;font-weight:900;color:#fff;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+      .prose h3{font-size:1.05rem;font-weight:700;color:#22d3ee;margin-top:2rem;margin-bottom:0.75rem}
+      .prose p{color:#9ca3af;line-height:1.95;margin-bottom:1.25rem}
+      .prose ul{list-style:none;padding:0;margin-bottom:1.5rem}
+      .prose ul li{color:#9ca3af;padding-left:1.25rem;position:relative;margin-bottom:0.65rem;line-height:1.8}
+      .prose ul li::before{content:'';position:absolute;left:0;top:0.72rem;width:6px;height:6px;background:#06b6d4;border-radius:50%}
+      .prose strong{color:#e2e8f0;font-weight:700}
+      .prose hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:3rem 0}
+      .qa-block{background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.15);border-radius:14px;padding:1.5rem;margin:1.75rem 0}
+      .qa-q{font-size:0.85rem;font-weight:800;color:#06b6d4;letter-spacing:0.05em;margin-bottom:0.5rem}
+      .qa-a{font-size:0.85rem;font-weight:800;color:#e2e8f0;letter-spacing:0.05em;margin-top:1rem;margin-bottom:0.5rem}
+      .qa-block p{margin-bottom:0.75rem;color:#9ca3af;font-size:0.95rem}
+      .qa-block p:last-child{margin-bottom:0}
+      .dialogue-box{border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0}
+      .dialogue-box.before{background:rgba(51,65,85,0.4);border:1px solid rgba(255,255,255,0.08)}
+      .dialogue-box.after{background:rgba(6,182,212,0.07);border:1px solid rgba(6,182,212,0.2)}
+      .dialogue-label{font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+      .dialogue-label.before{color:#64748b}
+      .dialogue-label.after{color:#06b6d4}
+      .dialogue-box p{color:#9ca3af;font-size:0.9rem;line-height:1.8;margin-bottom:0.5rem}
+      .dialogue-box p:last-child{margin-bottom:0}
+      .fade-in-up{animation:fadeInUp 0.6s ease-out forwards;opacity:0;transform:translateY(20px)}
+      @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+    </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/10">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="../../../en/" class="flex items-center">
+                <img src="../../../ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain" />
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="../../../en/#services" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Services</a>
+                <a href="../../../en/#studio" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Studio</a>
+                <a href="../" class="text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Blog</a>
+                <a href="../../../en/#contact" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Contact</a>
+                <div class="h-6 w-px bg-gray-700"></div>
+                <div class="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
+                    <a href="../../game-dubbing-adaptation/" class="px-3 py-1 rounded-full text-xs font-bold text-gray-400 hover:text-white transition-all">KO</a>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">EN</span>
+                </div>
+            </nav>
+            <button class="md:hidden text-white" onclick="this.closest('header').querySelector('.mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="mobile-menu hidden md:hidden bg-slate-900 border-b border-white/10 w-full">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="../../../en/#services" class="text-xl font-bold text-white hover:text-cyan-400">Services</a>
+                <a href="../../../en/#studio" class="text-xl font-bold text-white hover:text-cyan-400">Studio</a>
+                <a href="../" class="text-xl font-bold text-cyan-400">Blog</a>
+                <a href="../../../en/#contact" class="text-xl font-bold text-white hover:text-cyan-400">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-950/10 to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 max-w-3xl">
+            <div class="fade-in-up">
+                <a href="../" class="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold mb-8 hover:gap-3 transition-all">
+                    <i class="fas fa-arrow-left text-xs"></i> Back to Blog
+                </a>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">Script Adaptation</span>
+                    <span class="text-xs text-gray-500">Apr 01, 2025</span>
+                    <span class="text-xs text-gray-500">· Asrec Studio</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+                    Beyond Translation:<br/>Adding 'Flavor' to Your Script<br/>for Iconic Voiceover
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Before hitting record, there's one crucial step — script adaptation. Discover why transforming written lines into natural spoken dialogue is the secret to voiceover that truly "slaps."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-6 max-w-3xl">
+        <div class="h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+    </div>
+
+    <article class="py-12">
+        <div class="container mx-auto px-6 max-w-3xl prose fade-in-up">
+
+            <p>Greetings from <strong>Asrec Studio</strong>!</p>
+
+            <p>When we watch a movie, drama, or play a game with voiceover where the characters and lines blend perfectly, we often use terms like <strong>"Diffs the original"</strong> or <strong>"The VO is 'Cooking'"</strong>.</p>
+
+            <p>This kind of <strong>"flavorful voiceover"</strong> gives players the impression that <em>"This is exactly how this character would speak!"</em> — immensely boosting immersion. In some cases, specific lines even become viral <strong>memes</strong> among players, being talked about and celebrated for years to come.</p>
+
+            <p>So, what does it take to create a voiceover that truly "slaps"?</p>
+
+            <p>While many factors are at play, the absolute foundation is the <strong>script</strong>. The specific speech patterns and vocabulary used in a line are often what reveal a character's unique personality and traits to the players.</p>
+
+            <h2>What Is Adaptation, and Why Does It Matter?</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. Now that casting is confirmed and the character references and scripts have been delivered, can we jump straight into recording?</p>
+                <p class="qa-a">A. Hold on! There's one crucial step left before we hit the record button.</p>
+                <p>Since voiceover is all about the <strong>"spoken word,"</strong> we need an <strong>"adaptation" process to transform written lines into natural, conversational dialogue.</strong></p>
+            </div>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. Adaptation? What exactly is that, and is it really necessary?</p>
+                <p class="qa-a">A. By refining formal, written language into natural, spoken dialogue through adaptation before recording, you can expect the following benefits:</p>
+            </div>
+
+            <h3>Immersive Voiceover through Natural, Spoken Dialogue</h3>
+
+            <p>Have you ever tried reading a line from a novel out loud and felt that it didn't quite sound like how people actually speak? <strong>This happens because the way a narrative is delivered to the user is fundamentally different.</strong></p>
+
+            <p>While literature like novels conveys a story through <strong>text</strong>, voiceover unfolds the narrative through the <strong>spoken word</strong>. Since even voiceover scripts are initially "written," they often contain words or expressions that we wouldn't typically use in real-life conversations.</p>
+
+            <p>It might seem like a minor detail, but <strong>the choice of a single word can impact the flow of a line at a micro level — and the character's entire identity at a macro level</strong>. This is why the process of transforming a script into natural, living speech is essential before hitting the record button.</p>
+
+            <h3>Seamless Dialogue Flow</h3>
+
+            <p>In narrative-driven games, one of the most fundamental elements is the interaction between characters. When dialogue with NPCs is refined from stiff, written language into natural-sounding lines that roll off the tongue, the <strong>chemistry</strong> between characters truly comes to life. This level of detail allows players to become much more deeply immersed in the game's universe.</p>
+
+            <h3>Preventing NGs through TC (Time Constraint) Adjustment</h3>
+
+            <p>Game voiceover inherently comes with the physical constraint of strict time limits. No matter how great a line is, if it exceeds the allocated time, it leads to issues like mismatched lip-sync or the audio being cut off.</p>
+
+            <p>By calculating and adjusting line lengths during the adaptation phase, we can prevent situations where valuable time is wasted cutting lines on the spot during recording. <strong>Ultimately, this allows voice actors to stay fully focused on their performance while significantly reducing both time and production costs.</strong></p>
+
+            <h2>How Does the Adaptation Process Work?</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. So, how does the adaptation process actually work?</p>
+                <p class="qa-a">A. Our overall adaptation workflow follows these key steps:</p>
+            </div>
+
+            <h3>1. Reviewing Character References</h3>
+
+            <p>To start the adaptation, we must first dive deep into the character's profile. We analyze references such as <strong>gender, age range, background story, personality, and relationships with other characters.</strong> This deep dive allows us to establish a clear <strong>direction</strong> for the adaptation.</p>
+
+            <h3>2. Analyzing Contextual References</h3>
+
+            <p>For dialogue to sound natural, understanding the context is paramount. We need to know the specific situation: the <strong>physical distance between characters</strong>, <strong>any actions they are performing</strong>, and the <strong>overall atmosphere</strong>. This contextual insight allows us to craft lines that truly "fit like a glove" for the character.</p>
+
+            <p><strong>If contextual references are insufficient, there's a risk the dialogue might go off track from its intended meaning.</strong> This is why we prioritize securing as much reference material as possible before recording begins.</p>
+
+            <h3>3. Checking TC and Sync Requirements</h3>
+
+            <p>Some in-game dialogue comes with strict <strong>time constraints</strong> — for instance, a line must be delivered within 3 seconds, or last at least 2 seconds. In cinematic sequences especially, the voice acting must often be perfectly <strong>synchronized</strong> with the character's lip movements and physical actions.</p>
+
+            <p><strong>Adjusting these lines on the fly during a recording session is incredibly time-consuming. That's why it's crucial to pre-calculate and refine the line lengths through adaptation before the actors enter the booth.</strong></p>
+
+            <h3>4. Starting Adaptation</h3>
+
+            <p>Once all references are confirmed, we establish the tailored direction based on the game's genre and tone.</p>
+            <ul>
+                <li>For <strong>Anime-style games</strong>, we focus on bringing out each character's distinct personality</li>
+                <li>For <strong>Medieval Fantasy</strong>, we avoid modern slang to maintain immersion</li>
+                <li>For <strong>Hyper-realistic Military shooters</strong>, we consult actual military terminology to ensure the dialogue feels authentic</li>
+            </ul>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. I'm worried that the original lines might change too much during the adaptation.</p>
+                <p class="qa-a">A. Our core principle is to "find a more natural, spoken tone while staying true to the original text."</p>
+                <p>Of course, we can flexibly adjust the degree of creative freedom based on your specific requests and feedback. Most importantly, we develop the final recording script through continuous communication, sharing every step of the adaptation process with you. So, you don't have to worry about the original intent being lost.</p>
+            </div>
+
+            <h2>Adaptation in Action: A Real Example</h2>
+
+            <div class="qa-block">
+                <p class="qa-q">Q. Could you provide an example of the adaptation?</p>
+                <p class="qa-a">A. Let's imagine we're recording a conversation between an announcer and a color commentator for a soccer game.</p>
+                <p>Team A's players are killing time by passing the ball back and forth for more than 10 seconds.</p>
+            </div>
+
+            <div class="dialogue-box before">
+                <p class="dialogue-label before">Before Adaptation</p>
+                <p><strong style="color:#94a3b8">Announcer:</strong> Team A has been maintaining ball possession for over 10 seconds now, and accordingly, the tempo of the match appears to be slowing down rapidly.</p>
+                <p><strong style="color:#94a3b8">Commentator:</strong> It seems their intent is to induce a crack in the opponent's defensive block; however, repeating only lateral passes without any meaningful space penetration carries the risk of potentially detracting from the enjoyment of the match.</p>
+            </div>
+
+            <div class="dialogue-box after">
+                <p class="dialogue-label after">After Adaptation</p>
+                <p><strong style="color:#22d3ee">Announcer:</strong> Look at Team A... they've been passing the ball around for over 10 seconds now, haven't they? It feels like the tempo of this match has completely dropped off.</p>
+                <p><strong style="color:#22d3ee">Commentator:</strong> Exactly. I think they're trying to find a gap in the defense, but I don't know... they need to make some runs into space. If they just keep trading lateral passes like this, it's just going to be another boring game.</p>
+            </div>
+
+            <p>Which of the two versions feels more comfortable to say out loud? While the original script used formal, written expressions, the adapted version reads much more naturally. By incorporating <strong>natural fillers</strong> (like "I don't know..."), the script allows the voice actors to catch their breath and maintain a realistic conversational flow.</p>
+
+            <hr>
+
+            <p>When a player's immersion is broken by awkward dialogue, all the hard work put into the game can quickly <strong>fade away</strong>. Creating natural-sounding, living lines that truly resonate with players is where the art of precise adaptation comes in.</p>
+
+            <p><strong>At Asrec Studio, our meticulous adaptation process minimizes potential hurdles during recording and elevates the overall quality of the voiceover.</strong></p>
+
+            <p>If you're worried about whether your voiceover will feel natural — or if you need an expert to provide the right solutions for your project — please feel free to reach out to us at any time!</p>
+
+            <p><strong>contact@asrec.co.kr</strong></p>
+
+        </div>
+    </article>
+
+    <section class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="bg-gradient-to-r from-cyan-950/50 to-slate-900 border border-cyan-900/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 justify-between">
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-2">Start a Project</h3>
+                    <p class="text-gray-400 text-sm">Need game voiceover for your project? We'll get back to you quickly.</p>
+                </div>
+                <a href="../../../en/#contact" class="shrink-0 inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-400 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] whitespace-nowrap">
+                    <span>Contact Us</span><i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="pb-16 container mx-auto px-6 max-w-3xl">
+        <a href="../" class="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 text-sm font-bold transition-colors hover:gap-3">
+            <i class="fas fa-arrow-left text-xs"></i> Back to Blog
+        </a>
+    </div>
+
+    <footer class="bg-slate-950 border-t border-white/5 py-10">
+        <div class="container mx-auto px-6 flex justify-center">
+            <div class="opacity-50 hover:opacity-100 transition-all">
+                <img src="../../../ASREC LOGOS.png" alt="Logo" class="h-8 w-auto object-contain" />
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
