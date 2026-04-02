@@ -446,7 +446,6 @@
                 {
                     href: "/blog/game-dubbing-adaptation/",
                     icon: "fa-pen-nib",
-                    gradient: "from-slate-800 to-slate-900",
                     category: "각색 & 연출",
                     date: "2025. 04. 01",
                     title: "찰진 더빙을 만드는 각색, 왜 필요할까?",
@@ -455,7 +454,6 @@
                 {
                     href: "/blog/game-voice-casting/",
                     icon: "fa-users",
-                    gradient: "from-blue-950 to-slate-900",
                     category: "성우 캐스팅",
                     date: "2025. 03. 30",
                     title: "게임 성우 캐스팅, 어떻게 이루어질까?",
@@ -464,7 +462,6 @@
                 {
                     href: "/blog/game-dubbing-process/",
                     icon: "fa-microphone-lines",
-                    gradient: "from-cyan-950 to-slate-900",
                     category: "게임 더빙",
                     date: "2025. 03. 01",
                     title: "게임 더빙 제작 프로세스 5단계",
@@ -484,23 +481,22 @@
                                 전체 글 보기 <i className="fas fa-arrow-right text-xs"></i>
                             </a>
                         </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {posts.map((post, i) => (
-                                <a key={i} href={post.href} className="group bg-slate-950/80 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up block" style={{animationDelay: (i * 0.1) + "s"}}>
-                                    <div className={"aspect-video bg-gradient-to-br " + post.gradient + " flex items-center justify-center relative overflow-hidden"}>
-                                        <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")'}}></div>
-                                        <i className={"fas " + post.icon + " text-4xl text-cyan-500/50 relative z-10"}></i>
+                                <a key={i} href={post.href} className="group bg-slate-950/80 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-900 flex items-center justify-center shrink-0">
+                                            <i className={"fas " + post.icon + " text-sm text-cyan-400"}></i>
+                                        </div>
+                                        <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
+                                        <span className="text-xs text-gray-500 ml-auto">{post.date}</span>
                                     </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-3 mb-3">
-                                            <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
-                                            <span className="text-xs text-gray-500">{post.date}</span>
-                                        </div>
-                                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
-                                        <p className="text-gray-400 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
-                                        <div className="mt-4 flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all">
-                                            <span>읽기</span><i className="fas fa-arrow-right text-xs"></i>
-                                        </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-base font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
+                                        <p className="text-gray-500 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
+                                    </div>
+                                    <div className="flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all pt-2 border-t border-white/5">
+                                        <span>읽기</span><i className="fas fa-arrow-right text-xs"></i>
                                     </div>
                                 </a>
                             ))}
