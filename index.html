@@ -444,28 +444,28 @@
         const Blog = () => {
             const posts = [
                 {
-                    href: "https://blog.naver.com/asrecstudio/224226878454",
+                    href: "/blog/introducing-asrec/",
+                    icon: "fa-door-open",
+                    category: "스튜디오",
+                    date: "2026. 04. 02",
+                    title: "애즈렉 스튜디오를 소개합니다! 스튜디오 투어",
+                    desc: "애즈렉 스튜디오가 공식 오픈했습니다! 컨트롤 룸부터 라운지까지, 게임 캐릭터가 탄생하는 공간을 둘러보세요."
+                },
+                {
+                    href: "/blog/game-dubbing-adaptation/",
                     icon: "fa-pen-nib",
                     category: "각색 & 연출",
-                    date: "2026. 04. 01",
+                    date: "2025. 04. 01",
                     title: "찰진 더빙을 만드는 각색, 왜 필요할까?",
                     desc: "더빙을 시작하기 전, 문어체 대사를 구어체로 바꾸는 '각색' 과정이 왜 필요한지, 어떻게 진행되는지 살펴봅니다."
                 },
                 {
-                    href: "https://blog.naver.com/asrecstudio/224216939469",
+                    href: "/blog/game-voice-casting/",
                     icon: "fa-users",
                     category: "성우 캐스팅",
-                    date: "2026. 03. 30",
+                    date: "2025. 03. 30",
                     title: "게임 성우 캐스팅, 어떻게 이루어질까?",
                     desc: "단순히 좋은 목소리를 찾는 것을 넘어, 프로젝트의 완성도를 좌우하는 전략적인 성우 캐스팅 과정을 살펴봅니다."
-                },
-                {
-                    href: "https://blog.naver.com/asrecstudio/224216917345",
-                    icon: "fa-microphone-lines",
-                    category: "게임 더빙",
-                    date: "2026. 03. 01",
-                    title: "게임 더빙 제작 프로세스 5단계",
-                    desc: "게임 더빙이 실제로 어떤 제작 프로세스를 통해 진행되는지 프로젝트 접수부터 최종 납품까지 전체 흐름을 살펴봅니다."
                 }
             ];
 
@@ -483,7 +483,7 @@
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {posts.map((post, i) => (
-                               <a key={i} href={post.href} target="_blank" rel="noopener noreferrer" className="group bg-slate-950/80 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
+                                <a key={i} href={post.href} className="group bg-slate-950/80 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
                                     <div className="flex items-center gap-3">
                                         <div className="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-900 flex items-center justify-center shrink-0">
                                             <i className={"fas " + post.icon + " text-sm text-cyan-400"}></i>
@@ -513,9 +513,19 @@
 
         const Footer = () => (
             <footer className="bg-slate-950 border-t border-white/5 py-10">
-                <div className="container mx-auto px-6 flex justify-center">
+                <div className="container mx-auto px-6 flex flex-col items-center gap-6">
                     <div className="opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                         <img src="ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain" />
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <a href="https://www.linkedin.com/company/asrecstudio/" target="_blank" rel="noopener noreferrer"
+                           className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:border-white/30 hover:bg-slate-700 transition-all duration-300">
+                            <i className="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://blog.naver.com/asrecstudio" target="_blank" rel="noopener noreferrer"
+                           className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:border-white/30 hover:bg-slate-700 transition-all duration-300">
+                            <span className="text-xs font-black tracking-tighter">N</span>
+                        </a>
                     </div>
                 </div>
             </footer>
