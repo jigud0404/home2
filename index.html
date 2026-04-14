@@ -556,7 +556,16 @@ if(window.wcs) {
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
-
+    
+<!-- 언어 자동 감지: 브라우저 언어가 한국어가 아니면 EN 페이지로 이동 -->
+<script>
+    (function() {
+        const lang = navigator.language || navigator.userLanguage || '';
+        if (!lang.startsWith('ko') && window.location.pathname === '/') {
+            window.location.replace('/en/');
+        }
+    })();
+</script>
     <!-- 블로그 등 외부 페이지에서 #services, #studio, #contact 링크로 올 때 해당 섹션으로 자동 스크롤 -->
     <script>
         (function() {
