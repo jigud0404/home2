@@ -450,52 +450,43 @@ if(window.wcs) {
         };
 
         const Blog = () => {
-            const posts = [
-                {
-                    href: "https://blog.naver.com/asrecstudio/224247820507",
-                    icon: "fa-users",
-                    category: "게임 현지화",
-                    date: "2026. 04. 13",
-                    title: "팬들이 만든 기적: '한국어 더빙'을 끌어낸 유저들의 힘",
-                    desc: "더빙 결정이 게임사의 내부 계획이 아닌, 유저들의 지속적인 요청으로 이뤄진 사례들과 그것이 시장에서 게임사의 위치를 어떻게 바꿔놓았는지 살펴봅니다."
-                },
-                {
-                    href: "https://blog.naver.com/asrecstudio/224245047253",
-                    icon: "fa-chart-bar",
-                    category: "게임 현지화",
-                    date: "2026. 04. 08",
-                    title: "한국 게이머가 현지화에 보내는 '진짜' 메시지",
-                    desc: "한국 게임 시장은 세계 4위. 그렇다면 한국 유저들은 현지화에 대해 어떻게 생각할까요? 906명을 대상으로 한 설문 데이터로 살펴봅니다."
-                },
-                {
-                    href: "https://blog.naver.com/asrecstudio/224230266615",
-                    icon: "fa-door-open",
-                    category: "스튜디오",
-                    date: "2026. 04. 03",
-                    title: "애즈렉 스튜디오를 소개합니다! 스튜디오 투어",
-                    desc: "오랜 준비 끝에 드디어 오픈한 애즈렉 스튜디오! 컨트롤 룸부터 녹음 부스, 라운지까지 랜선 투어를 함께 떠나봅니다."
-                }
+            const allPosts = [
+                { href: "/blog/en/chinese-game-korean-vo/", icon: "fa-globe", category: "Game Localization", date: "Apr 21, 2026", title: "Why is Full Korean Voiceover Considered Crucial by Chinese Developers?", desc: "South Korea is the 3rd largest overseas market for Chinese games — and full Korean VO has become the key to unlocking it." },
+                { href: "/blog/en/korean-vo-fan-power/", icon: "fa-users", category: "Game Localization", date: "Apr 13, 2026", title: "Miracles Created by Fans: The Power of Players Leading to Korean Voiceover", desc: "How fan pressure brought Korean voiceover to Cyberpunk 2077 and Blue Archive — and what developers gained by listening." },
+                { href: "/blog/en/korean-localization-insight/", icon: "fa-chart-bar", category: "Game Localization", date: "Apr 08, 2026", title: "Korean Gamers' Perceptions and Preferences on Localization: Insights from a 2025 Study", desc: "What do 906 Korean gamers really think about localization? From language preferences to voiceover quality — the data speaks clearly." },
+                { href: "/blog/en/introducing-asrec/", icon: "fa-door-open", category: "Studio", date: "Apr 02, 2026", title: "Introducing Asrec Studio! A Virtual Tour of Asrec", desc: "Asrec Studio is officially open! From the Control Room to the Lounge — take a look inside the spaces where game characters come to life." },
+                { href: "/blog/en/game-dubbing-adaptation/", icon: "fa-pen-nib", category: "Script Adaptation", date: "Apr 01, 2025", title: "Beyond Translation: Adding 'Flavor' to Your Script for Iconic Voiceover", desc: "Before hitting record, there's one crucial step — script adaptation." },
+                { href: "/blog/en/game-voice-casting/", icon: "fa-microphone-lines", category: "Voice Casting", date: "Mar 30, 2025", title: "The Beginning of Game Voiceover: How Does Voice Casting Actually Work?", desc: "Going beyond a \"nice-sounding voice\" — a deep dive into the strategic casting process." },
             ];
+            const ITEMS_PER_PAGE = 3;
+            const totalPages = Math.ceil(allPosts.length / ITEMS_PER_PAGE);
+            const [page, setPage] = React.useState(0);
+            const posts = allPosts.slice(page * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE + ITEMS_PER_PAGE);
 
             return (
-                <section id="blog" className="py-24 bg-slate-900 relative overflow-hidden">
+                <section id="blog" className="py-24 bg-slate-950 relative">
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
                     <div className="container mx-auto px-6">
-                        <div className="flex items-end justify-between mb-16">
+                        <div className="flex items-center justify-between mb-16">
                             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
                                 <span className="text-cyan-500">BLOG</span>
                             </h2>
-                            <a href="/blog/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all">
-                                전체 글 보기 <i className="fas fa-arrow-right text-xs"></i>
-                            </a>
+                            <div className="flex items-center gap-3">
+                                <a href="/blog/en/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all mr-4">View all posts <i className="fas fa-arrow-right text-xs"></i></a>
+                                <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === 0 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
+                                    <i className="fas fa-chevron-left text-xs"></i>
+                                </button>
+                                <span className="text-xs text-gray-500 font-bold">{page + 1} / {totalPages}</span>
+                                <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === totalPages - 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
+                                    <i className="fas fa-chevron-right text-xs"></i>
+                                </button>
+                            </div>
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {posts.map((post, i) => (
-                                <a key={i} href={post.href} className="group bg-slate-950/80 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
+                                <a key={i} href={post.href} className="group bg-slate-900/50 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-900 flex items-center justify-center shrink-0">
-                                            <i className={"fas " + post.icon + " text-sm text-cyan-400"}></i>
-                                        </div>
+                                        <div className="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-900 flex items-center justify-center shrink-0"><i className={"fas " + post.icon + " text-sm text-cyan-400"}></i></div>
                                         <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
                                         <span className="text-xs text-gray-500 ml-auto">{post.date}</span>
                                     </div>
@@ -503,59 +494,15 @@ if(window.wcs) {
                                         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
                                         <p className="text-gray-400 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
                                     </div>
-                                    <div className="flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all pt-2 border-t border-white/5">
-                                        <span>읽기</span><i className="fas fa-arrow-right text-xs"></i>
-                                    </div>
+                                    <div className="flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all pt-2 border-t border-white/5"><span>Read more</span><i className="fas fa-arrow-right text-xs"></i></div>
                                 </a>
                             ))}
                         </div>
-                        <div className="mt-10 text-center md:hidden">
-                            <a href="/blog/" className="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold">
-                                전체 글 보기 <i className="fas fa-arrow-right text-xs"></i>
-                            </a>
-                        </div>
+                        <div className="mt-10 text-center md:hidden"><a href="/blog/en/" className="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold">View all posts <i className="fas fa-arrow-right text-xs"></i></a></div>
                     </div>
                 </section>
             );
         };
-
-        const Footer = () => (
-            <footer className="bg-slate-950 border-t border-white/5 py-10">
-                <div className="container mx-auto px-6 flex flex-col items-center gap-6">
-                    <img src="ASREC LOGOS.png" alt="Logo" className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300" />
-                    <div className="flex items-center gap-4">
-                        <a href="https://www.linkedin.com/company/asrecstudio/" target="_blank" rel="noopener noreferrer"
-                           className="w-10 h-10 rounded-full overflow-hidden hover:scale-110 transition-all duration-300">
-                            <img src="linkedin.png" alt="LinkedIn" className="w-full h-full object-cover" />
-                        </a>
-                        <a href="https://blog.naver.com/asrecstudio" target="_blank" rel="noopener noreferrer"
-                           className="w-10 h-10 rounded-full overflow-hidden hover:scale-110 transition-all duration-300">
-                            <img src="naver.png" alt="Naver Blog" className="w-full h-full object-cover" />
-                        </a>
-                    </div>
-                </div>
-            </footer>
-        );
-
-        const App = () => {
-            const t = TEXT_CONTENT;
-            return (
-                <div className="min-h-screen bg-slate-950 text-white">
-                    <Navbar t={t} />
-                    <Hero t={t} />
-                    <Services t={t} />
-                    <Process t={t} />
-                    <Blog />
-                    <Gallery t={t} />
-                    <Contact t={t} />
-                    <Footer />
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
     
 <!-- 언어 자동 감지: 브라우저 언어가 한국어가 아니면 EN 페이지로 이동 -->
 <script>
