@@ -129,7 +129,7 @@ if(window.wcs) {
                             {navLinks.map(link => (<a key={link.name} href={link.href} className="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">{link.name}</a>))}
                             <div className="h-6 w-px bg-gray-700 mx-2"></div>
                             <div className="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
-                                <span className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">KO</span>
+                               <span onClick={() => sessionStorage.setItem('langSelected', '1')} className="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white cursor-pointer">KO</span>
                                 <a href="/en/" className="px-3 py-1 rounded-full text-xs font-bold text-gray-400 hover:text-white transition-all">EN</a>
                             </div>
                         </nav>
@@ -398,9 +398,10 @@ if(window.wcs) {
 
 <!-- 언어 자동 감지: 브라우저 언어가 한국어가 아니면 EN 페이지로 이동 -->
 <script>
-    (function() {
+ (function() {
     const isBot = /googlebot|bingbot|yandex|baiduspider/i.test(navigator.userAgent);
     if (isBot) return;
+    if (sessionStorage.getItem('langSelected')) return;
     const lang = navigator.language || navigator.userLanguage || '';
     if (!lang.startsWith('ko') && window.location.pathname === '/') {
         window.location.replace('/en/');
