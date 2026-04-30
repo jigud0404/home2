@@ -175,6 +175,9 @@ if(window.wcs) {
 
         const Services = () => {
             const [activeTab, setActiveTab] = React.useState(0);
+            const [displayTab, setDisplayTab] = React.useState(0);
+            const [isSwitching, setIsSwitching] = React.useState(false);
+            const switchTimer = React.useRef(null);
             const tabs = [
                 {
                     label: "게임 더빙", icon: "fa-gamepad",
@@ -202,6 +205,21 @@ if(window.wcs) {
                     type: "localization",
                 }
             ];
+            React.useEffect(() => {
+                return () => {
+                    if (switchTimer.current) window.clearTimeout(switchTimer.current);
+                };
+            }, []);
+            const handleTabClick = (index) => {
+                if (index === activeTab || isSwitching) return;
+                if (switchTimer.current) window.clearTimeout(switchTimer.current);
+                setActiveTab(index);
+                setIsSwitching(true);
+                switchTimer.current = window.setTimeout(() => {
+                    setDisplayTab(index);
+                    window.requestAnimationFrame(() => setIsSwitching(false));
+                }, 180);
+            };
             return (
                 <section id="services" className="py-24 bg-slate-950 relative">
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
@@ -212,7 +230,7 @@ if(window.wcs) {
                         <div className="flex justify-center mb-8">
                             <div className="flex gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5">
                                 {tabs.map((tab, i) => (
-                                    <button key={i} onClick={() => setActiveTab(i)}
+                                    <button key={i} onClick={() => handleTabClick(i)}
                                         className={"flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 " + (activeTab === i ? 'bg-cyan-500 text-white shadow-lg' : 'text-gray-400 hover:text-white')}>
                                         <i className={"fas " + tab.icon + " text-xs"}></i>{tab.label}
                                     </button>
@@ -220,38 +238,21 @@ if(window.wcs) {
                             </div>
                         </div>
 
-                        {activeTab === 0 && (
-                            <>
-                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                    {tabs[0].cards.map((s, i) => (
-                                        <div key={i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group">
-                                            <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
-                                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
-                                            <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
-                                            <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
+                        {tabs[displayTab].type === "cards" && (
+                            <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
+                                {tabs[displayTab].cards.map((s, i) => (
+                                    <div key={displayTab + "-" + i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group" style={{transitionDelay: (i * 45) + "ms"}}>
+                                        <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl " + (displayTab === 1 ? "text-amber-300 group-hover:text-amber-200" : "text-cyan-400 group-hover:text-cyan-300")}></i></div>
+                                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
+                                        <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
+                                        <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
+                                    </div>
+                                ))}
+                            </div>
                         )}
 
-                        {activeTab === 1 && (
-                            <>
-                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                    {tabs[1].cards.map((s, i) => (
-                                        <div key={i} className="bg-blue-950/30 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-blue-900/30 hover:border-blue-400/30 transition-all duration-300 group">
-                                            <div className="w-16 h-16 bg-blue-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-blue-900"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
-                                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{s.title}</h3>
-                                            <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
-                                            <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
-                        )}
-
-                        {activeTab === 2 && (
-                            <div className="max-w-3xl mx-auto">
+                        {tabs[displayTab].type === "localization" && (
+                            <div className={"max-w-3xl mx-auto transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                                 <div className="bg-slate-900/50 border border-white/5 rounded-2xl p-6">
                                     <div className="border border-white/10 rounded-xl p-5 mb-5">
                                         <p className="text-sm font-black text-cyan-400 uppercase tracking-widest mb-4 text-center">LOCALIZATION SERVICES</p>
@@ -266,7 +267,6 @@ if(window.wcs) {
                                             ))}
                                         </div>
                                     </div>
-                                    {/* 하단 — 서비스 + 문의 */}
                                     <div className="grid md:grid-cols-3 gap-4 items-stretch">
                                         <div className="md:col-span-2 bg-slate-950/40 border border-white/5 rounded-xl p-6">
                                             <ul className="space-y-3">
@@ -429,13 +429,9 @@ if(window.wcs) {
                             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">BLOG</span></h2>
                             <div className="flex items-center gap-3">
                                 <a href="/blog/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all mr-4">전체 글 보기 <i className="fas fa-arrow-right text-xs"></i></a>
-                                <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === 0 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
-                                    <i className="fas fa-chevron-left text-xs"></i>
-                                </button>
+                                <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === 0 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}><i className="fas fa-chevron-left text-xs"></i></button>
                                 <span className="text-xs text-gray-500 font-bold">{page + 1} / {totalPages}</span>
-                                <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === totalPages - 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
-                                    <i className="fas fa-chevron-right text-xs"></i>
-                                </button>
+                                <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === totalPages - 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}><i className="fas fa-chevron-right text-xs"></i></button>
                             </div>
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
