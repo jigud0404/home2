@@ -165,23 +165,47 @@ if(window.wcs) {
         );
 
         const Services = ({ t }) => {
-            const services = [
-                { title: t.s1Title, subtitle: t.s1Subtitle, items: t.s1List, icon: "fa-clipboard-list" },
-                { title: t.s2Title, subtitle: t.s2Subtitle, items: t.s2List, icon: "fa-microphone-lines" },
-                { title: t.s3Title, subtitle: t.s3Subtitle, items: t.s3List, icon: "fa-sliders" },
-                { title: t.s4Title, subtitle: t.s4Subtitle, items: t.s4List, icon: "fa-users" }
+            const [activeTab, setActiveTab] = React.useState(0);
+            const tabs = [
+                {
+                    label: "GAME", icon: "fa-gamepad",
+                    cards: [
+                        { title: t.s1Title, subtitle: t.s1Subtitle, items: t.s1List, icon: "fa-clipboard-list" },
+                        { title: t.s2Title, subtitle: t.s2Subtitle, items: t.s2List, icon: "fa-microphone-lines" },
+                        { title: t.s3Title, subtitle: t.s3Subtitle, items: t.s3List, icon: "fa-sliders" },
+                        { title: t.s4Title, subtitle: t.s4Subtitle, items: t.s4List, icon: "fa-users" }
+                    ]
+                },
+                {
+                    label: "VIDEO", icon: "fa-video",
+                    cards: [
+                        { title: "Casting", subtitle: "\"Finding the right voice for every piece of content\"", icon: "fa-clipboard-list", items: ["Voice talent matching tailored to each content genre and character", "A broad talent network optimized for a wide range of video genres", "Multifaceted review through live auditions and talent database samples", "Budget-conscious casting solutions tailored to your project"] },
+                        { title: "Adaptation & Direction", subtitle: "\"Dubbing shaped around the flow of the video\"", icon: "fa-microphone-lines", items: ["Script adaptation considering lip sync and video timing", "Professional direction aligned with each content tone and genre", "Efficient and systematic recording schedule management", "Support for both on-site and online recording attendance"] },
+                        { title: "Recording & Mixing", subtitle: "\"Sound optimized for video content\"", icon: "fa-sliders", items: ["A recording environment designed to minimize noise and maximize quality", "Video-optimized post-production and mastering", "Audio polishing tailored to project-specific requirements", "Systematic audio asset management and delivery"] },
+                        { title: "Supported Content", subtitle: "\"We cover a wide range of genres\"", icon: "fa-film", items: ["Animation, films, and dramas", "E-learning and corporate videos", "Documentaries and micro dramas", "YouTube content"] }
+                    ]
+                }
             ];
             const words = t.serviceHeader.split(' ');
             return (
                 <section id="services" className="py-24 bg-slate-950 relative">
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
                     <div className="container mx-auto px-6">
-                        <div className="text-center mb-20"><h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}</h2></div>
+                        <div className="text-center mb-16"><h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}</h2></div>
+                        <div className="flex justify-center mb-8">
+                            <div className="flex gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5">
+                                {tabs.map((tab, i) => (
+                                    <button key={i} onClick={() => setActiveTab(i)} className={"flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 " + (activeTab === i ? 'bg-cyan-500 text-white shadow-lg' : 'text-gray-400 hover:text-white')}>
+                                        <i className={"fas " + tab.icon + " text-xs"}></i>{tab.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {services.map((s, i) => (
-                                <div key={i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group fade-in-up" style={{animationDelay: (i * 0.1) + "s"}}>
-                                    <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
-                                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
+                            {tabs[activeTab].cards.map((s, i) => (
+                                <div key={i} className={(activeTab === 0 ? "bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30" : "bg-blue-950/30 hover:bg-blue-900/30 hover:border-blue-400/30") + " backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group fade-in-up"} style={{animationDelay: (i * 0.1) + "s"}}>
+                                    <div className={(activeTab === 0 ? "bg-cyan-950 border-cyan-900" : "bg-blue-950 border-blue-900") + " w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"}><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
+                                    <h3 className={(activeTab === 0 ? "group-hover:text-cyan-400" : "group-hover:text-blue-400") + " text-2xl font-bold text-white mb-2 transition-colors"}>{s.title}</h3>
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
                                     <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
                                 </div>
@@ -319,13 +343,9 @@ if(window.wcs) {
                             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">BLOG</span></h2>
                             <div className="flex items-center gap-3">
                                 <a href="/blog/en/" className="hidden md:inline-flex items-center gap-2 text-cyan-400 text-sm font-bold hover:gap-3 transition-all mr-4">View all posts <i className="fas fa-arrow-right text-xs"></i></a>
-                                <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === 0 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
-                                    <i className="fas fa-chevron-left text-xs"></i>
-                                </button>
+                                <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === 0 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}><i className="fas fa-chevron-left text-xs"></i></button>
                                 <span className="text-xs text-gray-500 font-bold">{page + 1} / {totalPages}</span>
-                                <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === totalPages - 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}>
-                                    <i className="fas fa-chevron-right text-xs"></i>
-                                </button>
+                                <button onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))} disabled={page === totalPages - 1} className={"w-9 h-9 rounded-full border flex items-center justify-center transition-all " + (page === totalPages - 1 ? 'border-white/10 text-gray-600 cursor-not-allowed' : 'border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10')}><i className="fas fa-chevron-right text-xs"></i></button>
                             </div>
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
