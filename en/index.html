@@ -166,6 +166,9 @@ if(window.wcs) {
 
         const Services = ({ t }) => {
             const [activeTab, setActiveTab] = React.useState(0);
+            const [displayTab, setDisplayTab] = React.useState(0);
+            const [isSwitching, setIsSwitching] = React.useState(false);
+            const switchTimer = React.useRef(null);
             const tabs = [
                 {
                     label: "GAME", icon: "fa-gamepad",
@@ -186,6 +189,21 @@ if(window.wcs) {
                     ]
                 }
             ];
+            React.useEffect(() => {
+                return () => {
+                    if (switchTimer.current) window.clearTimeout(switchTimer.current);
+                };
+            }, []);
+            const handleTabClick = (index) => {
+                if (index === activeTab || isSwitching) return;
+                if (switchTimer.current) window.clearTimeout(switchTimer.current);
+                setActiveTab(index);
+                setIsSwitching(true);
+                switchTimer.current = window.setTimeout(() => {
+                    setDisplayTab(index);
+                    window.requestAnimationFrame(() => setIsSwitching(false));
+                }, 180);
+            };
             const words = t.serviceHeader.split(' ');
             return (
                 <section id="services" className="py-24 bg-slate-950 relative">
@@ -195,17 +213,17 @@ if(window.wcs) {
                         <div className="flex justify-center mb-8">
                             <div className="flex gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5">
                                 {tabs.map((tab, i) => (
-                                    <button key={i} onClick={() => setActiveTab(i)} className={"flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 " + (activeTab === i ? 'bg-cyan-500 text-white shadow-lg' : 'text-gray-400 hover:text-white')}>
+                                    <button key={i} onClick={() => handleTabClick(i)} className={"flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 " + (activeTab === i ? 'bg-cyan-500 text-white shadow-lg' : 'text-gray-400 hover:text-white')}>
                                         <i className={"fas " + tab.icon + " text-xs"}></i>{tab.label}
                                     </button>
                                 ))}
                             </div>
                         </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {tabs[activeTab].cards.map((s, i) => (
-                                <div key={i} className={(activeTab === 0 ? "bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30" : "bg-blue-950/30 hover:bg-blue-900/30 hover:border-blue-400/30") + " backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group fade-in-up"} style={{animationDelay: (i * 0.1) + "s"}}>
-                                    <div className={(activeTab === 0 ? "bg-cyan-950 border-cyan-900" : "bg-blue-950 border-blue-900") + " w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"}><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
-                                    <h3 className={(activeTab === 0 ? "group-hover:text-cyan-400" : "group-hover:text-blue-400") + " text-2xl font-bold text-white mb-2 transition-colors"}>{s.title}</h3>
+                        <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
+                            {tabs[displayTab].cards.map((s, i) => (
+                                <div key={displayTab + "-" + i} className="bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30 backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group" style={{transitionDelay: (i * 45) + "ms"}}>
+                                    <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
+                                    <h3 className="group-hover:text-cyan-400 text-2xl font-bold text-white mb-2 transition-colors">{s.title}</h3>
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
                                     <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
                                 </div>
