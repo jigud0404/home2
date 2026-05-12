@@ -71,6 +71,10 @@ if(window.wcs) {
       .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .card-game { position: relative; overflow: hidden; }
+      .card-game::after { content: '\f11b'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
+      .card-video { position: relative; overflow: hidden; }
+      .card-video::after { content: '\f03d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased selection:bg-cyan-500 selection:text-white">
@@ -219,11 +223,28 @@ if(window.wcs) {
                                 ))}
                             </div>
                         </div>
+
+                        {/* Tab descriptions */}
+                        <div className={"text-center mb-10 transition-all duration-300 " + (isSwitching ? "opacity-0" : "opacity-100")}>
+                            {displayTab === 0 && (
+                                <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                    If game dubbing is your challenge,<br/><span className="text-cyan-400">Asrec</span>'s proven workflow and dedicated sound experts are here for you.
+                                </p>
+                            )}
+                            {displayTab === 1 && (
+                                <div>
+                                    <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                        From voice casting to final mixing — all in one place.<br/><span className="text-cyan-400">Asrec</span> manages every stage of your audio production.
+                                    </p>
+                                    <p className="text-gray-500 text-sm mt-3">(Supporting all video content: Commercials, Educational, Documentaries, Short-form, and more)</p>
+                                </div>
+                            )}
+                        </div>
+
                         <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                             {tabs[displayTab].cards.map((s, i) => (
-                                <div key={displayTab + "-" + i} className="bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30 backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group" style={{transitionDelay: (i * 45) + "ms"}}>
-                                    <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl " + (displayTab === 1 ? "text-violet-300 group-hover:text-violet-200" : "text-cyan-400 group-hover:text-cyan-300")}></i>
-</div>
+                                <div key={displayTab + "-" + i} className={"bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30 backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group " + (displayTab === 1 ? "card-video" : "card-game")} style={{transitionDelay: (i * 45) + "ms"}}>
+                                    <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
                                     <h3 className="group-hover:text-cyan-400 text-2xl font-bold text-white mb-2 transition-colors">{s.title}</h3>
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
                                     <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
@@ -354,6 +375,12 @@ if(window.wcs) {
             const [page, setPage] = React.useState(0);
             const posts = allPosts.slice(page * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE + ITEMS_PER_PAGE);
 
+            const thumbnails = {
+                "/blog/en/chinese-game-korean-vo/": "/blog/en/chinese-game-korean-vo/Chinesegame_1.png",
+                "/blog/en/korean-vo-fan-power/": "/blog/en/korean-vo-fan-power/image4.jpeg",
+                "/blog/en/korean-localization-insight/": "/blog/en/korean-localization-insight/image1.png",
+                "/blog/en/introducing-asrec/": "/ASREC_ControllRoom.PNG",
+            };
             return (
                 <section id="blog" className="py-24 bg-slate-950 relative">
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
@@ -369,17 +396,29 @@ if(window.wcs) {
                         </div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {posts.map((post, i) => (
-                                <a key={i} href={post.href} className="group bg-slate-900/50 border border-white/5 rounded-2xl p-7 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col gap-4" style={{animationDelay: (i * 0.1) + "s"}}>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-900 flex items-center justify-center shrink-0"><i className={"fas " + post.icon + " text-sm text-cyan-400"}></i></div>
-                                        <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
-                                        <span className="text-xs text-gray-500 ml-auto">{post.date}</span>
+                                <a key={i} href={post.href} className="group bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 fade-in-up flex flex-col" style={{animationDelay: (i * 0.1) + "s"}}>
+                                    {thumbnails[post.href] ? (
+                                        <div className="aspect-video relative overflow-hidden">
+                                            <img src={thumbnails[post.href]} alt={post.title} className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                                        </div>
+                                    ) : (
+                                        <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                                            <div className="absolute inset-0 opacity-20" style={{backgroundImage:"url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"}}></div>
+                                            <i className={"fas " + post.icon + " text-5xl text-cyan-500/40 relative z-10"}></i>
+                                        </div>
+                                    )}
+                                    <div className="p-6 flex flex-col gap-3 flex-1">
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
+                                            <span className="text-xs text-gray-500 ml-auto">{post.date}</span>
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
+                                            <p className="text-gray-400 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
+                                        </div>
+                                        <div className="flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all pt-2 border-t border-white/5"><span>Read more</span><i className="fas fa-arrow-right text-xs"></i></div>
                                     </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
-                                        <p className="text-gray-400 text-sm leading-relaxed" style={{display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden'}}>{post.desc}</p>
-                                    </div>
-                                    <div className="flex items-center text-cyan-400 text-sm font-bold gap-2 group-hover:gap-3 transition-all pt-2 border-t border-white/5"><span>Read more</span><i className="fas fa-arrow-right text-xs"></i></div>
                                 </a>
                             ))}
                         </div>
