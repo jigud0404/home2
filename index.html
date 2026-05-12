@@ -69,6 +69,10 @@ if(window.wcs) {
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .card-game { position: relative; overflow: hidden; }
+      .card-game::after { content: '\f11b'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
+      .card-video { position: relative; overflow: hidden; }
+      .card-video::after { content: '\f03d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased selection:bg-cyan-500 selection:text-white">
@@ -238,11 +242,33 @@ if(window.wcs) {
                             </div>
                         </div>
 
+                        {/* 탭 설명 */}
+                        <div className={"text-center mb-10 transition-all duration-300 " + (isSwitching ? "opacity-0" : "opacity-100")}>
+                            {displayTab === 0 && (
+                                <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                    게임 더빙이 고민이라면, 검증된 프로세스와 사운드 전문가가 있는<br/><span className="text-cyan-400">애즈렉</span>과 함께하세요.
+                                </p>
+                            )}
+                            {displayTab === 1 && (
+                                <div>
+                                    <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                        성우 섭외부터 최종 믹싱까지 단 한 곳에서.<br/><span className="text-cyan-400">애즈렉</span>이 영상 사운드의 모든 과정을 책임집니다.
+                                    </p>
+                                    <p className="text-gray-500 text-sm mt-3">(광고/교육/다큐멘터리/숏폼 등 모든 영상 콘텐츠 대응)</p>
+                                </div>
+                            )}
+                            {displayTab === 2 && (
+                                <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                    언어의 장벽을 허무는 정교한 로컬라이징.<br/>게임 구조를 이해하는 <span className="text-cyan-400">애즈렉</span>이 완벽한 현지화를 보장합니다.
+                                </p>
+                            )}
+                        </div>
+
                         {tabs[displayTab].type === "cards" && (
                             <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                                 {tabs[displayTab].cards.map((s, i) => (
-                                    <div key={displayTab + "-" + i} className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group" style={{transitionDelay: (i * 45) + "ms"}}>
-                                        <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl " + (displayTab === 1 ? "text-violet-300 group-hover:text-violet-200" : "text-cyan-400 group-hover:text-cyan-300")}></i></div>
+                                    <div key={displayTab + "-" + i} className={"bg-slate-900/50 backdrop-blur-sm border border-white/5 p-8 rounded-2xl hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300 group " + (displayTab === 1 ? "card-video" : "card-game")} style={{transitionDelay: (i * 45) + "ms"}}>
+                                        <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
                                         <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
                                         <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
                                         <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
