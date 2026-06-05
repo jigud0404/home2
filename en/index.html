@@ -71,10 +71,6 @@ if(window.wcs) {
       .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      .card-game { position: relative; overflow: hidden; }
-      .card-game::after { content: '\f11b'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
-      .card-video { position: relative; overflow: hidden; }
-      .card-video::after { content: '\f03d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: -8px; right: -4px; font-size: 7rem; color: rgba(6,182,212,0.06); pointer-events: none; line-height: 1; }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased selection:bg-cyan-500 selection:text-white">
@@ -194,9 +190,7 @@ if(window.wcs) {
                 }
             ];
             React.useEffect(() => {
-                return () => {
-                    if (switchTimer.current) window.clearTimeout(switchTimer.current);
-                };
+                return () => { if (switchTimer.current) window.clearTimeout(switchTimer.current); };
             }, []);
             const handleTabClick = (index) => {
                 if (index === activeTab || isSwitching) return;
@@ -210,9 +204,11 @@ if(window.wcs) {
             };
             const words = t.serviceHeader.split(' ');
             return (
-                <section id="services" className="py-24 bg-slate-950 relative">
+                <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
+                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('../video_dubbing_bg_pixel_art.png')" : "url('../game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : 0.35}}></div>
+                    <div className="absolute inset-0 z-0" style={{background: 'linear-gradient(to bottom, #020617 0%, transparent 30%, transparent 70%, #020617 100%)'}}></div>
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
-                    <div className="container mx-auto px-6">
+                    <div className="container mx-auto px-6 relative z-10">
                         <div className="text-center mb-16"><h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}</h2></div>
                         <div className="flex justify-center mb-8">
                             <div className="flex gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5">
@@ -223,8 +219,6 @@ if(window.wcs) {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Tab descriptions */}
                         <div className={"text-center mb-10 transition-all duration-300 " + (isSwitching ? "opacity-0" : "opacity-100")}>
                             {displayTab === 0 && (
                                 <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
@@ -240,10 +234,9 @@ if(window.wcs) {
                                 </div>
                             )}
                         </div>
-
                         <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                             {tabs[displayTab].cards.map((s, i) => (
-                                <div key={displayTab + "-" + i} className={"bg-slate-900/50 hover:bg-slate-800/50 hover:border-cyan-500/30 backdrop-blur-sm border border-white/5 p-8 rounded-2xl transition-all duration-300 group " + (displayTab === 1 ? "card-video" : "card-game")} style={{transitionDelay: (i * 45) + "ms"}}>
+                                <div key={displayTab + "-" + i} className={"backdrop-blur-md border-2 border-white/20 p-8 rounded-2xl hover:border-white/40 transition-all duration-300 group " + (displayTab === 1 ? "bg-slate-900" : "bg-slate-900/80")} style={{transitionDelay: (i * 45) + "ms"}}>
                                     <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
                                     <h3 className="group-hover:text-cyan-400 text-2xl font-bold text-white mb-2 transition-colors">{s.title}</h3>
                                     <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
@@ -374,7 +367,6 @@ if(window.wcs) {
             const totalPages = Math.ceil(allPosts.length / ITEMS_PER_PAGE);
             const [page, setPage] = React.useState(0);
             const posts = allPosts.slice(page * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE + ITEMS_PER_PAGE);
-
             const thumbnails = {
                 "/blog/en/chinese-game-korean-vo/": "/blog/en/chinese-game-korean-vo/Chinesegame_1.png",
                 "/blog/en/korean-vo-fan-power/": "/blog/en/korean-vo-fan-power/image4.jpeg",
