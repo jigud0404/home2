@@ -195,7 +195,7 @@ if(window.wcs) {
                     ]
                 },
                 {
-                    label: "비디오 더빙", icon: "fa-video",
+                    label: "영상 녹음", icon: "fa-video",
                     type: "cards",
                     cards: [
                         { title: "캐스팅", subtitle: "\"콘텐츠에 맞는 목소리를 찾는 것부터\"", icon: "fa-clipboard-list", items: ["콘텐츠 장르와 캐릭터에 맞는 성우 매칭", "다양한 장르에 최적화된 성우 인프라 보유", "라이브 오디션, DB 샘플을 통한 다각도 검토", "예산 맞춤형 캐스팅 솔루션"] },
@@ -226,7 +226,7 @@ if(window.wcs) {
             };
             return (
                 <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
-                    <div className="absolute inset-0 z-0" style={{backgroundImage: "url('game_localization_bg_pixel_art.png')", backgroundSize: 'cover', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: 0.35}}></div>
+                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('video_dubbing_bg_pixel_art.png')" : "url('game_localization_bg_pixel_art.png')", backgroundSize: 'cover', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: 0.35}}></div>
                     <div className="absolute inset-0 z-0" style={{background: 'linear-gradient(to bottom, #020617 0%, transparent 30%, transparent 70%, #020617 100%)'}}></div>
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
                     <div className="container mx-auto px-6 relative z-10">
