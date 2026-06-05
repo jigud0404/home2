@@ -226,7 +226,7 @@ if(window.wcs) {
             };
             return (
                 <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
-                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('video_dubbing_bg_pixel_art.png')" : "url('game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: 0.35}}></div>
+                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('video_dubbing_bg_pixel_art.png')" : "url('game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : 0.35}}></div>
                     <div className="absolute inset-0 z-0" style={{background: 'linear-gradient(to bottom, #020617 0%, transparent 30%, transparent 70%, #020617 100%)'}}></div>
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
                     <div className="container mx-auto px-6 relative z-10">
@@ -269,7 +269,7 @@ if(window.wcs) {
                         {tabs[displayTab].type === "cards" && (
                             <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                                 {tabs[displayTab].cards.map((s, i) => (
-                                    <div key={displayTab + "-" + i} className={"bg-slate-900/80 backdrop-blur-md border-2 border-white/20 p-8 rounded-2xl hover:bg-slate-800/90 hover:border-white/40 transition-all duration-300 group "} style={{transitionDelay: (i * 45) + "ms"}}>
+                                    <div key={displayTab + "-" + i} className={"backdrop-blur-md border-2 border-white/20 p-8 rounded-2xl hover:border-white/40 transition-all duration-300 group " + (displayTab === 1 ? "bg-slate-900" : "bg-slate-900/80")} style={{transitionDelay: (i * 45) + "ms"}}>
                                         <div className="w-16 h-16 bg-cyan-950 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-cyan-900"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
                                         <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">{s.title}</h3>
                                         <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
