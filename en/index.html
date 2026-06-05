@@ -274,7 +274,9 @@ if(window.wcs) {
             const words = t.photoHeader.split(' ');
             const images = [{ src: "../ASREC_ControllRoom.PNG", label: "Control Room" }, { src: "../ASREC_RecordingRoom.PNG", label: "Recording Room" }, { src: "../ASREC_Lounge.PNG", label: "Lounge" }];
             return (
-                <section id="studio" className="py-24 bg-slate-950">
+                <section id="studio" className="py-24 bg-slate-950 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent z-10"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent z-10"></div>
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16"><h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}</h2></div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
@@ -375,7 +377,8 @@ if(window.wcs) {
             };
             return (
                 <section id="blog" className="py-24 bg-slate-950 relative">
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent"></div>
                     <div className="container mx-auto px-6">
                         <div className="flex items-center justify-between mb-16">
                             <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">BLOG</span></h2>
