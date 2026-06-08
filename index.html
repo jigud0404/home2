@@ -205,6 +205,10 @@ if(window.wcs) {
                     ]
                 },
                 {
+                    label: "오디오북 제작", icon: "fa-headphones",
+                    type: "audiobook",
+                },
+                {
                     label: "게임 현지화", icon: "fa-globe",
                     type: "localization",
                 }
@@ -226,7 +230,7 @@ if(window.wcs) {
             };
             return (
                 <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
-                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('video_dubbing_bg_pixel_art.png')" : "url('game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : 0.35}}></div>
+                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('video_dubbing_bg_pixel_art.png')" : displayTab === 2 ? "url('pixel_art_Audiobook.png')" : "url('game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : displayTab === 2 ? 0.35 : 0.35}}></div>
                     <div className="absolute inset-0 z-0" style={{background: 'linear-gradient(to bottom, #020617 0%, transparent 30%, transparent 70%, #020617 100%)'}}></div>
                     <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
                     <div className="container mx-auto px-6 relative z-10">
@@ -260,6 +264,11 @@ if(window.wcs) {
                             )}
                             {displayTab === 2 && (
                                 <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
+                                    책에 목소리를 담고 싶은 분들을 위한 오디오북 제작 서비스.<br/>단순 낭독이 아닌 <span className="text-cyan-400">몰입감 있는 오디오북</span>을 만듭니다.
+                                </p>
+                            )}
+                            {displayTab === 3 && (
+                                <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
                                     언어의 장벽을 허무는 정교한 로컬라이징.<br/>게임 구조를 이해하는 <span className="text-cyan-400">애즈렉</span>이 완벽한 현지화를 보장합니다.
                                 </p>
                             )}
@@ -275,6 +284,74 @@ if(window.wcs) {
                                         <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
                                     </div>
                                 ))}
+                            </div>
+                        )}
+
+                        {tabs[displayTab].type === "audiobook" && (
+                            <div className={"max-w-4xl mx-auto transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
+                                {/* 타겟 배지 */}
+                                <div className="flex flex-wrap gap-2 justify-center mb-8">
+                                    {["출판 작가", "자비출판 · 독립출판", "에세이 · 자기계발 · 인문", "홍보용 오디오 콘텐츠"].map((tag, i) => (
+                                        <span key={i} className="px-4 py-1.5 rounded-full text-sm font-bold" style={{background: 'rgba(6,182,212,0.12)', color: '#22d3ee', border: '1px solid rgba(6,182,212,0.25)'}}>{tag}</span>
+                                    ))}
+                                </div>
+
+                                {/* 메인 2단 */}
+                                <div className="grid md:grid-cols-2 gap-5 mb-5">
+                                    {/* 제작 범위 */}
+                                    <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-7">
+                                        <p className="text-xs font-bold text-cyan-500 uppercase tracking-widest mb-5">제작 범위</p>
+                                        <div className="flex flex-col gap-3.5">
+                                            {[
+                                                { icon: "fa-microphone", label: "성우 녹음" },
+                                                { icon: "fa-building", label: "전문 스튜디오 레코딩" },
+                                                { icon: "fa-scissors", label: "편집 · 노이즈 제거" },
+                                                { icon: "fa-sliders", label: "믹싱 · 마스터링" },
+                                                { icon: "fa-music", label: "BGM 및 효과음 제작" },
+                                                { icon: "fa-shield-halved", label: "QA 검수" },
+                                                { icon: "fa-file-export", label: "최종 납품 (MP3 / WAV)" },
+                                            ].map((item, i) => (
+                                                <div key={i} className="flex items-center gap-3">
+                                                    <i className={"fas " + item.icon + " text-cyan-400 w-4 text-center"}></i>
+                                                    <span className="text-gray-300 text-sm">{item.label}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* 제작 방식 */}
+                                    <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-7">
+                                        <p className="text-xs font-bold text-cyan-500 uppercase tracking-widest mb-5">제작 방식</p>
+                                        <div className="flex flex-col">
+                                            {[
+                                                "글자 수 또는 단어 수 전달",
+                                                "러닝타임 및 견적 산정",
+                                                "성우 캐스팅 및 대본 변환",
+                                                "본 녹음 진행",
+                                                "편집 및 최종 납품",
+                                            ].map((step, i, arr) => (
+                                                <div key={i} className="flex gap-4 items-flex-start">
+                                                    <div className="flex flex-col items-center flex-shrink-0">
+                                                        <div className="w-7 h-7 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xs font-bold flex-shrink-0">{i + 1}</div>
+                                                        {i < arr.length - 1 && <div className="w-px flex-1 bg-white/10 my-1" style={{minHeight: '20px'}}></div>}
+                                                    </div>
+                                                    <p className="text-gray-300 text-sm pt-1 pb-4">{step}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* CTA 바 */}
+                                <div className="bg-slate-900/60 border border-cyan-500/20 rounded-2xl px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                                    <div>
+                                        <p className="text-white font-bold text-lg mb-1">글로 담은 마음이, 목소리로 전해질 수 있도록.</p>
+                                        <p className="text-gray-400 text-sm">오디오북 제작, 지금 애즈렉에 맡겨보세요.</p>
+                                    </div>
+                                    <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-400 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] text-sm whitespace-nowrap">
+                                        <span>문의하기</span><i className="fas fa-chevron-right text-xs"></i>
+                                    </a>
+                                </div>
                             </div>
                         )}
 
