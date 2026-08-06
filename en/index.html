@@ -93,6 +93,7 @@ if(window.wcs) {
                 heroContactBtn: "Start a Project",
                 serviceHeader: "MAIN SERVICES",
                 s1Title: "Casting", s1Subtitle: "\"Perfecting Characters Through Strategic Casting\"", s1List: ["Proven infrastructure of Game-Specialized talent", "Narrative-Driven Character Matching", "Multifaceted Casting Review via DB samples and Live auditions", "Strategic casting solutions tailored to your budget"],
+                sLocTitle: "Text Localization", sLocSubtitle: "\"Translating Context and Culture to Preserve Core Immersion\"", sLocList: ["Engaging game translation that respects original intent while enhancing gameplay", "Tailored culturalization strategy optimized for Korean market nuances", "High-precision translation with strict lore and terminology consistency", "High-quality localization delivered directly by translators who are passionate gamers"],
                 s2Title: "Adaptation & Direction", s2Subtitle: "\"Dubbing Solutions That Go Beyond Text To Add Life\"", s2List: ["Colloquial adaptation to enhance VO quality", "Genre-specific direction to increase overall perfection", "Efficient and systematic recording schedule management", "Support for both on-site and online attendance"],
                 s3Title: "Recording & Mixing", s3Subtitle: "\"Sound That Completes Immersion\"", s3List: ["A recording environment for minimizing noise and maximizing quality", "Professional post-production and mastering for seamless sound", "Audio polishing tailored to specific project requirements", "Systematic audio asset management considering project scale"],
                 s4Title: "Localization Experts", s4Subtitle: "\"Professionals who understand the language of games\"", s4List: ["Experienced VO Directors", "Game Localization Specialized Sound PMs", "Game Specialized Sound Engineers", "Game-Specific Translation and Adaptation Writers"],
@@ -183,6 +184,7 @@ if(window.wcs) {
                     label: "GAME", icon: "fa-gamepad",
                     cards: [
                         { title: t.s1Title, subtitle: t.s1Subtitle, items: t.s1List, icon: "fa-clipboard-list" },
+                        { title: t.sLocTitle, subtitle: t.sLocSubtitle, items: t.sLocList, icon: "fa-language" },
                         { title: t.s2Title, subtitle: t.s2Subtitle, items: t.s2List, icon: "fa-microphone-lines" },
                         { title: t.s3Title, subtitle: t.s3Subtitle, items: t.s3List, icon: "fa-sliders" },
                         { title: t.s4Title, subtitle: t.s4Subtitle, items: t.s4List, icon: "fa-users" }
@@ -212,6 +214,7 @@ if(window.wcs) {
                 }, 180);
             };
             const words = t.serviceHeader.split(' ');
+            const gridColsClass = tabs[displayTab].cards.length >= 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
             return (
                 <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
                     <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('../video_dubbing_bg_pixel_art.png')" : "url('../game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : 0.35}}></div>
@@ -243,7 +246,7 @@ if(window.wcs) {
                                 </div>
                             )}
                         </div>
-                        <div className={"grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
+                        <div className={"grid md:grid-cols-2 " + gridColsClass + " gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
                             {tabs[displayTab].cards.map((s, i) => (
                                 <div key={displayTab + "-" + i} className={"backdrop-blur-md border-2 border-white/20 p-8 rounded-2xl hover:border-white/40 transition-all duration-300 group " + (displayTab === 1 ? "bg-slate-900" : "bg-slate-900/80")} style={{transitionDelay: (i * 45) + "ms"}}>
                                     <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
