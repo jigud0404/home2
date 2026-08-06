@@ -217,10 +217,7 @@ if(window.wcs) {
                     label: "오디오북 제작", icon: "fa-headphones",
                     type: "audiobook",
                 },
-                {
-                    label: "게임 현지화", icon: "fa-globe",
-                    type: "localization",
-                }
+               
             ];
             React.useEffect(() => {
                 return () => {
@@ -364,75 +361,7 @@ if(window.wcs) {
                             </div>
                         )}
 
-                        {tabs[displayTab].type === "localization" && (
-                            <div className={"max-w-6xl mx-auto transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
-                                <div className="relative overflow-hidden rounded-lg border border-cyan-400/25 bg-white/[0.06] shadow-2xl shadow-cyan-950/30">
-                                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-400 via-emerald-300 to-amber-300"></div>
-                                    <div className="grid lg:grid-cols-[0.95fr_1.35fr] gap-0">
-                                        <div className="p-7 md:p-9 bg-slate-950/55 border-b lg:border-b-0 lg:border-r border-white/10">
-                                            <p className="text-xs font-black text-cyan-300 uppercase tracking-widest mb-4">GAME LOCALIZATION</p>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-5">
-                                                번역부터 보이스 제작까지,<br />
-                                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-emerald-200 to-amber-200">게임에 맞춘 현지화</span>
-                                            </h3>
-                                            <p className="text-gray-300 text-base leading-relaxed mb-7">
-                                                캐릭터, 세계관, 스토리를 함께 검토해 단순 번역이 아닌 플레이 경험에 맞는 자연스러운 번역과 보이스 파이프라인을 설계합니다.
-                                            </p>
-                                            <div className="grid grid-cols-3 gap-3">
-                                                {[
-                                                    { label: "SCRIPT", icon: "fa-file-lines" },
-                                                    { label: "LQA", icon: "fa-clipboard-check" },
-                                                    { label: "VOICE", icon: "fa-microphone-lines" }
-                                                ].map((item, i) => (
-                                                    <div key={i} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-4 text-center">
-                                                        <i className={"fas " + item.icon + " text-cyan-300 mb-2"}></i>
-                                                        <p className="text-[11px] font-black text-gray-200 tracking-widest">{item.label}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div className="p-7 md:p-9">
-                                            <div className="grid md:grid-cols-2 gap-4 mb-6">
-                                                {[
-                                                    { from: "한국어", to: "영어", code: "KO -> EN" },
-                                                    { from: "한국어", to: "일본어", code: "KO -> JP" }
-                                                ].map((pair, i) => (
-                                                    <div key={i} className="group rounded-lg border border-white/10 bg-slate-950/45 p-5 hover:border-cyan-300/50 hover:bg-slate-900/70 transition-all">
-                                                        <div className="flex items-center justify-between gap-3 mb-5">
-                                                            <span className="text-xs font-black text-cyan-300 tracking-widest">{pair.code}</span>
-                                                            <i className="fas fa-language text-xl text-white/35 group-hover:text-cyan-300 transition-colors"></i>
-                                                        </div>
-                                                        <div className="flex items-center gap-3 mb-4">
-                                                            <span className="px-4 py-2 rounded-lg bg-white text-slate-950 text-sm font-black">{pair.from}</span>
-                                                            <i className="fas fa-arrow-right text-emerald-300"></i>
-                                                            <span className="px-4 py-2 rounded-lg bg-cyan-400 text-slate-950 text-sm font-black">{pair.to}</span>
-                                                        </div>
-                                                        <p className="text-gray-300 text-sm leading-relaxed">{pair.desc}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="grid md:grid-cols-4 gap-3 mb-6">
-                                                {[
-                                                    { title: "용어집 구축", icon: "fa-book-open", color: "text-cyan-300" },
-                                                    { title: "톤앤매너 가이드", icon: "fa-pen-nib", color: "text-emerald-300" },
-                                                    { title: "현지 스튜디오 연계", icon: "fa-globe", color: "text-amber-300" },
-                                                    { title: "인게임 LQA", icon: "fa-magnifying-glass-chart", color: "text-cyan-300" }
-                                                ].map((item, i) => (
-                                                    <div key={i} className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
-                                                        <i className={"fas " + item.icon + " " + item.color + " mb-3"}></i>
-                                                        <p className="text-sm font-black text-white leading-snug">{item.title}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="rounded-lg border border-cyan-300/25 bg-cyan-950/35 p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                                <p className="text-gray-200 text-sm leading-relaxed">
-                                                    번역, 각색, 성우 캐스팅, 녹음·믹싱까지 한 흐름으로 관리해 납품 일정에 맞춰 납품합니다.
-                                                </p>
-                                                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-cyan-400 text-slate-950 font-black rounded-lg hover:bg-white transition-all text-sm whitespace-nowrap">
-                                                    <span>현지화 문의</span><i className="fas fa-chevron-right text-xs"></i>
+                       
                                                 </a>
                                             </div>
                                         </div>
