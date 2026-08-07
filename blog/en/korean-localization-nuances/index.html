@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" hreflang="en" href="https://www.asrec.co.kr/blog/en/korean-localization-nuances/" />
+    <title>5 Key Nuances of Korean You Need to Know When Localizing Global Games | Asrec Studio Blog</title>
+    <meta name="description" content="Five practical Korean localization nuances for global games, from honorific systems and particles to UI line breaks, passive voice, and gender variables.">
+    <link rel="icon" href="https://jigud0404.github.io/home2/ASREC_FAVICON.ico" type="image/x-icon" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="5 Key Nuances of Korean You Need to Know When Localizing Global Games | Asrec Studio">
+    <meta property="og:description" content="Five practical Korean localization nuances for global games, from honorific systems and particles to UI line breaks, passive voice, and gender variables.">
+    <meta property="og:url" content="https://www.asrec.co.kr/blog/en/korean-localization-nuances/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'] }, colors: { cyan: { 400: '#22d3ee', 500: '#06b6d4', 900: '#164e63' }, slate: { 950: '#020617' } } } }
+      }
+    </script>
+    <style>
+      ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#020617}::-webkit-scrollbar-thumb{background:#334155;border-radius:5px}::-webkit-scrollbar-thumb:hover{background:#22d3ee}html{scroll-behavior:smooth}
+      .prose h2{font-size:1.5rem;font-weight:900;color:#fff;margin-top:3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+      .prose h3{font-size:1.15rem;font-weight:700;color:#67e8f9;margin-top:2rem;margin-bottom:0.75rem}
+      .prose p{color:#f1f5f9;font-size:1.05rem;line-height:2.0;margin-bottom:1.4rem}
+      .prose ul{list-style:none;padding:0;margin-bottom:1.5rem}
+      .prose ul li{color:#e2e8f0;font-size:1.05rem;padding-left:1.25rem;position:relative;margin-bottom:0.65rem;line-height:1.8}
+      .prose ul li::before{content:'';position:absolute;left:0;top:0.72rem;width:6px;height:6px;background:#06b6d4;border-radius:50%}
+      .prose strong{color:#22d3ee;font-weight:800}
+      .prose em{color:#e2e8f0;font-style:italic}
+      .prose hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:3rem 0}
+      .prose a{color:#22d3ee;text-decoration:underline;text-underline-offset:3px}
+      .note-block{border-left:3px solid #06b6d4;padding:0.9rem 1.25rem;margin:1.5rem 0;background:rgba(6,182,212,0.05);border-radius:0 10px 10px 0}
+      .note-block p{color:#cbd5e1;font-size:1rem;line-height:1.85;margin-bottom:0}
+      .example-block{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem 1.5rem;margin:1.25rem 0 1.75rem}
+      .example-block h4{color:#fff;font-size:1rem;font-weight:800;margin-bottom:0.8rem}
+      .example-block p{font-size:0.98rem;line-height:1.75;margin-bottom:0.65rem;color:#cbd5e1}
+      .example-block p:last-child{margin-bottom:0}
+      .example-block .label{color:#67e8f9;font-weight:800}
+      .source-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem 1.5rem;margin-top:3rem}
+      .source-box p{color:#64748b;font-size:0.85rem;line-height:1.7;margin-bottom:0.5rem}
+      .source-box p:last-child{margin-bottom:0}
+      .fade-in-up{animation:fadeInUp 0.6s ease-out forwards;opacity:0;transform:translateY(20px)}
+      @keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}
+    </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-md py-4 border-b border-white/10">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="../../../en/" class="flex items-center">
+                <img src="../../../ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain" />
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="../../../en/#services" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Services</a>
+                <a href="../../../en/#studio" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Studio</a>
+                <a href="/blog/en/" class="text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Blog</a>
+                <a href="../../../en/#contact" class="text-gray-300 hover:text-cyan-400 text-sm font-bold uppercase tracking-wider transition-colors">Contact</a>
+                <div class="h-6 w-px bg-gray-700"></div>
+                <div class="flex items-center gap-1 bg-slate-900/50 rounded-full p-1 border border-white/10">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500 text-white">EN</span>
+                </div>
+            </nav>
+            <button class="md:hidden text-white" onclick="this.closest('header').querySelector('.mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="mobile-menu hidden md:hidden bg-slate-900 border-b border-white/10 w-full">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="../../../en/#services" class="text-xl font-bold text-white hover:text-cyan-400">Services</a>
+                <a href="../../../en/#studio" class="text-xl font-bold text-white hover:text-cyan-400">Studio</a>
+                <a href="/blog/en/" class="text-xl font-bold text-cyan-400">Blog</a>
+                <a href="../../../en/#contact" class="text-xl font-bold text-white hover:text-cyan-400">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-950/10 to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 max-w-3xl">
+            <div class="fade-in-up">
+                <a href="/blog/en/" class="inline-flex items-center gap-2 text-cyan-400 text-sm font-bold mb-8 hover:gap-3 transition-all">
+                    <i class="fas fa-arrow-left text-xs"></i> Back to Blog
+                </a>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">Game Localization</span>
+                    <span class="text-xs text-gray-500">Aug 7, 2026</span>
+                    <span class="text-xs text-gray-500">by Asrec Studio</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+                    5 Key Nuances of Korean<br/>You Need to Know When<br/>Localizing Global Games
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    To successfully launch a game in the Korean market, go beyond word-for-word translation and handle grammatical, cultural, and UI-specific nuances with care.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-6 max-w-3xl">
+        <div class="h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
+    </div>
+
+    <article class="py-12">
+        <div class="container mx-auto px-6 max-w-3xl prose fade-in-up">
+
+            <p>Western languages and Korean differ significantly in sentence structure, emotional resonance, and interaction systems. This post covers common challenges and flexible solutions for game developers and localization PMs managing Korean localization projects.</p>
+
+            <div class="note-block">
+                <p><strong>Note:</strong> The strategies presented below serve as practical guidelines rather than absolute rules. The ultimate standard in localization is always <em>context</em>.</p>
+            </div>
+
+            <h2>1. Honorific Systems That Define Relationships</h2>
+
+            <p>In languages like English, dialogue often relies on simple pronouns such as "you" or "I." In Korean, however, sentence endings and word choices change completely depending on the speaker and listener's relative status, age, intimacy, and hierarchy.</p>
+
+            <p><strong>What Localization PMs Often Ask:</strong> "Why do we need to provide character relationship matrices or tone-of-voice guidelines that aren't in the original source text?"</p>
+
+            <p><strong>Practical Solution:</strong> In Korean, the choice between honorifics and casual speech defines a character's core personality. To prevent a character who speaks politely in Chapter 1 from suddenly switching to rude casual speech in Chapter 3, set up a <strong>Character Tone &amp; Relationship Guide</strong> before translation begins.</p>
+
+            <h3>Translation Examples by Scenario</h3>
+
+            <div class="example-block">
+                <h4>Example 1: Hierarchy and Relationship</h4>
+                <p><span class="label">Source:</span> "Take this and follow me."</p>
+                <p><span class="label">Literal Translation:</span> "이것을 들고 날 따라오세요."</p>
+                <p><span class="label">Superior to Subordinate:</span> "이거 들고 따라와."</p>
+                <p><span class="label">Subordinate to Superior:</span> "이걸 들고 절 따라오시죠."</p>
+            </div>
+
+            <div class="example-block">
+                <h4>Example 2: The Same English Line, Different Korean Voices</h4>
+                <p><span class="label">Source:</span> "I knew I could count on you."</p>
+                <p><span class="label">Literal Translation:</span> "너라면 해낼 줄 알았어."</p>
+                <p><span class="label">Superior to Subordinate:</span> "자네라면 해낼 줄 알았지."</p>
+                <p><span class="label">Subordinate to Superior:</span> "대장님이라면 해내실 줄 알았습니다."</p>
+            </div>
+
+            <p>While "I knew I could count on you" remains identical in English, it splits into entirely different Korean sentences depending on who is speaking. Establishing the direction of honorifics based on character hierarchies, rather than simply translating words, is a core factor that determines player immersion in game localization.</p>
+
+            <h2>2. Variable Inserters and Korean Postposition Friction</h2>
+
+            <p>Korean is an agglutinative language where grammatical postpositions such as I/Ga, Eul/Reul, Eun/Neun, and Gwa/Wa change based on whether the preceding noun ends in a consonant or a vowel. This structural requirement creates direct friction with dynamic variables like <strong>{item_name}</strong> used during game development.</p>
+
+            <p><strong>What Localization PMs Often Ask:</strong> "Why do you recommend custom code logic or rephrasing sentence structures instead of using parenthetical markers like {item_name}(eul/reul)?"</p>
+
+            <p><strong>Practical Solution:</strong> Parenthetical forms like "칼을(를) 획득했습니다" communicate meaning clearly enough and are widely accepted. However, to deliver a seamless, polished UI and higher readability for players, you can implement dynamic postposition code such as <strong>{item:object}</strong> or reorder sentence structures to bypass postpositions altogether.</p>
+
+            <h3>Variable Handling Examples</h3>
+
+            <div class="example-block">
+                <h4>Example 1: Item Acquisition Message</h4>
+                <p><span class="label">Source:</span> "Obtained {item_name}!"</p>
+                <p><span class="label">Standard Approach:</span> "{item_name}을(를) 획득했습니다!"</p>
+                <p><span class="label">Code-Free Rephrasing:</span> "획득한 아이템: {item_name}"</p>
+                <p><span class="label">Dynamic Code Option:</span> "{item_name:을/를} 획득했습니다!" -> "검을 획득했습니다!" / "방패를 획득했습니다!"</p>
+            </div>
+
+            <div class="example-block">
+                <h4>Example 2: Party Combination Notification</h4>
+                <p><span class="label">Source:</span> "{player_name} joined your party."</p>
+                <p><span class="label">Standard Approach:</span> "{player_name}이(가) 파티에 합류했습니다."</p>
+                <p><span class="label">Code-Free Rephrasing:</span> "파티 합류: {player_name}"</p>
+                <p><span class="label">Dynamic Code Option:</span> "{player_name:이/가} 파티에 합류했습니다!" -> "철수가 파티에 합류했습니다!" / "민호가 파티에 합류했습니다!"</p>
+            </div>
+
+            <h2>3. Line Breaks and UI Readability in LQA</h2>
+
+            <p>Because Korean characters are built as syllabic blocks, using line-break algorithms calibrated for Latin alphabets often causes awkward text wrapping. Words can be abruptly split in half, or postpositions can be isolated on the next line.</p>
+
+            <p><strong>What Localization PMs Often Ask:</strong> "The text looked fine in the CAT tool, so why do we need text adjustments during In-Game LQA?"</p>
+
+            <p><strong>Practical Solution:</strong> In Korean, isolating a single postposition on a new line or breaking a word awkwardly ruins UI readability. Since CAT tools cannot replicate how text renders on screen, conducting an In-Game LQA pass allows teams to audit line breaks and subtitle pacing directly on the target build.</p>
+
+            <h3>In-Game LQA Visual Examples</h3>
+
+            <div class="example-block">
+                <h4>Example 1: Isolated Postpositions</h4>
+                <p><span class="label">Engine Auto-Wrapping:</span><br>"전설의 검을 얻기 위해 당신은 용의 둥지<br>로 떠나야 합니다."</p>
+                <p>The single postposition "로" drops to the next line, degrading readability.</p>
+                <p><span class="label">LQA Adjusted:</span><br>"전설의 검을 얻기 위해<br>당신은 용의 둥지로 떠나야 합니다."</p>
+            </div>
+
+            <div class="example-block">
+                <h4>Example 2: Mid-Word Ruptures</h4>
+                <p><span class="label">Engine Auto-Wrapping:</span><br>"강력한 마법 공격으로 적의 방어<br>력을 무력화하세요."</p>
+                <p>The noun "방어력" is awkwardly split into "방어" and "력을."</p>
+                <p><span class="label">LQA Adjusted:</span><br>"강력한 마법 공격으로<br>적의 방어력을 무력화하세요."</p>
+            </div>
+
+            <h2>4. Reinterpreting Passive Voice and Plural Forms for Korean</h2>
+
+            <p>English scripts frequently rely on inanimate subjects, passive voice constructions, and explicit singular/plural distinctions. When translated into Korean, rephrasing these into active voice and context-driven singular forms often yields far more natural dialogue.</p>
+
+            <p><strong>What Localization PMs Often Ask:</strong> "Do you usually convert passive sentences or plural expressions into active or singular forms in Korean?"</p>
+
+            <p><strong>Practical Solution:</strong> Changing inanimate subjects and passive phrasing into active voice makes dialogue feel direct and conversational. However, if the scene intentionally emphasizes helplessness or a specific dramatic mood, retaining the passive structure can better convey that exact nuance.</p>
+
+            <h3>Contextual Passive vs. Active Examples</h3>
+
+            <div class="example-block">
+                <h4>Example 1: Lore &amp; Background Dialogue</h4>
+                <p><span class="label">Source:</span> "This artifact was created by an ancient mage."</p>
+                <p><span class="label">Literal Passive Translation:</span> "이 유물은 고대 마법사에 의해 만들어진 유물입니다."</p>
+                <p><span class="label">Optional Translation:</span> "고대 마법사가 제련한 유물입니다."</p>
+            </div>
+
+            <div class="example-block">
+                <h4>Example 2: Combat Scene Dialogue</h4>
+                <p><span class="label">Source:</span> "Check the chests and eliminate the enemies around them."</p>
+                <p><span class="label">Literal Plural Translation:</span> "상자들을 확인하고 그 주변의 적들을 처치하세요."</p>
+                <p><span class="label">Optional Translation:</span> "상자를 수색하고 주변의 적을 처치하세요."</p>
+            </div>
+
+            <h2>5. Handling Gender Variables and Personal Pronouns</h2>
+
+            <p>English gendered pronouns like he, she, they, him, and her rarely have smooth, one-to-one equivalents in natural spoken Korean. In Korean dialogue and game scripts, heavy use of literary third-person pronouns like "그" or "그녀" often feels translation-heavy and unnatural.</p>
+
+            <p><strong>What Localization PMs Often Ask:</strong> "How do you handle lines that contain dynamic gender variables or gendered pronouns in Korean?"</p>
+
+            <p><strong>Practical Solution:</strong> Rather than forcing direct equivalents of "그/그녀," natural Korean localization relies on using character titles, character names, or simply omitting the subject altogether when the context is clear. This approach can be tailored depending on the game's overall narrative tone and setting.</p>
+
+            <h3>Contextual Pronoun Examples</h3>
+
+            <div class="example-block">
+                <h4>Example 1: Messenger Dialogue</h4>
+                <p><span class="label">Source:</span> "Tell him/her that I am waiting."</p>
+                <p><span class="label">Standard Translation:</span> "그/그녀에게 내가 기다리고 있다고 전해라."</p>
+                <p><span class="label">Option A:</span> "내가 기다리고 있다고 전해라."</p>
+                <p><span class="label">Option B:</span> "[Character Name/Title]에게 내가 기다린다고 전해라."</p>
+            </div>
+
+            <div class="example-block">
+                <h4>Example 2: Mentioning a Companion or Hero</h4>
+                <p><span class="label">Source:</span> "Is she the one who saved the village?"</p>
+                <p><span class="label">Standard Translation:</span> "그녀가 마을을 구한 사람인가요?"</p>
+                <p><span class="label">Contextual Option:</span> "저분이 마을을 구해 주신 분인가요?"</p>
+            </div>
+
+            <p>Korean localization goes beyond translating text. It is a systematic process of aligning a game's worldbuilding and narrative context with the Korean linguistic environment.</p>
+
+            <p>At Asrec Studio, we believe that true localization quality lies in mastering these fine linguistic and technical details. From script analysis and variable management to In-Game LQA and voiceover dubbing, we leverage deep expertise across every phase of the localization pipeline to deliver highly polished results.</p>
+
+            <p>If you need support with Korean game localization, feel free to reach out anytime.</p>
+
+            <div class="source-box">
+                <p>Website: <a href="https://www.asrec.co.kr/">www.asrec.co.kr</a></p>
+                <p>Contact: <a href="mailto:contact@asrec.co.kr">contact@asrec.co.kr</a></p>
+            </div>
+
+        </div>
+    </article>
+
+    <section class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="bg-gradient-to-r from-cyan-950/50 to-slate-900 border border-cyan-900/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 justify-between">
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-2">Start a Project</h3>
+                    <p class="text-gray-400 text-sm">Need Korean game localization or voiceover for your project? We'll get back to you quickly.</p>
+                </div>
+                <a href="../../../en/#contact" class="shrink-0 inline-flex items-center gap-3 px-7 py-3.5 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-400 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] whitespace-nowrap">
+                    <span>Contact Us</span><i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="pb-16 container mx-auto px-6 max-w-3xl">
+        <a href="/blog/en/" class="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 text-sm font-bold transition-colors hover:gap-3">
+            <i class="fas fa-arrow-left text-xs"></i> Back to Blog
+        </a>
+    </div>
+
+    <footer class="bg-slate-950 border-t border-white/5 py-10">
+        <div class="container mx-auto px-6 flex flex-col items-center gap-6">
+            <img src="../../../ASREC LOGOS.png" alt="Logo" class="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-all duration-300" />
+            <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/company/asrecstudio/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full overflow-hidden hover:scale-110 transition-all duration-300">
+                    <img src="../../../linkedin.png" alt="LinkedIn" class="w-full h-full object-cover" />
+                </a>
+                <a href="https://blog.naver.com/asrecstudio" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full overflow-hidden hover:scale-110 transition-all duration-300">
+                    <img src="../../../naver.png" alt="Naver Blog" class="w-full h-full object-cover" />
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTJQQGZ2D2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTJQQGZ2D2');
+    </script>
+</body>
+</html>
