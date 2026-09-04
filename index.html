@@ -222,6 +222,8 @@ if(window.wcs) {
                     label: "게임 더빙", icon: "fa-gamepad",
                     desc: "AsRec Studio는 게임 녹음실 및 게임 더빙 스튜디오로, 성우 캐스팅부터 녹음, 디렉팅, 편집, 믹싱, QA까지 게임 음성 제작 전 과정을 제공합니다.",
                     type: "cards",
+                    detailHref: "/game-dubbing/",
+                    detailLabel: "자세히 보기",
                     cards: [
                         { title: "캐스팅", subtitle: "\"캐릭터의 완성, 전략적인 캐스팅으로부터\"", icon: "fa-clipboard-list", items: ["연기력이 검증된 게임 전문 배우 인프라 보유", "세계관과 캐릭터 분석 기반 최적의 배우 매칭", "라이브 오디션, DB 샘플을 통한 다각도 캐스팅 검토", "예산 맞춤형 전략적 캐스팅 솔루션 제공"] },
                         { title: "각색 & 연출", subtitle: "\"텍스트를 넘어 생동감을 더하는 더빙 솔루션\"", icon: "fa-microphone-lines", items: ["더빙 품질 향상을 위한 구어체 각색", "완성도를 높이는 장르 맞춤형 연출", "효율적이고 체계적인 녹음 일정 관리", "온·오프라인 녹음 참관 지원"] },
@@ -232,6 +234,8 @@ if(window.wcs) {
                 {
                     label: "영상 녹음", icon: "fa-video",
                     type: "cards",
+                    detailHref: "/voice-recording/",
+                    detailLabel: "자세히 보기",
                     cards: [
                         { title: "캐스팅", subtitle: "\"콘텐츠에 맞는 목소리를 찾는 것부터\"", icon: "fa-clipboard-list", items: ["콘텐츠 장르와 캐릭터에 맞는 성우 매칭", "다양한 장르에 최적화된 성우 인프라 보유", "라이브 오디션, DB 샘플을 통한 다각도 검토", "예산 맞춤형 캐스팅 솔루션"] },
                         { title: "각색 & 연출", subtitle: "\"영상의 흐름에 맞는 더빙을 만듭니다\"", icon: "fa-microphone-lines", items: ["립싱크와 영상 타이밍을 고려한 대본 각색", "콘텐츠 톤과 장르에 맞는 전문 디렉팅", "효율적이고 체계적인 녹음 일정 관리", "온·오프라인 녹음 참관 지원"] },
@@ -242,6 +246,8 @@ if(window.wcs) {
                 {
                     label: "음성 녹음", icon: "fa-bullhorn",
                     type: "voice",
+                    detailHref: "/voice-recording/",
+                    detailLabel: "자세히 보기",
                 },
                
             ];
@@ -369,6 +375,12 @@ if(window.wcs) {
                                 </div>
                             </div>
                         )}
+
+                        <div className="mt-10 flex justify-center">
+                            <a href={tabs[displayTab].detailHref} className="inline-flex items-center gap-2 px-7 py-3 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-400 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] text-sm">
+                                <span>{tabs[displayTab].detailLabel}</span><i className="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
                     </div>
                 </section>
             );
