@@ -175,92 +175,52 @@ if(window.wcs) {
         );
 
         const Services = ({ t }) => {
-            const [activeTab, setActiveTab] = React.useState(0);
-            const [displayTab, setDisplayTab] = React.useState(0);
-            const [isSwitching, setIsSwitching] = React.useState(false);
-            const switchTimer = React.useRef(null);
-            const tabs = [
+            const services = [
                 {
-                    label: "GAME", icon: "fa-gamepad",
-                    cards: [
-                        { title: t.s1Title, subtitle: t.s1Subtitle, items: t.s1List, icon: "fa-clipboard-list" },
-                        { title: t.sLocTitle, subtitle: t.sLocSubtitle, items: t.sLocList, icon: "fa-language" },
-                        { title: t.s2Title, subtitle: t.s2Subtitle, items: t.s2List, icon: "fa-microphone-lines" },
-                        { title: t.s3Title, subtitle: t.s3Subtitle, items: t.s3List, icon: "fa-sliders" },
-                        { title: t.s4Title, subtitle: t.s4Subtitle, items: t.s4List, icon: "fa-users" }
-                    ]
+                    title: "Game Dubbing",
+                    icon: "fa-gamepad",
+                    desc: "Korean voiceover production built for games, from casting and directed recording to editing, mixing, and final QA.",
+                    href: "game-dubbing/index.html",
                 },
                 {
-                    label: "VIDEO", icon: "fa-video",
-                    cards: [
-                        { title: "Casting", subtitle: "\"Starting with finding the perfect voice for your content\"", icon: "fa-clipboard-list", items: ["Precise voice actor matching for each genre and character profile", "Extensive voice actor infrastructure optimized for diverse genres", "Multi-angle review through live auditions and database samples", "Budget-optimized casting solutions tailored to your project"] },
-                        { title: "Adaptation & Direction", subtitle: "\"Crafting dubbing that flows seamlessly with the visual\"", icon: "fa-microphone-lines", items: ["Precision script adaptation considering lip-sync and visual timing", "Expert voice direction tailored to the content's tone and genre", "Efficient and systematic recording schedule management", "Full support for both on-site and remote attendance"] },
-                        { title: "Recording & Mixing", subtitle: "\"Sound quality optimized for every frame\"", icon: "fa-sliders", items: ["High-end recording environment to minimize noise and maximize quality", "Professional post-editing and mastering optimized for visual media", "Customized audio polishing tailored to specific project requirements", "Systematic audio file management and implementation-ready delivery"] },
-                        { title: "Supported Content", subtitle: "\"Expertise across every genre\"", icon: "fa-film", items: ["Animation · Film · Drama", "E-Learning · Corporate Videos", "Documentaries · Micro-dramas", "YouTube Content"] }
-                    ]
-                }
+                    title: "Game Translation",
+                    icon: "fa-language",
+                    desc: "Game-focused Korean translation that preserves intent, terminology, lore, UI context, and the emotional rhythm of play.",
+                    href: "game-translation/index.html",
+                },
             ];
-            React.useEffect(() => {
-                return () => { if (switchTimer.current) window.clearTimeout(switchTimer.current); };
-            }, []);
-            const handleTabClick = (index) => {
-                if (index === activeTab || isSwitching) return;
-                if (switchTimer.current) window.clearTimeout(switchTimer.current);
-                setActiveTab(index);
-                setIsSwitching(true);
-                switchTimer.current = window.setTimeout(() => {
-                    setDisplayTab(index);
-                    window.requestAnimationFrame(() => setIsSwitching(false));
-                }, 180);
-            };
-            const words = t.serviceHeader.split(' ');
-            const gridColsClass = tabs[displayTab].cards.length >= 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
+
             return (
-                <section id="services" className="py-24 relative overflow-hidden" style={{backgroundColor: '#020617'}}>
-                    <div className="absolute inset-0 z-0 transition-opacity duration-500" style={{backgroundImage: displayTab === 1 ? "url('../video_dubbing_bg_pixel_art.png')" : "url('../game_localization_bg_pixel_art.png')", backgroundSize: 'contain', backgroundPosition: 'center bottom', backgroundRepeat: 'no-repeat', opacity: displayTab === 1 ? 0.2 : 0.35}}></div>
-                    <div className="absolute inset-0 z-0" style={{background: 'linear-gradient(to bottom, #020617 0%, transparent 30%, transparent 70%, #020617 100%)'}}></div>
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-900/50 to-transparent"></div>
-                    <div className="container mx-auto px-6 relative z-10">
-                        <div className="text-center mb-16"><h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"><span className="text-cyan-500">{words[0]}</span> {words.slice(1).join(' ')}</h2></div>
-                        <div className="flex justify-center mb-8">
-                            <div className="flex gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5">
-                                {tabs.map((tab, i) => (
-                                    <button key={i} onClick={() => handleTabClick(i)} className={"flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 " + (activeTab === i ? 'bg-cyan-500 text-white shadow-lg' : 'text-gray-400 hover:text-white')}>
-                                        <i className={"fas " + tab.icon + " text-xs"}></i>{tab.label}
-                                    </button>
-                                ))}
-                            </div>
+                <section id="services" className="relative overflow-hidden bg-slate-950 py-24 text-white md:py-32">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(6,182,212,0.12),transparent_36%)]"></div>
+                    <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-500/60 to-transparent"></div>
+                    <div className="container relative z-10 mx-auto px-6">
+                        <div className="mx-auto max-w-3xl text-center">
+                            <p className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-cyan-400">KOREAN GAME LOCALIZATION STUDIO</p>
+                            <h2 className="text-4xl font-black tracking-tight text-white md:text-6xl"><span className="text-cyan-500">MAIN</span> SERVICES</h2>
+                            <p className="mx-auto mt-7 max-w-2xl text-sm leading-8 text-gray-400 md:text-base md:leading-9">
+                                We help games sound and read naturally in Korean.<br className="hidden md:block" />
+                                From translation to voiceover production, Asrec builds localization around the player experience.
+                            </p>
                         </div>
-                        <div className={"text-center mb-10 transition-all duration-300 " + (isSwitching ? "opacity-0" : "opacity-100")}>
-                            {displayTab === 0 && (
-                                <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
-                                    If game localization is your challenge,<br/><span className="text-cyan-400">Asrec</span>'s proven workflow and dedicated experts are here for you.
-                                </p>
-                            )}
-                            {displayTab === 1 && (
-                                <div>
-                                    <p className="text-white text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
-                                        From voice casting to final mixing — all in one place.<br/><span className="text-cyan-400">Asrec</span> manages every stage of your audio production.
-                                    </p>
-                                    <p className="text-gray-500 text-sm mt-3">(Supporting all video content: Commercials, Educational, Documentaries, Short-form, and more)</p>
-                                </div>
-                            )}
-                        </div>
-                        <div className={"grid md:grid-cols-2 " + gridColsClass + " gap-6 transition-all duration-300 ease-out " + (isSwitching ? "opacity-0 translate-y-4 scale-[0.98]" : "opacity-100 translate-y-0 scale-100")}>
-                            {tabs[displayTab].cards.map((s, i) => (
-                                <div key={displayTab + "-" + i} className={"backdrop-blur-md border-2 border-white/20 p-8 rounded-2xl hover:border-white/40 transition-all duration-300 group " + (displayTab === 1 ? "bg-slate-900" : "bg-slate-900/80")} style={{transitionDelay: (i * 45) + "ms"}}>
-                                    <div className="bg-cyan-950 border-cyan-900 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border"><i className={"fas " + s.icon + " text-2xl text-cyan-400 group-hover:text-cyan-300"}></i></div>
-                                    <h3 className="group-hover:text-cyan-400 text-2xl font-bold text-white mb-2 transition-colors">{s.title}</h3>
-                                    <p className="text-sm text-cyan-500 font-medium mb-6 italic">{s.subtitle}</p>
-                                    <ul className="space-y-3">{s.items.map((item, idx) => (<li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed"><span className="mr-3 text-cyan-500 mt-1.5 w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0 block"></span>{item}</li>))}</ul>
-                                </div>
+
+                        <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-12 md:mt-24 md:grid-cols-2 md:gap-16">
+                            {services.map((service, index) => (
+                                <a key={service.title} href={service.href} className="group flex flex-col items-center text-center outline-none" aria-label={service.title + " inquiry"}>
+                                    <div className="relative flex h-28 w-28 items-center justify-center rounded-full border-2 border-cyan-400/60 bg-slate-900/60 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.08)] transition-all duration-300 group-hover:-translate-y-2 group-hover:border-cyan-300 group-hover:bg-cyan-400/10 group-hover:text-cyan-200 group-hover:shadow-[0_0_42px_rgba(34,211,238,0.2)] group-focus-visible:ring-4 group-focus-visible:ring-cyan-400/30 md:h-32 md:w-32">
+                                        <span className="absolute -right-2 -top-2 font-mono text-xs font-bold tracking-widest text-cyan-400/70">0{index + 1}</span>
+                                        <i className={"fas " + service.icon + " text-4xl md:text-5xl"}></i>
+                                    </div>
+                                    <h3 className="mt-7 text-xl font-black tracking-tight text-white transition-colors group-hover:text-cyan-300 md:text-2xl">{service.title}</h3>
+                                    <p className="mt-4 max-w-md text-sm leading-7 text-gray-400 md:text-base md:leading-8">{service.desc}</p>
+                                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold tracking-wide text-gray-500 transition-colors group-hover:text-cyan-400">Learn More <i className="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i></span>
+                                </a>
                             ))}
                         </div>
                     </div>
                 </section>
             );
         };
-
         const Process = ({ t }) => {
             const words = t.processHeader.split(' ');
             return (
