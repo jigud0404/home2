@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Translation and Korean Game Localization Studio | Asrec Studio</title>
+    <meta name="description" content="Asrec Studio provides Korean game translation and localization for global game projects, including dialogue, UI text, terminology, lore, cultural adaptation, localization QA, and dubbing-ready script support when needed.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Game Translation and Korean Game Localization Studio | Asrec Studio">
+    <meta property="og:description" content="Korean game translation and localization for dialogue, UI text, terminology, lore, cultural adaptation, localization QA, and voiceover-ready production workflows.">
+    <meta property="og:image" content="../../게임 번역 여우.png">
+    <meta property="og:locale" content="en_US">
+    <link rel="shortcut icon" href="../../ASREC_FAVICON.ico" type="image/x-icon">
+    <link rel="icon" href="../../ASREC_FAVICON.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Outfit"', '"Noto Sans KR"', 'sans-serif'] },
+                    colors: {
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4', 900: '#164e63' },
+                        slate: { 850: '#172033', 950: '#020617' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: "Outfit", "Noto Sans KR", sans-serif; }
+        ::selection { background: #06b6d4; color: #fff; }
+        .grid-texture {
+            background-image:
+                linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+            background-size: 42px 42px;
+        }
+        .hero-character {
+            filter: drop-shadow(0 32px 40px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 42px rgba(34, 211, 238, 0.18));
+        }
+        .fade-in-up { animation: fadeInUp 0.75s ease-out both; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+    <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-slate-950/88 backdrop-blur-md">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
+            <a href="../" class="flex items-center">
+                <img src="../../ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain">
+            </a>
+            <nav class="hidden items-center gap-8 md:flex">
+                <div class="group relative">
+                    <a href="../#services" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-cyan-300 transition-colors">
+                        Services <i class="fas fa-chevron-down text-[10px]"></i>
+                    </a>
+                    <div class="invisible absolute left-1/2 top-full w-48 -translate-x-1/2 translate-y-3 rounded-xl border border-white/10 bg-slate-900/95 p-2 opacity-0 shadow-2xl shadow-black/30 backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                        <a href="../game-dubbing/" class="block rounded-lg px-4 py-3 text-sm font-bold text-gray-300 transition-colors hover:bg-cyan-500/10 hover:text-white">Game Dubbing</a>
+                        <a href="../game-translation/" class="block rounded-lg px-4 py-3 text-sm font-bold text-cyan-300 transition-colors hover:bg-cyan-500/10 hover:text-white">Game Translation</a>
+                    </div>
+                </div>
+                <a href="../#studio" class="text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-cyan-400">Studio</a>
+                <a href="../blog/" class="text-sm font-bold uppercase tracking-wider text-gray-300 transition-colors hover:text-cyan-400">Blog</a>
+                <a href="../#contact" class="rounded-full bg-cyan-500 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-cyan-400 hover:shadow-[0_0_28px_rgba(34,211,238,0.28)]">Contact</a>
+            </nav>
+            <a href="../#contact" class="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 px-4 py-2 text-sm font-bold text-cyan-300 md:hidden">
+                Contact <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-screen overflow-hidden pt-28">
+            <div class="absolute inset-0 bg-slate-950"></div>
+            <div class="grid-texture absolute inset-0 opacity-60"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_72%_38%,rgba(6,182,212,0.20),transparent_34%),linear-gradient(180deg,rgba(2,6,23,0.30),#020617_92%)]"></div>
+            <div class="relative z-10 mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-10 px-5 pb-16 md:grid-cols-[0.96fr_1.04fr] md:px-8">
+                <div class="fade-in-up">
+                    <p class="mb-5 inline-flex rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-cyan-300">Korean Game Localization</p>
+                    <h1 class="max-w-3xl text-5xl font-black leading-[1.05] tracking-tight text-white md:text-7xl">
+                        Game Translation
+                    </h1>
+                    <p class="mt-6 max-w-2xl text-xl font-bold leading-relaxed text-white/90 md:text-2xl">
+                        Korean game translation that preserves story, character voice, UI clarity, and player immersion
+                    </p>
+                    <p class="mt-6 max-w-2xl text-base leading-8 text-gray-400">
+                        Asrec Studio provides Korean game translation and localization for global game projects. From dialogue and UI text to terminology management, cultural adaptation, localization QA, and voiceover-ready script support, we help your game read naturally for Korean players.
+                    </p>
+                    <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+                        <a href="../#contact" class="inline-flex items-center justify-center gap-3 rounded-full bg-cyan-500 px-7 py-4 text-base font-black text-white transition-all hover:bg-cyan-400 hover:shadow-[0_0_36px_rgba(34,211,238,0.36)]">
+                            Start a Translation Project <i class="fas fa-chevron-right text-sm"></i>
+                        </a>
+                        <a href="#process" class="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base font-black text-white transition-all hover:border-cyan-400/50 hover:text-cyan-300">
+                            View Localization Process <i class="fas fa-arrow-down text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex min-h-[420px] items-center justify-center fade-in-up" style="animation-delay: 120ms;">
+                    <div class="absolute h-[72%] w-[72%] rounded-full border border-cyan-300/20 bg-cyan-500/10 blur-sm"></div>
+                    <div class="absolute h-[54%] w-[54%] rounded-full border border-white/10 bg-slate-900/80"></div>
+                    <img src="../../게임 번역 여우.png" alt="Character representing Korean game translation and localization" class="hero-character relative z-10 w-full max-w-[600px] object-contain">
+                </div>
+            </div>
+        </section>
+
+        <section class="border-y border-white/10 bg-slate-900 py-16">
+            <div class="mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-2 lg:grid-cols-4 md:px-8">
+                <div class="rounded-2xl border border-white/10 bg-slate-950 p-6">
+                    <i class="fas fa-comments mb-5 text-3xl text-cyan-400"></i>
+                    <h2 class="text-xl font-black text-white">Game Dialogue Translation</h2>
+                    <p class="mt-3 text-sm leading-7 text-gray-400">Character dialogue, quests, story scenes, and in-game conversations translated with tone and context in mind.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-slate-950 p-6">
+                    <i class="fas fa-table-list mb-5 text-3xl text-cyan-400"></i>
+                    <h2 class="text-xl font-black text-white">UI and System Text</h2>
+                    <p class="mt-3 text-sm leading-7 text-gray-400">Menus, item names, skill descriptions, tutorials, notices, and system messages translated for clarity.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-slate-950 p-6">
+                    <i class="fas fa-book mb-5 text-3xl text-cyan-400"></i>
+                    <h2 class="text-xl font-black text-white">Terminology and Lore</h2>
+                    <p class="mt-3 text-sm leading-7 text-gray-400">Key terms, character names, factions, locations, skills, and worldbuilding elements managed consistently.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-slate-950 p-6">
+                    <i class="fas fa-check-double mb-5 text-3xl text-cyan-400"></i>
+                    <h2 class="text-xl font-black text-white">Localization Editing and QA</h2>
+                    <p class="mt-3 text-sm leading-7 text-gray-400">We review readability, tone, terminology consistency, UI context, and Korean player expectations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-950 py-24">
+            <div class="mx-auto max-w-7xl px-5 md:px-8">
+                <div class="mb-12 max-w-3xl">
+                    <p class="text-sm font-black uppercase tracking-[0.25em] text-cyan-400">Translation Scope</p>
+                    <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">What We Translate</h2>
+                    <p class="mt-5 text-base leading-8 text-gray-400">Game text appears across many touchpoints, and each one has a different job. We localize content so it feels natural to Korean players while preserving gameplay meaning and narrative intent.</p>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-message mr-3 text-cyan-400"></i>Dialogue and Cutscene Scripts</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-scroll mr-3 text-cyan-400"></i>Quests and Scenarios</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-display mr-3 text-cyan-400"></i>UI and Menu Text</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-wand-magic-sparkles mr-3 text-cyan-400"></i>Item, Skill, and Character Descriptions</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-circle-info mr-3 text-cyan-400"></i>Tutorials, Notices, and System Messages</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-store mr-3 text-cyan-400"></i>Store Page and Marketing Copy</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="bg-slate-900 py-24">
+            <div class="mx-auto max-w-7xl px-5 md:px-8">
+                <div class="mb-14 text-center">
+                    <p class="text-sm font-black uppercase tracking-[0.25em] text-cyan-400">Localization Process</p>
+                    <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">Game Translation Process</h2>
+                </div>
+                <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">01</p><h3 class="mt-4 text-xl font-black">Project Intake</h3><p class="mt-3 text-sm leading-7 text-gray-400">We review the game genre, text volume, file format, reference materials, and target schedule.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">02</p><h3 class="mt-4 text-xl font-black">Material Review</h3><p class="mt-3 text-sm leading-7 text-gray-400">We check scripts, string tables, UI context, character notes, and worldbuilding information.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">03</p><h3 class="mt-4 text-xl font-black">Glossary Setup</h3><p class="mt-3 text-sm leading-7 text-gray-400">We organize terms, names, factions, locations, skills, and style rules for consistency.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">04</p><h3 class="mt-4 text-xl font-black">Translation</h3><p class="mt-3 text-sm leading-7 text-gray-400">We translate dialogue, UI, system text, and story content with gameplay context in mind.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">05</p><h3 class="mt-4 text-xl font-black">Editing</h3><p class="mt-3 text-sm leading-7 text-gray-400">We refine tone, readability, character voice, and terminology consistency across the project.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">06</p><h3 class="mt-4 text-xl font-black">Localization QA</h3><p class="mt-3 text-sm leading-7 text-gray-400">We review mistranslations, awkward phrasing, terminology drift, missing text, and UI context issues.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">07</p><h3 class="mt-4 text-xl font-black">Final Review</h3><p class="mt-3 text-sm leading-7 text-gray-400">We check the final files against the requested format, structure, and project guidelines.</p></div>
+                    <div class="rounded-2xl border border-white/10 bg-slate-950 p-6"><p class="text-3xl font-black text-cyan-500">08</p><h3 class="mt-4 text-xl font-black">Delivery</h3><p class="mt-3 text-sm leading-7 text-gray-400">We deliver localized files in the format your team needs for implementation or review.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-950 py-24">
+            <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-8">
+                <div>
+                    <p class="text-sm font-black uppercase tracking-[0.25em] text-cyan-400">Quality Focus</p>
+                    <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">Localized for Korean Players, Not Just Translated</h2>
+                    <p class="mt-5 text-base leading-8 text-gray-400">Good game translation must feel natural in play. We focus on readability, terminology consistency, character voice, UI context, and the cultural expectations of Korean players.</p>
+                </div>
+                <div class="relative flex min-h-[380px] items-center justify-center">
+                    <div class="absolute h-[78%] w-[78%] rounded-full border border-cyan-300/20 bg-cyan-500/10 blur-sm"></div>
+                    <div class="absolute h-[56%] w-[56%] rounded-full border border-white/10 bg-slate-900/80"></div>
+                    <img src="../../게임 현지화 여우.png" alt="Character representing Korean game localization quality" class="hero-character relative z-10 w-full max-w-[520px] object-contain">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 py-24">
+            <div class="mx-auto max-w-5xl px-5 md:px-8">
+                <div class="rounded-3xl border border-cyan-400/20 bg-slate-950 p-8 md:p-10">
+                    <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+                        <div>
+                            <p class="text-sm font-black uppercase tracking-[0.25em] text-cyan-400">Voiceover Option</p>
+                            <h2 class="mt-4 text-3xl font-black tracking-tight text-white md:text-4xl">Need Korean Voiceover Too?</h2>
+                            <p class="mt-5 text-base leading-8 text-gray-400">If your game also requires Korean voice recording, translated scripts can be further adapted for natural spoken performance. Asrec Studio can connect translation, script adaptation, casting, recording, editing, and QA in one workflow.</p>
+                        </div>
+                        <a href="../game-dubbing/" class="inline-flex items-center justify-center gap-3 rounded-full bg-cyan-500 px-7 py-4 text-base font-black text-white transition-all hover:bg-cyan-400 hover:shadow-[0_0_36px_rgba(34,211,238,0.36)]">
+                            View Game Dubbing <i class="fas fa-chevron-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-950 py-24">
+            <div class="mx-auto max-w-4xl px-5 md:px-8">
+                <div class="mb-12 text-center">
+                    <p class="text-sm font-black uppercase tracking-[0.25em] text-cyan-400">FAQ</p>
+                    <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">Game Translation FAQ</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="rounded-2xl border border-white/10 bg-slate-900 p-6">
+                        <summary class="cursor-pointer text-lg font-black text-white">Do you translate games into Korean?</summary>
+                        <p class="mt-4 leading-8 text-gray-400">Yes. We provide Korean game translation and localization for dialogue, UI text, quest text, scenarios, terminology, and related game content.</p>
+                    </details>
+                    <details class="rounded-2xl border border-white/10 bg-slate-900 p-6">
+                        <summary class="cursor-pointer text-lg font-black text-white">Can you work with spreadsheets or string tables?</summary>
+                        <p class="mt-4 leading-8 text-gray-400">Yes. We can work with common localization file formats and structured text files, including spreadsheets and string tables, depending on your workflow.</p>
+                    </details>
+                    <details class="rounded-2xl border border-white/10 bg-slate-900 p-6">
+                        <summary class="cursor-pointer text-lg font-black text-white">Can you maintain terminology consistency across a large project?</summary>
+                        <p class="mt-4 leading-8 text-gray-400">Yes. We can create and manage glossaries, character terms, lore terms, skill names, item names, and style rules to keep the Korean localization consistent.</p>
+                    </details>
+                    <details class="rounded-2xl border border-white/10 bg-slate-900 p-6">
+                        <summary class="cursor-pointer text-lg font-black text-white">Can translation and dubbing be handled together?</summary>
+                        <p class="mt-4 leading-8 text-gray-400">Yes. When needed, we can connect Korean translation, voiceover-ready adaptation, casting, directed recording, editing, mixing, and QA in one production workflow.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative overflow-hidden bg-slate-950 py-24">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(6,182,212,0.18),transparent_36%)]"></div>
+            <div class="relative z-10 mx-auto max-w-4xl px-5 text-center md:px-8">
+                <h2 class="text-4xl font-black tracking-tight text-white md:text-5xl">Bringing Your Game to Korean Players? Start with Asrec.</h2>
+                <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-gray-400">Send us your script, string table, character information, or localization brief. We will help you plan the right Korean translation and localization workflow for your game.</p>
+                <a href="../#contact" class="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-cyan-500 px-8 py-4 text-base font-black text-white transition-all hover:bg-cyan-400 hover:shadow-[0_0_36px_rgba(34,211,238,0.36)]">
+                    Start a Translation Project <i class="fas fa-chevron-right text-sm"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-slate-950 px-5 py-10 text-center text-sm text-gray-500">
+        <a href="../" class="inline-flex items-center justify-center">
+            <img src="../../ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100">
+        </a>
+    </footer>
+</body>
+</html>
