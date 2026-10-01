@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JTJQQGZ2D2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JTJQQGZ2D2');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게임 더빙 및 게임 성우 녹음 전문 스튜디오 | 애즈렉 스튜디오</title>
@@ -56,6 +48,12 @@
             from { opacity: 0; transform: translateY(22px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .kakao-float, .email-float { position: fixed; right: 24px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 999px; font-weight: 800; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+        .kakao-float { bottom: 24px; background: #fee500; color: #191919; }
+        .email-float { bottom: 88px; border: 1px solid rgba(34, 211, 238, 0.45); background: rgba(2, 6, 23, 0.92); color: #ffffff; }
+        .kakao-float:hover, .email-float:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.30); }
+        .email-float:hover { border-color: #22d3ee; color: #67e8f9; }
+        @media (max-width: 640px) { .kakao-float { right: 16px; bottom: 16px; padding: 13px 16px; } .email-float { right: 16px; bottom: 80px; padding: 13px 16px; } }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased">
@@ -156,7 +154,7 @@
                     <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-scroll mr-3 text-cyan-400"></i>내러티브 어드벤처</div>
                     <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-gamepad mr-3 text-cyan-400"></i>콘솔 및 PC 게임</div>
                     <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-crosshairs mr-3 text-cyan-400"></i>FPS 및 슈팅 게임</div>
-                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-seedling mr-3 text-cyan-400"></i>인디게임</div>
+                    <div class="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-gray-200"><i class="fas fa-seedling mr-3 text-cyan-400"></i>인디게임 파일럿 녹음</div>
                 </div>
             </div>
         </section>
@@ -242,5 +240,7 @@
             <img src="/ASREC LOGOS.png" alt="ASREC STUDIO" class="h-8 w-auto object-contain opacity-80 transition-opacity hover:opacity-100">
         </a>
     </footer>
+    <a href="http://pf.kakao.com/_hswxiX/chat" class="kakao-float" target="_blank" rel="noopener noreferrer" aria-label="카카오톡으로 문의하기"><i class="fas fa-comment text-lg"></i><span>카카오톡 문의</span></a>
+    <a href="mailto:contact@asrec.co.kr" class="email-float" aria-label="이메일로 문의하기"><i class="fas fa-envelope text-lg"></i><span>이메일 문의</span></a>
 </body>
 </html>
