@@ -80,6 +80,35 @@ if(window.wcs) {
       .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
       @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
       .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Selected Projects: one compact, consistently filled artwork frame. */
+      .projects-section { padding: 36px 0 48px; background: #020617; }
+      .projects-heading { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -.035em; line-height: 1.1; }
+      .projects-heading span { color: #06b6d4; }
+      .projects-intro { color: #94a3b8; font-size: 1rem; line-height: 1.8; margin: 20px 0 0; }
+      .projects-viewport { overflow: hidden; margin-top: 24px; border-radius: 14px; touch-action: pan-y; }
+      .projects-track { display: flex; gap: 24px; transition: transform 650ms cubic-bezier(.22,.61,.36,1); }
+      .project-slide { flex: 0 0 100%; min-width: 0; }
+      .project-card { position: relative; display: block; width: 100%; aspect-ratio: 460 / 215; padding: 0; overflow: hidden; border: 1px solid #ffffff20; border-radius: 14px; background: #000; color: #fff; text-align: left; cursor: pointer; }
+      .project-card img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .project-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 3vw, 36px); background: rgba(0,0,0,.78); opacity: 0; transition: opacity 250ms ease; }
+      .project-card:hover .project-overlay, .project-card:focus-visible .project-overlay, .project-card[data-open="true"] .project-overlay { opacity: 1; }
+      .project-card:focus-visible { outline: 3px solid #22d3ee; outline-offset: -4px; }
+      .project-name { margin: 0 0 10px; font-size: clamp(19px, 2.5vw, 30px); font-weight: 800; line-height: 1.2; }
+      .project-service { font-size: clamp(13px, 1.5vw, 16px); line-height: 1.6; }
+      .project-label { color: #cbd5e1; font-weight: 400; }
+      .projects-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
+      .projects-hint { color: #94a3b8; font-size: 12px; }
+      .projects-controls { display: flex; align-items: center; gap: 12px; }
+      .projects-control { width: 40px; height: 40px; border: 1px solid #ffffff30; border-radius: 50%; color: #cbd5e1; background: transparent; display: inline-flex; align-items: center; justify-content: center; transition: background 180ms, border-color 180ms; }
+      .projects-control:hover { border-color: #22d3ee; background: #06b6d41a; color: #67e8f9; }
+      .projects-control:focus-visible, .projects-dot:focus-visible { outline: 2px solid #22d3ee; outline-offset: 4px; }
+      .projects-dots { display: flex; align-items: center; }
+      .projects-dot { width: 28px; height: 40px; display: flex; align-items: center; justify-content: center; border: 0; background: transparent; }
+      .projects-dot::after { content: ''; width: 6px; height: 6px; background: #475569; border-radius: 20px; transition: width 200ms, background 200ms; }
+      .projects-dot[aria-current="true"]::after { width: 20px; background: #22d3ee; }
+      @media (max-width: 767px) { .projects-section { padding: 28px 0 36px; } .projects-viewport { margin-top: 20px; } .project-overlay { padding: 18px; } .project-name { font-size: 19px; margin-bottom: 6px; } }
+      @media (prefers-reduced-motion: reduce) { .projects-track, .project-overlay { transition: none; } }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased selection:bg-cyan-500 selection:text-white">
@@ -185,6 +214,102 @@ if(window.wcs) {
                 </div>
             </section>
         );
+
+
+        // GitHub project Pages uses /home2/; the custom domain uses the site root.
+        const PORTFOLIO_IMAGE_BASE = window.location.hostname.endsWith('.github.io')
+            ? '/home2/PORTPOLIO/'
+            : '/PORTPOLIO/';
+        const SELECTED_PROJECTS = [
+            { name: "Immortal Rising", image: "IMMORTAL RISING.jpg", width: 739, height: 415, category: "Game Dubbing", service: "Korean Voiceover" },
+            { name: "Ski-E-O!", image: "SKI-E-O.jpg", width: 460, height: 215, category: "Game Translation", service: "EN → KO Game Localization" },
+            { name: "Haunted Heist", image: "HAUNTED HEIST.jpg", width: 460, height: 215, category: "Game Translation", service: "EN → KO Game Localization" },
+            { name: "Dead Spin", image: "DEAD SPIN.jpg", width: 460, height: 215, category: "Game Translation", service: "EN → KO Game Localization" },
+        ];
+
+        const SelectedProjects = () => {
+            const visible = 1;
+            const [index, setIndex] = React.useState(0);
+            const [hovered, setHovered] = React.useState(false);
+            const [focused, setFocused] = React.useState(false);
+            const [open, setOpen] = React.useState(null);
+            const [paused, setPaused] = React.useState(false);
+            const [reducedMotion, setReducedMotion] = React.useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+            const [hidden, setHidden] = React.useState(document.hidden);
+            const touchStart = React.useRef(null);
+            const swiped = React.useRef(false);
+            const lastIndex = SELECTED_PROJECTS.length - visible;
+            const move = React.useCallback((direction) => {
+                setIndex(current => (current + direction + lastIndex + 1) % (lastIndex + 1));
+                setOpen(null);
+            }, [lastIndex]);
+
+            React.useEffect(() => {
+                const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                const updateMotion = () => setReducedMotion(motion.matches);
+                const visibility = () => setHidden(document.hidden);
+                motion.addEventListener('change', updateMotion);
+                document.addEventListener('visibilitychange', visibility);
+                return () => {
+                    motion.removeEventListener('change', updateMotion);
+                    document.removeEventListener('visibilitychange', visibility);
+                };
+            }, []);
+
+            const stopped = hovered || focused || paused || reducedMotion || hidden || open !== null;
+            React.useEffect(() => {
+                if (stopped) return;
+                const timer = window.setInterval(() => move(1), 4500);
+                return () => window.clearInterval(timer);
+            }, [stopped, move, index]);
+
+            return (
+                <section id="projects" className="projects-section" aria-labelledby="projects-heading"
+                    aria-roledescription="carousel" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+                    onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+                    <div className="container mx-auto px-6" style={{maxWidth: '640px'}}>
+                        <h2 id="projects-heading" className="projects-heading"><span>SELECTED</span> PROJECTS</h2>
+                        <div className="projects-viewport" onTouchStart={event => { touchStart.current = {x: event.touches[0].clientX, y: event.touches[0].clientY}; swiped.current = false; }}
+                            onTouchEnd={event => {
+                                if (!touchStart.current) return;
+                                const dx = event.changedTouches[0].clientX - touchStart.current.x;
+                                const dy = event.changedTouches[0].clientY - touchStart.current.y;
+                                if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) { swiped.current = true; move(dx < 0 ? 1 : -1); }
+                                touchStart.current = null;
+                            }} onTouchCancel={() => { touchStart.current = null; }}>
+                            <div className="projects-track" style={{transform: `translateX(calc(-${index * 100 / visible}% - ${index * 24 / visible}px))`}}>
+                                {SELECTED_PROJECTS.map((project, position) => (
+                                    <div key={project.name} className="project-slide" role="group" aria-roledescription="slide"
+                                        aria-label={`${position + 1} of ${SELECTED_PROJECTS.length}`} aria-hidden={position < index || position >= index + visible}>
+                                        <button type="button" className="project-card" data-open={open === position}
+                                            tabIndex={position >= index && position < index + visible ? 0 : -1}
+                                            aria-label={`Project: ${project.name}. Service: ${project.service}. Toggle project information.`}
+                                            aria-pressed={open === position}
+                                            onClick={() => { if (swiped.current) { swiped.current = false; return; } setOpen(current => current === position ? null : position); }}>
+                                            <img src={PORTFOLIO_IMAGE_BASE + encodeURIComponent(project.image)} width={project.width} height={project.height} alt={project.name} loading="lazy" decoding="async" />
+                                            <span className="project-overlay" aria-hidden="true">
+                                                <span className="project-name"><span className="project-label">Project: </span>{project.name}</span>
+                                                <span className="project-service"><span className="project-label">Service: </span>{project.service}</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="projects-footer">
+                            <div className="projects-controls">
+                                <button type="button" className="projects-control" aria-label="Previous projects" onClick={() => move(-1)}><i className="fas fa-arrow-left" aria-hidden="true"></i></button>
+                                <div className="projects-dots" aria-label="Choose project position">
+                                    {Array.from({length: lastIndex + 1}, (_, page) => <button type="button" className="projects-dot" key={page} aria-label={`Show projects from ${SELECTED_PROJECTS[page].name}`} aria-current={index === page ? 'true' : undefined} onClick={() => { setIndex(page); setOpen(null); }} />)}
+                                </div>
+                                <button type="button" className="projects-control" aria-label="Next projects" onClick={() => move(1)}><i className="fas fa-arrow-right" aria-hidden="true"></i></button>
+                                {!reducedMotion && <button type="button" className="projects-control" aria-label={paused ? 'Resume automatic rotation' : 'Pause automatic rotation'} aria-pressed={paused} onClick={() => setPaused(current => !current)}><i className={'fas ' + (paused ? 'fa-play' : 'fa-pause')} aria-hidden="true"></i></button>}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
         const Services = ({ t }) => {
             const services = [
@@ -442,7 +567,7 @@ if(window.wcs) {
             const t = TEXT_CONTENT;
             return (
                 <div className="min-h-screen bg-slate-950 text-white">
-                    <Navbar t={t} /><Hero t={t} /><Services t={t} /><Process t={t} /><Blog /><Gallery t={t} /><Contact t={t} /><Footer />
+                    <Navbar t={t} /><Hero t={t} /><Services t={t} /><SelectedProjects /><Process t={t} /><Blog /><Gallery t={t} /><Contact t={t} /><Footer />
                 </div>
             );
         };
