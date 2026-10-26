@@ -191,6 +191,9 @@
         }
       ];
 
+      // Keep publication dates in the source for newest-first ordering.
+      posts.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+
       const postsPerPage = 6;
       const grid = document.getElementById('post-grid');
       const pageNumbers = document.getElementById('page-numbers');
@@ -227,7 +230,7 @@
               <div class="p-6">
                 <div class="flex items-center gap-3 mb-3">
                   <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">${post.category}</span>
-                  <span class="text-xs text-gray-500">${post.date}</span>
+                  <span hidden>${post.date}</span>
                 </div>
                 <h2 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors leading-snug">${post.title}</h2>
                 <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">${post.excerpt}</p>
