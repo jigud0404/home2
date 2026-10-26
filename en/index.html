@@ -365,6 +365,7 @@ if(window.wcs) {
                 { href: "/blog/en/game-voice-casting/", icon: "fa-microphone-lines", category: "Voice Casting", date: "Mar 30, 2025", title: "The Beginning of Game Voiceover: How Does Voice Casting Actually Work?", desc: "Going beyond a \"nice-sounding voice\" — a deep dive into the strategic casting process that truly elevates the final polish of a game." },
                 { href: "/blog/en/game-dubbing-process/", icon: "fa-microphone-lines", category: "Game Dubbing", date: "Mar 01, 2025", title: "How is Game Voiceover Made? A Complete Production Guide", desc: "A comprehensive guide to the entire game voiceover production pipeline — from project intake and casting to recording, post-production, and final delivery." },
             ];
+            allPosts.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
             const ITEMS_PER_PAGE = 3;
             const totalPages = Math.ceil(allPosts.length / ITEMS_PER_PAGE);
             const [page, setPage] = React.useState(0);
@@ -408,7 +409,7 @@ if(window.wcs) {
                                     <div className="p-6 flex flex-col gap-3 flex-1">
                                         <div className="flex items-center gap-3">
                                             <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{post.category}</span>
-                                            <span className="text-xs text-gray-500 ml-auto">{post.date}</span>
+                                            <span hidden>{post.date}</span>
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors leading-snug">{post.title}</h3>
